@@ -23,6 +23,12 @@ if ( ! function_exists( 'birds-3d' ) ) {
   }
 }
 
+if ( ! function_exists( 'hero_parallax' ) ) {
+  function hero_parallax( $args = [] ) {
+    load_component( 'hero-parallax', $args );
+  }
+}
+
 if ( ! function_exists( 'empreendimento_simulador_mini' ) ) {
   function empreendimento_simulador_mini( $args = [] ) {
     load_component( 'empreendimento-simulador-mini', $args );
