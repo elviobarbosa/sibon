@@ -1,5 +1,5 @@
 <?php
 get_header();
-birds_3d();
+hero_parallax();
 get_footer();
 ?>

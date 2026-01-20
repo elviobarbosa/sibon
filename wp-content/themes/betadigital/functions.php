@@ -1,10 +1,8 @@
 <?php
 require_once 'app/admin.php';
 require_once 'app/config.php';
-// require_once 'app/blocks.php';
 require_once 'app/utils.php';
 require_once 'app/ajax.php';
-// require_once 'app/acf-blocks/config.php';
 require_once 'app/enqueue.php';
 require_once 'app/cpt.php';
 require_once 'app/filters/data-text-menu.php';
