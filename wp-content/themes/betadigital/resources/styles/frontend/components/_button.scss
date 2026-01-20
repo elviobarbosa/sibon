@@ -1,0 +1,98 @@
+// .btn {
+//   text-decoration: none;
+//   border: none;
+//   font-weight: 500;
+//   line-height: 24px;
+//   text-align: center;
+//   text-transform: uppercase;
+
+//   @include max-lg {
+//     font-size: 16px;
+//   }
+
+//   @include min-lg {
+//     font-size: 22px;
+//   }
+
+//   &:focus {
+//     outline: 0;
+//   }
+
+//   &--primary {
+//     padding: 10px 25px;
+//     border-radius: 12px;
+//     color: $primary-color;
+//     background-color: $primary-color;
+//     transition: all 0.5s ease-in-out;
+
+//     &:hover {
+//       background-color: $secondary-color;
+//       color: $light-color;
+//       transition: all 0.5s ease-in-out;
+//     }
+//   }
+
+//   &--secondary {
+//     color: $secondary-color;
+//     font-size: 20px;
+//     font-weight: 500;
+//     line-height: 37px;
+//     text-align: left;
+//     text-transform: uppercase;
+
+//     &:hover {
+//       svg {
+//         animation: btn-marquee 0.8s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+//       }
+//     }
+
+//     svg {
+//       width: 37px;
+//       height: 17px;
+//       padding: 0;
+//       margin: 0 0 0 10px;
+//     }
+//   }
+
+//   &--third {
+//     padding: 10px 25px;
+//     border-radius: 12px;
+//     color: $light-color;
+//     transition: all 0.5s ease-in-out;
+
+//     &:hover {
+//       background-color: $secondary-color;
+//       color: $light-color;
+//       transition: all 0.5s ease-in-out;
+//     }
+//   }
+
+//   &--fourth {
+//     padding: 10px 25px;
+//     border-radius: 12px;
+//     background-color: $primary-color;
+//     transition: all 0.5s ease-in-out;
+
+//     &:hover {
+//       background-color: $secondary-color;
+//       color: $light-color;
+//       transition: all 0.5s ease-in-out;
+//     }
+//   }
+// }
+
+// @keyframes btn-marquee {
+//   0% {
+//     transform: translateX(0%);
+//   }
+//   50% {
+//     transform: translateX(50%);
+//   }
+//   100% {
+//     transform: translateX(0%);
+//   }
+// }
+
+// .aligncenter.wp-block-acf-button-arrow {
+//   text-align: center;
+// }
