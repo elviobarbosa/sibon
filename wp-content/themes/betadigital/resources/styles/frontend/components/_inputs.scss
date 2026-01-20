@@ -1,0 +1,80 @@
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  font-size: 18px;
+  background-color: #faf8f5;
+  border: none;
+  @include border-radius(12px);
+  font-weight: 300;
+  padding: 10px 10px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type="submit"] {
+  text-decoration: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  border-radius: 12px;
+  color: $light-color;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $light-color;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.tools-search {
+  .wp-block-search__input {
+    background-color: #faf8f5;
+  }
+}
+
+.wp-block-search {
+  &__input {
+    width: 200px;
+    flex-grow: initial;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 300;
+    color: $primary-color;
+  }
+
+  &__inside-wrapper {
+    width: calc(100vw - 120px);
+    margin: 0 auto;
+
+    @include max-lg {
+      justify-content: center;
+    }
+
+    @include min-lg {
+      justify-content: end;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+}
+
+::placeholder {
+}

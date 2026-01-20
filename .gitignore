@@ -1,48 +1,47 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# WordPress Core
+wp-admin/
+wp-includes/
+index.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
-
-# Configuration
+# Environment-specific configuration files
 wp-config.php
-
-# Example themes
-/wp-content/themes/twenty*/
-
-# Example plugin
-/wp-content/plugins/hello.php
-
-# Uploads
-/wp-content/uploads/
-
-# Log files
+.htaccess
 *.log
+error_log
+debug.log
 
-# htaccess
-/.htaccess
+# Dynamic and temporary files
+wp-content/cache/
+wp-content/uploads/
+wp-content/languages/
+wp-content/upgrade/
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# Node / Front-end
+node_modules/
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# System and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Ignora todos os plugins
+wp-content/plugins/*
+
+# Permite versionar apenas este plugin
+!wp-content/plugins/bd-terreno-lotes/
