@@ -41,6 +41,7 @@
     "masonry-layout": "^4.2.2",
     "querystring": "^0.2.1",
     "swiper": "8.4.0",
+    "three": "^0.182.0",
     "tiny-slider": "^2.9.4"
   }
 }
