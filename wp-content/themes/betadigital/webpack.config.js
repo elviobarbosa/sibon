@@ -93,7 +93,8 @@ module.exports = {
       },
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ["scripts/*", "styles/*", "images/*"],
+      cleanOnceBeforeBuildPatterns: ["scripts/*", "styles/*", "images/*", "fonts/*"],
+      cleanAfterEveryBuildPatterns: [],
     }),
     new MiniCssExtractPlugin({
       filename: "styles/[name].css",
@@ -108,6 +109,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, "resources/images/svg"),
           to: path.resolve(__dirname, "dist/images/svg"),
+        },
+        {
+          from: path.resolve(__dirname, "resources/font"),
+          to: path.resolve(__dirname, "dist/fonts"),
         },
       ],
     }),

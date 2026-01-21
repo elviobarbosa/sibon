@@ -55,11 +55,9 @@
 
   &__title {
     font-size: clamp(2.5rem, 8vw, 6rem);
-    font-weight: 700;
-    color: #1a1a2e;
-    line-height: 1.1;
+    color: var(--primary-color);
+    line-height: 0.8;
     margin: 0;
-    text-transform: uppercase;
     letter-spacing: -0.02em;
   }
 
@@ -67,8 +65,13 @@
     display: block;
 
     &--highlight {
-      color: #2d5a7b;
       font-style: italic;
+    }
+
+    &--headline {
+      font-family: var(--body-font) !important;
+      font-weight: 100;
+      text-transform: uppercase;
     }
   }
 
