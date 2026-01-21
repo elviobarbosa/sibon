@@ -6,7 +6,7 @@
   <div class="hero-parallax__section hero-parallax__section--first" data-section="1">
     <div class="hero-parallax__content">
       <h1 class="hero-parallax__title">
-        <span class="hero-parallax__title-line">Enjoy in the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline">Enjoy in the</span>
         <span class="hero-parallax__title-line hero-parallax__title-line--highlight">Wildest nature</span>
       </h1>
     </div>
@@ -16,7 +16,7 @@
   <div class="hero-parallax__section hero-parallax__section--second" data-section="2">
     <div class="hero-parallax__content">
       <h2 class="hero-parallax__title">
-        <span class="hero-parallax__title-line">Experience the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline">Experience the</span>
         <span class="hero-parallax__title-line hero-parallax__title-line--highlight">Adventure of a lifetime</span>
       </h2>
     </div>

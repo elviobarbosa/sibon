@@ -106,9 +106,51 @@
   background-color: #ffffff;
 }
 
+@font-face {
+  font-family: "TT Moons";
+  src: url("../fonts/TT%20Moons%20Trial%20Italic.woff2") format("woff2"), url("../fonts/TT%20Moons%20Trial%20Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-UltraLight-11.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-UltraLight-11.woff) format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Medium-06.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Medium-06.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-MediumItalic-07.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-MediumItalic-07.woff) format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Bold-01.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Bold-01.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-BoldItalic-02.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-BoldItalic-02.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 :root {
-  --body-font: "Reddit Sans Condensed", sans-serif;
-  --heading-font: "Bona Nova", serif;
+  --body-font: "Avenir Next Condensed", sans-serif;
+  --heading-font: "TT Moons", serif;
 }
 
 .button {
@@ -169,7 +211,7 @@ p,
 ul,
 ol,
 li {
-  font-family: "Reddit Sans Condensed", sans-serif;
+  font-family: "Avenir Next Condensed", sans-serif;
 }
 
 body p span,
@@ -649,9 +691,51 @@ figure {
   }
 }
 
+@font-face {
+  font-family: "TT Moons";
+  src: url("../fonts/TT%20Moons%20Trial%20Italic.woff2") format("woff2"), url("../fonts/TT%20Moons%20Trial%20Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-UltraLight-11.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-UltraLight-11.woff) format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Medium-06.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Medium-06.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-MediumItalic-07.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-MediumItalic-07.woff) format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Bold-01.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Bold-01.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-BoldItalic-02.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-BoldItalic-02.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 :root {
-  --body-font: "Reddit Sans Condensed", sans-serif;
-  --heading-font: "Bona Nova", serif;
+  --body-font: "Avenir Next Condensed", sans-serif;
+  --heading-font: "TT Moons", serif;
 }
 
 .page p,
@@ -682,7 +766,7 @@ figure {
 .editor-styles-wrapper .wp-block-custom-hero-content__title,
 .hero-content__title, .page h2.wp-block-heading {
   font-size: clamp(2vw, 4.4vw + 1rem, 3em);
-  font-family: "Bona Nova", serif;
+  font-family: "TT Moons", serif;
   font-style: normal;
   font-weight: 700;
   line-height: 104%;
@@ -690,9 +774,51 @@ figure {
   color: #061408;
 }
 
+@font-face {
+  font-family: "TT Moons";
+  src: url("../fonts/TT%20Moons%20Trial%20Italic.woff2") format("woff2"), url("../fonts/TT%20Moons%20Trial%20Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-UltraLight-11.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-UltraLight-11.woff) format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Medium-06.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Medium-06.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-MediumItalic-07.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-MediumItalic-07.woff) format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Bold-01.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Bold-01.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-BoldItalic-02.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-BoldItalic-02.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 :root {
-  --body-font: "Reddit Sans Condensed", sans-serif;
-  --heading-font: "Bona Nova", serif;
+  --body-font: "Avenir Next Condensed", sans-serif;
+  --heading-font: "TT Moons", serif;
 }
 
 .page p,
@@ -723,7 +849,7 @@ figure {
 .editor-styles-wrapper .wp-block-custom-hero-content__title,
 .hero-content__title, .page h2.wp-block-heading {
   font-size: clamp(2vw, 4.4vw + 1rem, 3em);
-  font-family: "Bona Nova", serif;
+  font-family: "TT Moons", serif;
   font-style: normal;
   font-weight: 700;
   line-height: 104%;
@@ -740,9 +866,51 @@ figure {
   font-family: inherit;
 }
 
+@font-face {
+  font-family: "TT Moons";
+  src: url("../fonts/TT%20Moons%20Trial%20Italic.woff2") format("woff2"), url("../fonts/TT%20Moons%20Trial%20Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-UltraLight-11.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-UltraLight-11.woff) format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Medium-06.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Medium-06.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-MediumItalic-07.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-MediumItalic-07.woff) format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Bold-01.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Bold-01.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-BoldItalic-02.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-BoldItalic-02.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 :root {
-  --body-font: "Reddit Sans Condensed", sans-serif;
-  --heading-font: "Bona Nova", serif;
+  --body-font: "Avenir Next Condensed", sans-serif;
+  --heading-font: "TT Moons", serif;
 }
 
 .page p,
@@ -773,7 +941,7 @@ figure {
 .page h2.wp-block-heading, .editor-styles-wrapper .wp-block-custom-hero-content__title,
 .hero-content__title {
   font-size: clamp(2vw, 4.4vw + 1rem, 3em);
-  font-family: "Bona Nova", serif;
+  font-family: "TT Moons", serif;
   font-style: normal;
   font-weight: 700;
   line-height: 104%;
@@ -1036,6 +1204,53 @@ figure {
   align-items: flex-start;
   justify-content: space-between;
   column-gap: 20px;
+}
+
+@font-face {
+  font-family: "TT Moons";
+  src: url("../fonts/TT%20Moons%20Trial%20Italic.woff2") format("woff2"), url("../fonts/TT%20Moons%20Trial%20Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-UltraLight-11.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-UltraLight-11.woff) format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Medium-06.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Medium-06.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-MediumItalic-07.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-MediumItalic-07.woff) format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-Bold-01.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-Bold-01.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src: url(../fonts/AvenirNextCondensed-BoldItalic-02.woff2) format("woff2"), url(../fonts/AvenirNextCondensed-BoldItalic-02.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+:root {
+  --body-font: "Avenir Next Condensed", sans-serif;
+  --heading-font: "TT Moons", serif;
 }
 
 .nav-container__wrapper.nav-container--primary {
@@ -1412,19 +1627,21 @@ figure {
 }
 .hero-parallax__title {
   font-size: clamp(2.5rem, 8vw, 6rem);
-  font-weight: 700;
-  color: #1a1a2e;
-  line-height: 1.1;
+  color: var(--primary-color);
+  line-height: 0.8;
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: -0.02em;
 }
 .hero-parallax__title-line {
   display: block;
 }
 .hero-parallax__title-line--highlight {
-  color: #2d5a7b;
   font-style: italic;
+}
+.hero-parallax__title-line--headline {
+  font-family: var(--body-font) !important;
+  font-weight: 100;
+  text-transform: uppercase;
 }
 .hero-parallax__transition {
   position: fixed;

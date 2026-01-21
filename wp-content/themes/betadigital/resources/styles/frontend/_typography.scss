@@ -1,7 +1,81 @@
-$body-font: "Reddit Sans Condensed", sans-serif;
-$headings: "Bona Nova", serif;
+// ==========================================================================
+// @font-face declarations
+// ==========================================================================
+
+// TT Moons Trial
+@font-face {
+  font-family: "TT Moons";
+  src:
+    url("../../font/TT Moons Trial Italic.woff2") format("woff2"),
+    url("../../font/TT Moons Trial Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Avenir Next Condensed - UltraLight
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src:
+    url("../../font/AvenirNextCondensed-UltraLight-11.woff2") format("woff2"),
+    url("../../font/AvenirNextCondensed-UltraLight-11.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Avenir Next Condensed - Medium
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src:
+    url("../../font/AvenirNextCondensed-Medium-06.woff2") format("woff2"),
+    url("../../font/AvenirNextCondensed-Medium-06.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Avenir Next Condensed - Medium Italic
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src:
+    url("../../font/AvenirNextCondensed-MediumItalic-07.woff2") format("woff2"),
+    url("../../font/AvenirNextCondensed-MediumItalic-07.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Avenir Next Condensed - Bold
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src:
+    url("../../font/AvenirNextCondensed-Bold-01.woff2") format("woff2"),
+    url("../../font/AvenirNextCondensed-Bold-01.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Avenir Next Condensed - Bold Italic
+@font-face {
+  font-family: "Avenir Next Condensed";
+  src:
+    url("../../font/AvenirNextCondensed-BoldItalic-02.woff2") format("woff2"),
+    url("../../font/AvenirNextCondensed-BoldItalic-02.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+// ==========================================================================
+// Font variables
+// ==========================================================================
+
+$body-font: "Avenir Next Condensed", sans-serif;
+$headings: "TT Moons", serif;
 
 :root {
-  --body-font: "Reddit Sans Condensed", sans-serif;
-  --heading-font: "Bona Nova", serif;
+  --body-font: "Avenir Next Condensed", sans-serif;
+  --heading-font: "TT Moons", serif;
 }
