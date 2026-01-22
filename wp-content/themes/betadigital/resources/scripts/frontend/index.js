@@ -14,7 +14,7 @@ function domReady(fn) {
   ) {
     new Menu();
     new Hero();
-    // new HeroParallax();
+    new HeroParallax();
     new Carrosel();
     new FaqToggle();
     new JumpNavMenu();
