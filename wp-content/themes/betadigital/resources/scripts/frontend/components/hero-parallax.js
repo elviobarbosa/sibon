@@ -243,24 +243,70 @@ export default class HeroParallax {
         secondContent.style.opacity = opacity;
       }
 
-      // Cloud transition - starts after second section
-      if (scrollY >= windowHeight * 1.5) {
-        const progress = Math.min((scrollY - windowHeight * 1.5) / (windowHeight * 0.8), 1);
+      // Posições iniciais das nuvens - ocupando a tela no topo
+      const cloudStartPositions = [
+        { left: -5, top: 5 },     // cloud--1: topo esquerda
+        { left: 55, top: 15 },    // cloud--2: topo direita
+        { left: 25, top: 25 }     // cloud--3: centro-topo
+      ];
 
+      // Posições de saída (para fora da tela)
+      const cloudExitPositions = [
+        { left: -120, top: 5 },   // cloud--1 sai pela esquerda
+        { left: 120, top: 15 },   // cloud--2 sai pela direita
+        { left: -120, top: 25 }   // cloud--3 sai pela esquerda
+      ];
+
+      // Nuvens aparecem na metade da segunda dobra
+      const cloudAppearStart = windowHeight * 1.2;
+      const cloudAppearEnd = windowHeight * 1.8;
+      const thirdFoldStart = windowHeight * 2.5;
+
+      // Fase 1: Primeira dobra - nuvens invisíveis
+      if (scrollY < cloudAppearStart) {
         clouds.forEach((cloud, index) => {
-          const scale = 1 + progress * (2 + index * 0.5);
-          const translateX = (index % 2 === 0 ? -1 : 1) * progress * 100;
-          cloud.style.transform = `scale(${scale}) translateX(${translateX}px)`;
-          cloud.style.opacity = Math.min(progress * 2, 1);
-        });
-
-        // Fade out birds
-        this.container.style.opacity = Math.max(0, 1 - progress);
-      } else {
-        clouds.forEach((cloud) => {
+          const start = cloudStartPositions[index];
+          cloud.style.left = `${start.left}%`;
+          cloud.style.top = `${start.top}%`;
+          cloud.style.right = 'auto';
           cloud.style.opacity = 0;
         });
+
         this.container.style.opacity = 1;
+      }
+      // Fase 2: Nuvens aparecem e ficam nas posições iniciais
+      else if (scrollY < thirdFoldStart) {
+        const appearProgress = Math.min((scrollY - cloudAppearStart) / (cloudAppearEnd - cloudAppearStart), 1);
+
+        clouds.forEach((cloud, index) => {
+          const start = cloudStartPositions[index];
+          cloud.style.left = `${start.left}%`;
+          cloud.style.top = `${start.top}%`;
+          cloud.style.right = 'auto';
+          cloud.style.opacity = appearProgress;
+        });
+
+        this.container.style.opacity = 1;
+      }
+      // Fase 3: Terceira dobra em diante - nuvens saem para os lados com fade out
+      else {
+        const exitProgress = Math.min((scrollY - thirdFoldStart) / (windowHeight * 1.5), 1);
+
+        clouds.forEach((cloud, index) => {
+          const start = cloudStartPositions[index];
+          const exit = cloudExitPositions[index];
+
+          const currentLeft = start.left + (exit.left - start.left) * exitProgress;
+          const currentTop = start.top + (exit.top - start.top) * exitProgress;
+
+          cloud.style.left = `${currentLeft}%`;
+          cloud.style.top = `${currentTop}%`;
+          cloud.style.right = 'auto';
+          cloud.style.opacity = 1 - exitProgress;
+        });
+
+        // Fade out birds junto com as nuvens
+        this.container.style.opacity = Math.max(0, 1 - exitProgress);
       }
 
     });
