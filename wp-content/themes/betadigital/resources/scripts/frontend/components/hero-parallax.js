@@ -263,13 +263,6 @@ export default class HeroParallax {
         this.container.style.opacity = 1;
       }
 
-      // Boat section - fade in
-      if (scrollY >= windowHeight * 2) {
-        const progress = Math.min((scrollY - windowHeight * 2) / (windowHeight * 0.5), 1);
-        boatSection.style.opacity = progress;
-      } else {
-        boatSection.style.opacity = 0;
-      }
     });
   }
 

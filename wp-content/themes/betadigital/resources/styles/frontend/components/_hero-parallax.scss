@@ -40,7 +40,8 @@
       z-index: 10;
       opacity: 1;
       display: block;
-      background: white;
+      transition: opacity 0.1s ease;
+      background: #70c7f1;
       height: inherit;
 
       .hero-parallax {
