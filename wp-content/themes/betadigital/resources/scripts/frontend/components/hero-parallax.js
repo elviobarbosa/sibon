@@ -245,20 +245,20 @@ export default class HeroParallax {
 
       // Posições iniciais das nuvens (fora da tela, embaixo)
       const cloudStartPositions = [
-        { left: -5, top: 110 },    // cloud--1
-        { left: 60, top: 110 },    // cloud--2
-        { left: 25, top: 110 },    // cloud--3
-        { left: 75, top: 110 },    // cloud--4
-        { left: 45, top: 110 }     // cloud--5
+        { left: -15, top: 110 },   // cloud--1
+        { left: 55, top: 110 },    // cloud--2
+        { left: 5, top: 110 },     // cloud--3
+        { left: 70, top: 110 },    // cloud--4
+        { left: -10, top: 110 }    // cloud--5
       ];
 
-      // Posições finais das nuvens (cobrindo o barco)
+      // Posições finais das nuvens (cobrindo o barco - mais à esquerda)
       const cloudEndPositions = [
-        { left: -5, top: 5 },      // cloud--1: topo esquerda
-        { left: 60, top: 20 },     // cloud--2: direita
-        { left: 25, top: 35 },     // cloud--3: centro
-        { left: 75, top: 45 },     // cloud--4: direita baixo
-        { left: 45, top: 55 }      // cloud--5: centro baixo
+        { left: -15, top: 5 },     // cloud--1: topo esquerda
+        { left: 55, top: 20 },     // cloud--2: direita
+        { left: 5, top: 35 },      // cloud--3: esquerda centro
+        { left: 70, top: 45 },     // cloud--4: direita baixo
+        { left: -10, top: 55 }     // cloud--5: esquerda baixo
       ];
 
       // Posições de saída (para fora da tela pelos lados)
