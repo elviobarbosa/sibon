@@ -243,9 +243,9 @@ export default class HeroParallax {
         secondContent.style.opacity = opacity;
       }
 
-      // Cloud transition
-      if (scrollY >= windowHeight * 1.5 && scrollY < windowHeight * 3) {
-        const progress = (scrollY - windowHeight * 1.5) / (windowHeight * 1.5);
+      // Cloud transition - starts after second section
+      if (scrollY >= windowHeight * 1.5) {
+        const progress = Math.min((scrollY - windowHeight * 1.5) / (windowHeight * 0.8), 1);
 
         clouds.forEach((cloud, index) => {
           const scale = 1 + progress * (2 + index * 0.5);
@@ -255,12 +255,17 @@ export default class HeroParallax {
         });
 
         // Fade out birds
-        this.container.style.opacity = 1 - progress;
+        this.container.style.opacity = Math.max(0, 1 - progress);
+      } else {
+        clouds.forEach((cloud) => {
+          cloud.style.opacity = 0;
+        });
+        this.container.style.opacity = 1;
       }
 
       // Boat section - fade in
       if (scrollY >= windowHeight * 2) {
-        const progress = Math.min((scrollY - windowHeight * 2) / windowHeight, 1);
+        const progress = Math.min((scrollY - windowHeight * 2) / (windowHeight * 0.5), 1);
         boatSection.style.opacity = progress;
       } else {
         boatSection.style.opacity = 0;
