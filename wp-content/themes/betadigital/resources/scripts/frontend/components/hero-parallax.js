@@ -243,47 +243,65 @@ export default class HeroParallax {
         secondContent.style.opacity = opacity;
       }
 
-      // Posições iniciais das nuvens - ocupando a tela no topo
+      // Posições iniciais das nuvens (fora da tela, embaixo)
       const cloudStartPositions = [
-        { left: -5, top: 5 },     // cloud--1: topo esquerda
-        { left: 55, top: 15 },    // cloud--2: topo direita
-        { left: 25, top: 25 }     // cloud--3: centro-topo
+        { left: -5, top: 110 },    // cloud--1
+        { left: 60, top: 110 },    // cloud--2
+        { left: 25, top: 110 },    // cloud--3
+        { left: 75, top: 110 },    // cloud--4
+        { left: 45, top: 110 }     // cloud--5
       ];
 
-      // Posições de saída (para fora da tela)
+      // Posições finais das nuvens (cobrindo o barco)
+      const cloudEndPositions = [
+        { left: -5, top: 5 },      // cloud--1: topo esquerda
+        { left: 60, top: 20 },     // cloud--2: direita
+        { left: 25, top: 35 },     // cloud--3: centro
+        { left: 75, top: 45 },     // cloud--4: direita baixo
+        { left: 45, top: 55 }      // cloud--5: centro baixo
+      ];
+
+      // Posições de saída (para fora da tela pelos lados)
       const cloudExitPositions = [
-        { left: -120, top: 5 },   // cloud--1 sai pela esquerda
-        { left: 120, top: 15 },   // cloud--2 sai pela direita
-        { left: -120, top: 25 }   // cloud--3 sai pela esquerda
+        { left: -120, top: 5 },    // cloud--1 sai pela esquerda
+        { left: 130, top: 20 },    // cloud--2 sai pela direita
+        { left: -120, top: 35 },   // cloud--3 sai pela esquerda
+        { left: 130, top: 45 },    // cloud--4 sai pela direita
+        { left: -120, top: 55 }    // cloud--5 sai pela esquerda
       ];
 
-      // Nuvens aparecem na metade da segunda dobra
-      const cloudAppearStart = windowHeight * 1.2;
-      const cloudAppearEnd = windowHeight * 1.8;
+      // Nuvens começam a subir na segunda dobra
+      const cloudRiseStart = windowHeight * 1.2;
+      const cloudRiseEnd = windowHeight * 2.5;
       const thirdFoldStart = windowHeight * 2.5;
 
-      // Fase 1: Primeira dobra - nuvens invisíveis
-      if (scrollY < cloudAppearStart) {
+      // Fase 1: Primeira dobra - nuvens fora da tela (embaixo)
+      if (scrollY < cloudRiseStart) {
         clouds.forEach((cloud, index) => {
           const start = cloudStartPositions[index];
           cloud.style.left = `${start.left}%`;
           cloud.style.top = `${start.top}%`;
           cloud.style.right = 'auto';
-          cloud.style.opacity = 0;
+          cloud.style.opacity = 1;
         });
 
         this.container.style.opacity = 1;
       }
-      // Fase 2: Nuvens aparecem e ficam nas posições iniciais
+      // Fase 2: Nuvens sobem de baixo para cima
       else if (scrollY < thirdFoldStart) {
-        const appearProgress = Math.min((scrollY - cloudAppearStart) / (cloudAppearEnd - cloudAppearStart), 1);
+        const riseProgress = (scrollY - cloudRiseStart) / (cloudRiseEnd - cloudRiseStart);
 
         clouds.forEach((cloud, index) => {
           const start = cloudStartPositions[index];
-          cloud.style.left = `${start.left}%`;
-          cloud.style.top = `${start.top}%`;
+          const end = cloudEndPositions[index];
+
+          const currentLeft = start.left + (end.left - start.left) * riseProgress;
+          const currentTop = start.top + (end.top - start.top) * riseProgress;
+
+          cloud.style.left = `${currentLeft}%`;
+          cloud.style.top = `${currentTop}%`;
           cloud.style.right = 'auto';
-          cloud.style.opacity = appearProgress;
+          cloud.style.opacity = 1;
         });
 
         this.container.style.opacity = 1;
@@ -293,11 +311,11 @@ export default class HeroParallax {
         const exitProgress = Math.min((scrollY - thirdFoldStart) / (windowHeight * 1.5), 1);
 
         clouds.forEach((cloud, index) => {
-          const start = cloudStartPositions[index];
+          const end = cloudEndPositions[index];
           const exit = cloudExitPositions[index];
 
-          const currentLeft = start.left + (exit.left - start.left) * exitProgress;
-          const currentTop = start.top + (exit.top - start.top) * exitProgress;
+          const currentLeft = end.left + (exit.left - end.left) * exitProgress;
+          const currentTop = end.top + (exit.top - end.top) * exitProgress;
 
           cloud.style.left = `${currentLeft}%`;
           cloud.style.top = `${currentTop}%`;
