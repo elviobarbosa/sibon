@@ -36,7 +36,7 @@
   <!-- Terceira dobra - Barco -->
   <div class="hero-parallax__section hero-parallax__section--boat" data-section="3">
     <div class="hero-parallax__boat-image">
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/boat.jpg'); ?>" alt="Boat adventure" class="hero-parallax__boat-img">
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>" alt="Boat adventure" class="hero-parallax__boat-img">
     </div>
   </div>
 </section>
