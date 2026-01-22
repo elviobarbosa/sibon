@@ -38,8 +38,25 @@
     &--boat {
       position: relative;
       z-index: 10;
-      opacity: 0;
-      background: #1a1a2e;
+      opacity: 1;
+      display: block;
+      background: white;
+      height: inherit;
+
+      .hero-parallax {
+        &__title {
+          position: absolute;
+          text-align: center;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -110%);
+          z-index: 1;
+
+          &-line {
+            color: white;
+          }
+        }
+      }
     }
   }
 
@@ -82,9 +99,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 8;
+    z-index: 11;
     pointer-events: none;
     overflow: hidden;
+  }
+
+  // Céu com degradê - complementa o céu da imagem do barco
+  &__sky {
+    width: 100%;
+    height: 50vh;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to top, #70c7f1 0%, #70c7f1 100%);
   }
 
   &__clouds {
@@ -95,9 +121,7 @@
 
   &__cloud {
     position: absolute;
-    background: white;
-    border-radius: 50%;
-    opacity: 0;
+
     transition:
       transform 0.1s ease,
       opacity 0.1s ease;
@@ -105,34 +129,22 @@
     &--1 {
       width: 300px;
       height: 150px;
-      top: 20%;
-      left: 10%;
-      box-shadow:
-        100px 20px 0 50px white,
-        200px -10px 0 30px white,
-        -50px 30px 0 40px white;
+      top: 50%;
+      left: -40%;
     }
 
     &--2 {
       width: 250px;
       height: 120px;
-      top: 40%;
-      right: 15%;
-      box-shadow:
-        80px 15px 0 40px white,
-        160px -5px 0 25px white,
-        -40px 25px 0 35px white;
+      top: 80%;
+      right: 35%;
     }
 
     &--3 {
       width: 350px;
       height: 180px;
-      bottom: 30%;
+      top: 90%;
       left: 30%;
-      box-shadow:
-        120px 25px 0 60px white,
-        240px -15px 0 35px white,
-        -60px 35px 0 45px white;
     }
   }
 
@@ -151,16 +163,15 @@
   }
 }
 
-// Placeholder para quando não tiver imagem do barco
-.hero-parallax__section--boat
-  .hero-parallax__boat-img[src*="boat.jpg"]:not([src]) {
-  &::before {
-    content: "Boat Image Placeholder";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 2rem;
-  }
-}
+// .hero-parallax__section--boat
+//   .hero-parallax__boat-img[src*="sibon-baru-jaya-cover.jpg"]:not([src]) {
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     color: white;
+//     font-size: 2rem;
+//   }
+// }

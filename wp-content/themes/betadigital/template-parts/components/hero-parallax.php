@@ -27,15 +27,31 @@
   <!-- Transição com nuvens -->
   <div class="hero-parallax__transition">
     <div class="hero-parallax__clouds">
-      <div class="hero-parallax__cloud hero-parallax__cloud--1"></div>
-      <div class="hero-parallax__cloud hero-parallax__cloud--2"></div>
-      <div class="hero-parallax__cloud hero-parallax__cloud--3"></div>
+      <div class="hero-parallax__cloud hero-parallax__cloud--1">
+         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
+      </div>
+      <div class="hero-parallax__cloud hero-parallax__cloud--2">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
+      </div>
+      <div class="hero-parallax__cloud hero-parallax__cloud--3">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
+      </div>
     </div>
+  </div>
+
+  <!-- Céu com degradê -->
+  <div class="hero-parallax__sky">
+    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud1.png'); ?>" alt="Cloud" class="hero-parallax__cloud-1">
   </div>
 
   <!-- Terceira dobra - Barco -->
   <div class="hero-parallax__section hero-parallax__section--boat" data-section="3">
+    <h2 class="hero-parallax__title">
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline">Surfing</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--highlight">In the paradise</span>
+      </h2>
     <div class="hero-parallax__boat-image">
+      
       <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>" alt="Boat adventure" class="hero-parallax__boat-img">
     </div>
   </div>
