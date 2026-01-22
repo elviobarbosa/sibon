@@ -36,6 +36,12 @@
       <div class="hero-parallax__cloud hero-parallax__cloud--3">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
       </div>
+      <div class="hero-parallax__cloud hero-parallax__cloud--4">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
+      </div>
+      <div class="hero-parallax__cloud hero-parallax__cloud--5">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
+      </div>
     </div>
   </div>
 
