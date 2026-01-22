@@ -1681,25 +1681,26 @@ figure {
 }
 .hero-parallax__cloud {
   position: absolute;
-  transition: transform 0.1s ease, opacity 0.1s ease;
+  opacity: 0;
+  transition: left 0.1s ease, top 0.1s ease, opacity 0.1s ease;
 }
 .hero-parallax__cloud--1 {
   width: 300px;
   height: 150px;
-  top: 50%;
-  left: -40%;
+  top: 5%;
+  left: -5%;
 }
 .hero-parallax__cloud--2 {
   width: 250px;
   height: 120px;
-  top: 80%;
-  right: 35%;
+  top: 15%;
+  left: 55%;
 }
 .hero-parallax__cloud--3 {
   width: 350px;
   height: 180px;
-  top: 90%;
-  left: 30%;
+  top: 25%;
+  left: 25%;
 }
 .hero-parallax__boat-image {
   width: 100%;
