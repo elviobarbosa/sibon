@@ -1,0 +1,44 @@
+#wave-lines-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; // Atrás de tudo
+  pointer-events: none;
+  overflow: hidden;
+  transform: rotate(-30deg) scale(1.5); // Inclinação e escala para cobrir toda tela
+  transform-origin: center center;
+}
+
+.wave-line {
+  position: absolute;
+  width: 100%;
+  height: 100px; // Altura suficiente para a ondulação
+  will-change: transform, opacity;
+
+  &--1 {
+    top: 20%;
+    left: -10%;
+  }
+
+  &--2 {
+    top: 40%;
+    left: 0%;
+  }
+
+  &--3 {
+    top: 60%;
+    left: 10%;
+  }
+
+  &--4 {
+    top: 80%;
+    left: -5%;
+  }
+
+  path {
+    will-change: opacity, d;
+    vector-effect: non-scaling-stroke; // Mantém stroke de 1px mesmo com transformações
+  }
+}
