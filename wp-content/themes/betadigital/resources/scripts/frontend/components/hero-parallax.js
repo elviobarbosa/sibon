@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import WaterEffect from './water-effect';
 
 export default class HeroParallax {
   constructor() {
@@ -26,6 +27,9 @@ export default class HeroParallax {
     this.boundaryMargin = 15;
     this.boundaryForceStrength = 0.05;
 
+    // Water effect
+    this.waterEffect = null;
+
     this.init();
   }
 
@@ -34,6 +38,24 @@ export default class HeroParallax {
     this.loadTexture();
     this.setupParallax();
     this.setupResize();
+    this.setupWaterEffect();
+  }
+
+  setupWaterEffect() {
+    const waterContainer = document.getElementById('water-effect-container');
+    if (!waterContainer) return;
+
+    const boatImageUrl = waterContainer.dataset.boatImage;
+    const waterMaskUrl = waterContainer.dataset.waterMask;
+    if (!boatImageUrl) return;
+
+    // Esconder imagem fallback quando WebGL estiver ativo
+    const fallbackImg = document.querySelector('.hero-parallax__boat-img--fallback');
+    if (fallbackImg) {
+      fallbackImg.style.display = 'none';
+    }
+
+    this.waterEffect = new WaterEffect(waterContainer, boatImageUrl, waterMaskUrl);
   }
 
   setupScene() {

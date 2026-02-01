@@ -1,4 +1,7 @@
 <section class="hero-parallax">
+  <!-- Container das linhas ondulantes (camada de fundo) -->
+  <div id="wave-lines-container"></div>
+
   <!-- Container dos pássaros 3D -->
   <div id="birds-3d-container"
        data-bird-texture="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/birdb.png'); ?>"
@@ -8,8 +11,8 @@
   <div class="hero-parallax__section hero-parallax__section--first" data-section="1">
     <div class="hero-parallax__content">
       <h1 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline">Enjoy in the</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--highlight">Wildest nature</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Enjoy in the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">Wildest nature</span>
       </h1>
     </div>
   </div>
@@ -18,8 +21,8 @@
   <div class="hero-parallax__section hero-parallax__section--second" data-section="2">
     <div class="hero-parallax__content">
       <h2 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline">Experience the</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--highlight">Adventure of a lifetime</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Experience the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">Adventure of a lifetime</span>
       </h2>
     </div>
   </div>
@@ -53,12 +56,19 @@
   <!-- Terceira dobra - Barco -->
   <div class="hero-parallax__section hero-parallax__section--boat" data-section="3">
     <h2 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline">Surfing</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--highlight">In the paradise</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Surfing</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">In the paradise</span>
       </h2>
     <div class="hero-parallax__boat-image">
-      
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>" alt="Boat adventure" class="hero-parallax__boat-img">
+      <!-- Container para efeito WebGL de água -->
+      <div id="water-effect-container"
+           data-boat-image="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
+           data-water-mask="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-water-mask.png'); ?>">
+      </div>
+      <!-- Imagem original como fallback (hidden quando WebGL ativo) -->
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>" alt="Boat adventure" class="hero-parallax__boat-img hero-parallax__boat-img--fallback">
     </div>
   </div>
 </section>
+
+<div style="height: 100vh;"></div>
