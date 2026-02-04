@@ -79,8 +79,7 @@
       <div class="hero-parallax__explore-content">
         <h2 class="hero-parallax__title">
           <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">
-            <!--
-  -->Explore Indonesia's
+            Explore Indonesia's
           </span>
           <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">
             Legendary surf breaks
