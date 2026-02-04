@@ -1,50 +1,41 @@
 export default class RandomImages {
   constructor() {
     this.container = document.querySelector('.random-images[data-parallax]');
-    if (!this.container) return;
+    this.figure = document.querySelector('.random-images__figure');
+    if (!this.container || !this.figure) return;
 
-    this.figure = this.container.querySelector('.random-images__figure');
-    if (!this.figure) return;
-
+    this.speed = 0.3; // quanto menor, mais lento o parallax
     this.ticking = false;
-    this.isVisible = false;
 
     this.init();
   }
 
   init() {
-    // Intersection Observer para só processar quando visível
-    const observer = new IntersectionObserver(
-      (entries) => {
-        this.isVisible = entries[0].isIntersecting;
-      },
-      { rootMargin: '100px' }
-    );
-    observer.observe(this.container);
+    window.addEventListener('scroll', () => {
+      if (!this.ticking) {
+        requestAnimationFrame(() => {
+          this.updateParallax();
+          this.ticking = false;
+        });
+        this.ticking = true;
+      }
+    }, { passive: true });
 
-    window.addEventListener('scroll', () => this.onScroll(), { passive: true });
-  }
-
-  onScroll() {
-    if (!this.isVisible || this.ticking) return;
-
-    this.ticking = true;
-    requestAnimationFrame(() => {
-      this.updateParallax();
-      this.ticking = false;
-    });
+    // Executar uma vez no load
+    this.updateParallax();
   }
 
   updateParallax() {
     const rect = this.container.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Calcula progresso: 0 quando entra por baixo, 1 quando sai por cima
-    const progress = 1 - (rect.bottom / (windowHeight + rect.height));
+    // Só processa se visível
+    if (rect.bottom < 0 || rect.top > windowHeight) return;
 
-    // Move a imagem de -15% a +15% (30% de range total)
-    const translateY = progress * 30 - 15;
+    // Calcula o offset baseado na posição do container
+    const scrolled = windowHeight - rect.top;
+    const translateY = -(scrolled * this.speed);
 
-    this.figure.style.transform = `translateY(${translateY}%)`;
+    this.figure.style.transform = `translateY(${translateY}px)`;
   }
 }
