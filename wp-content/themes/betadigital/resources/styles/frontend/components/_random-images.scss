@@ -1,0 +1,20 @@
+.random-images {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  &__figure {
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    will-change: transform;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

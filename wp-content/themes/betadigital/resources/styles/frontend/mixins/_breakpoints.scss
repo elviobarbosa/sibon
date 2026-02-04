@@ -71,6 +71,13 @@ $screen-xxxxl-min: 1600px;
   }
 }
 
+@mixin max-xxl {
+  @media (max-width: #{$screen-xxl-min}) {
+    @content;
+  }
+}
+
+
 @mixin max-xxxl {
   @media (min-width: #{$screen-xxxl-min}) {
     @content;

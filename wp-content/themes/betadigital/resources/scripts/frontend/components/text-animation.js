@@ -42,14 +42,28 @@ export default class TextAnimation {
       element,
       chars,
       isVisible: false,
-      hasAnimatedIn: false
+      hasAnimatedIn: false,
+      currentTimeline: null // referência para cancelar animações
     });
   }
 
   animateIn(textObj) {
     if (textObj.hasAnimatedIn) return;
 
+    // Cancelar animação anterior se existir
+    if (textObj.currentTimeline) {
+      textObj.currentTimeline.pause();
+      textObj.currentTimeline = null;
+    }
+
     const chars = textObj.element.querySelectorAll('.char');
+
+    // Resetar estado visual antes de animar
+    chars.forEach(char => {
+      char.style.opacity = '0';
+      char.style.transform = 'translateY(100px) scale(0.2) rotate(90deg)';
+      char.style.filter = 'blur(15px)';
+    });
 
     const timeline = createTimeline({
       defaults: {
@@ -67,12 +81,19 @@ export default class TextAnimation {
       delay: stagger(60),
     });
 
+    textObj.currentTimeline = timeline;
     textObj.isVisible = true;
     textObj.hasAnimatedIn = true;
   }
 
   animateOut(textObj) {
     if (!textObj.isVisible) return;
+
+    // Cancelar animação anterior se existir
+    if (textObj.currentTimeline) {
+      textObj.currentTimeline.pause();
+      textObj.currentTimeline = null;
+    }
 
     const chars = textObj.element.querySelectorAll('.char');
 
@@ -92,6 +113,7 @@ export default class TextAnimation {
       delay: stagger(50),
     });
 
+    textObj.currentTimeline = timeline;
     textObj.isVisible = false;
   }
 
