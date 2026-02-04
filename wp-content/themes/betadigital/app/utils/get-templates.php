@@ -47,3 +47,9 @@ if ( ! function_exists( 'unforgettable' ) ) {
     load_component( 'unforgettable', $args );
   }
 }
+
+if ( ! function_exists( 'feature_slide' ) ) {
+  function feature_slide( $args = [] ) {
+    load_component( 'feature-slide', $args );
+  }
+}

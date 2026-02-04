@@ -1,0 +1,39 @@
+@use "../mixins/breakpoints" as bp;
+@use "../mixins/proportional-image" as pimg;
+@use "../mixins/mixins" as mx;
+@use "../functions" as fn;
+@use "../placeholders/texts";
+
+.feature-slide {
+  max-width: 90vw;
+  margin: 0 auto;
+
+  &__image {
+    @include pimg.image-proportional(790px, 676px);
+    @include mx.border-radius(fn.px-rem(40px));
+    overflow: hidden;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: fn.px-rem(30px);
+    align-items: center;
+  }
+
+  &__highlight {
+    font-size: clamp(2.5rem, 10vw, 9rem);
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    transform: translate(0px, 40px);
+    -webkit-text-stroke: 1px #D9D9D9; 
+    color: transparent;
+  }
+
+  &__title {
+    @extend %highlight;
+    line-height: 1.5em;
+  }
+}

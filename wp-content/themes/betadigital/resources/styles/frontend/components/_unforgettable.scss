@@ -1,39 +1,13 @@
+@use "../mixins/breakpoints" as bp;
+@use "../placeholders/texts" as txt;
 .unforgettable {
   position: relative;
   padding: 6rem 2rem 8rem;
   overflow: hidden;
-  min-height: 100vh;
-
-  &__glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.5;
-    pointer-events: none;
-    animation: glowPulse 8s ease-in-out infinite;
-
-    &--blue {
-      width: 500px;
-      height: 500px;
-      background: #D3EBFF;
-      top: 5%;
-      left: 5%;
-      animation-delay: 0s;
-    }
-
-    &--yellow {
-      width: 400px;
-      height: 400px;
-      background: #FFF9E5;
-      bottom: 10%;
-      right: 10%;
-      animation-delay: 4s;
-    }
-  }
 
   &__container {
     position: relative;
-    max-width: 1400px;
+    max-width: 90vw;
     margin: 0 auto;
     z-index: 1;
   }
@@ -46,25 +20,21 @@
 
   &__title {
     margin-bottom: 1.5rem;
+    line-height: 1.3em;
   }
 
   &__title-line {
     display: block;
 
     &--headline {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 300;
-      letter-spacing: 0.3em;
-      color: #b8860b;
-      text-transform: uppercase;
+      @extend %headline;
+      font-size: clamp(2.5rem, 6vw, 5rem);
     }
 
     &--highlight {
+      @extend %highlight;
       font-size: clamp(2.5rem, 6vw, 5rem);
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      color: #b8860b;
+      
     }
   }
 
@@ -200,16 +170,5 @@
       }
     }
 
-    &__glow {
-      &--blue {
-        width: 250px;
-        height: 250px;
-      }
-
-      &--yellow {
-        width: 200px;
-        height: 200px;
-      }
-    }
   }
 }
