@@ -41,3 +41,9 @@ if ( ! function_exists( 'faq' ) ) {
     load_component( 'faq', $args );
   }
 }
+
+if ( ! function_exists( 'unforgettable' ) ) {
+  function unforgettable( $args = [] ) {
+    load_component( 'unforgettable', $args );
+  }
+}
