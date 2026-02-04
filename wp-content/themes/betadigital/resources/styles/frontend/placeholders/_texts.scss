@@ -4,24 +4,45 @@
 @use "../mixins/breakpoints" as bp;
 
 %body_text {
-  font-size: fn.px-rem(20px);
-  color: v.$dark-500;
-  opacity: 0.8;
+  color: var(--gray-500) ;
   @include bp.max-lg {
-    line-height: fn.px-rem(20px);
+    line-height: 1.4rem;
+    font-size: fn.px-rem(18px);;
   }
-  @include bp.min-lg {
-    line-height: fn.px-rem(30px);
+
+  
+
+  // @include bp.min-lg {
+  //   line-height: fn.px-rem(36px);
+  //   font-size: 24px;
+  // }
+
+  strong {
+    font-weight: 600;
   }
 }
 
 %heading_h2 {
   // font-size: clamp(40px, 5vw, 56px);
-  font-size: clamp(2vw, calc(4.4vw + 1rem), 3em);
-  font-family: type.$headings;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-family: var(--body-font)!important;
   font-style: normal;
   font-weight: 700;
   line-height: 104%;
   letter-spacing: -0.566px;
   color: v.$dark-500;
 }
+
+%headline {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--secondary-color);
+  font-family: var(--body-font) !important;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+%highlight {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  color: var(--secondary-color);
+}
+

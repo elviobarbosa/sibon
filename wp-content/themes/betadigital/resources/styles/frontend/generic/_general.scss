@@ -2,6 +2,7 @@
 @use "../typography" as t;
 @use "../mixins/breakpoints" as bp;
 @use "../placeholders/general";
+@use "../placeholders/texts";
 
 body {
   padding: 0;
@@ -51,75 +52,13 @@ figure {
   margin: 0;
 }
 
-.align-center {
-  text-align: center;
-}
-
-.desktop-align-center,
-.align-center {
-  text-align: center;
-}
-
-.desktop-align-left,
-.align-left {
-  text-align: left;
-}
-
-.desktop-align-right,
-.align-right {
-  text-align: right;
-}
-
-.mobile-align-center {
-  @include bp.max-lg {
-    text-align: center;
+.secondary-title {
+  &--headline {
+    @extend %heading_h2;
   }
+  
 }
 
-.mobile-align-right {
-  @include bp.max-lg {
-    text-align: right;
-  }
-}
-
-.mobile-align-left {
-  @include bp.max-lg {
-    text-align: left;
-  }
-}
-
-.wp-block-image.aligncenter {
-  text-align: center;
-  width: 100%;
-}
-
-.wp-block-image .alignleft {
-  text-align: left;
-}
-
-.wp-block-image .alignright {
-  text-align: right;
-}
-
-.wp-block-embed.is-type-video {
-  .wp-block-embed__wrapper {
-    float: none;
-    clear: both;
-    width: 100%;
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    height: 0;
-
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
 
 .button {
   @extend %button;

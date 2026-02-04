@@ -29,29 +29,12 @@ if ( ! function_exists( 'hero_parallax' ) ) {
   }
 }
 
-if ( ! function_exists( 'empreendimento_simulador_mini' ) ) {
-  function empreendimento_simulador_mini( $args = [] ) {
-    load_component( 'empreendimento-simulador-mini', $args );
+if ( ! function_exists( 'random_images' ) ) {
+  function random_images( $args = [] ) {
+    load_component( 'random-images', $args );
   }
 }
 
-if ( ! function_exists( 'vantagens_financiamento' ) ) {
-  function vantagens_financiamento( $args = [] ) {
-    load_component( 'vantagens-financiamento', $args );
-  }
-}
-
-if ( ! function_exists( 'map' ) ) {
-  function map( $args = [] ) {
-    load_component( 'map', $args );
-  }
-}
-
-if ( ! function_exists( 'box-simulador' ) ) {
-  function box_simulador( $args = [] ) {
-    load_component( 'box-simulador', $args );
-  }
-}
 
 if ( ! function_exists( 'faq' ) ) {
   function faq( $args = [] ) {

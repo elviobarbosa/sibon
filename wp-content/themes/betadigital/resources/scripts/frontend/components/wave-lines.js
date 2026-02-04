@@ -31,9 +31,14 @@ export default class WaveLines {
       this.container.appendChild(svg);
 
       // Configurações aleatórias para cada linha (orgânico)
+      const baseAmplitude = 15 + Math.random() * 25; // 15-40
+
       this.waves.push({
         path,
-        amplitude: 15 + Math.random() * 25, // 15-40
+        amplitude: baseAmplitude,
+        amplitudeVariation: baseAmplitude * 0.4, // Variação de até 40% da amplitude
+        amplitudePhase: Math.random() * Math.PI * 2, // Fase única para modulação
+        amplitudeSpeed: 0.0005 + Math.random() * 0.0005, // Velocidade lenta de modulação (0.0005-0.001)
         frequency: 0.01 + Math.random() * 0.02, // 0.01-0.03
         phaseOffset: Math.random() * Math.PI * 2,
         opacity: 0.4 + Math.random() * 0.4, // 0.4-0.8
@@ -46,13 +51,21 @@ export default class WaveLines {
     this.waves.forEach((wave) => {
       let d = 'M 0 50 ';
 
+      // Modular a amplitude ao longo do tempo (transição suave)
+      const amplitudeModulation = Math.sin(
+        this.frame * wave.amplitudeSpeed +
+        wave.amplitudePhase
+      ) * wave.amplitudeVariation;
+
+      const currentAmplitude = wave.amplitude + amplitudeModulation;
+
       // Gerar path com animação contínua baseada no frame
       for (let x = 0; x <= 1200; x += 5) {
         const y = 50 + Math.sin(
           x * wave.frequency +
           this.frame * wave.animationSpeed +
           wave.phaseOffset
-        ) * wave.amplitude;
+        ) * currentAmplitude;
         d += `L ${x} ${y} `;
       }
 

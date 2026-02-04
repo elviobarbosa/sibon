@@ -2,12 +2,15 @@
 @use "../functions" as fn;
 
 .nav-container {
+  position: relative;
+  z-index: 1;
   &__wrapper.nav-container--primary {
     padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
+    
   }
 
   .sr-only {

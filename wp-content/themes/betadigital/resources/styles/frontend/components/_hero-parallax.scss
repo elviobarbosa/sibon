@@ -1,6 +1,8 @@
+@use "../mixins/breakpoints" as bp;
 .hero-parallax {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
 
   #birds-3d-container {
     position: fixed;
@@ -8,7 +10,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
@@ -24,11 +26,12 @@
 
     &--first,
     &--second {
-      background: transparent;
+      background-color: white;
     }
 
     &--first {
       z-index: 2;
+      
     }
 
     &--second {
@@ -93,7 +96,6 @@
       text-transform: uppercase;
     }
 
-    // Estilos para os caracteres animados
     &.animate-text {
       .char {
         display: inline-block;
@@ -103,7 +105,6 @@
     }
   }
 
-  // Transição com nuvens
   &__transition {
     position: fixed;
     top: 0;
@@ -115,10 +116,10 @@
     overflow: hidden;
   }
 
-  // Céu com degradê - complementa o céu da imagem do barco
   &__sky {
     width: 100%;
     height: 100vh;
+    position: relative;
     z-index: 1;
     pointer-events: none;
     background: linear-gradient(to top, #70c7f1 0%, #70c7f1 100%);
@@ -175,7 +176,6 @@
     }
   }
 
-  // Seção do barco
   &__boat-image {
     width: 100%;
     position: relative;
@@ -193,7 +193,6 @@
     }
   }
 
-  // Container do efeito WebGL de água
   #water-effect-container {
     width: 100%;
     display: flex;
@@ -205,6 +204,76 @@
       height: auto;
     }
   }
+
+  &__section--explore {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 0;
+    z-index: 12;
+
+    .hero-parallax__title {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__explore-container {
+    display: grid;
+    gap: 60px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 40px;
+    align-items: center;
+
+    @include bp.max-md {
+      grid-template-columns: 1fr;
+    }
+
+    @include bp.min-xxl {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include bp.min-xxl {
+      grid-template-columns: 40% auto;
+    }
+  }
+
+  &__explore-content {
+    .hero-parallax__title-line {
+      &--headline {
+        @extend %headline;
+      }
+
+      &--highlight {
+        @extend %highlight;
+      }
+    }
+  }
+
+  &__explore-text {
+   @extend %body_text;
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__explore-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 40px;
+    }
+  }
+
+  // @include bp.max-md {
+  //   &__explore-container {
+  //     grid-template-columns: 1fr;
+  //     gap: 40px;
+  //     padding: 0 20px;
+  //   }
+  // }
 }
 
 // .hero-parallax__section--boat

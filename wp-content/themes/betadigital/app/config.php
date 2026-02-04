@@ -137,3 +137,25 @@ add_action('template_redirect', 'redirect_category_to_custom_page');
 // add_filter( 'wp_theme_json_data_theme', 'custom_wp_theme_json_theme' );
 add_filter( 'image_size_names_choose', 'add_custom_image_sizes' );
 add_action( 'init', 'setup' );
+
+// Minify HTML output
+function minify_html_output($buffer) {
+  if (is_admin()) return $buffer;
+  
+  $search = [
+    '/\>[^\S ]+/s',     // remove whitespace after tags
+    '/[^\S ]+\</s',     // remove whitespace before tags
+    '/(\s)+/s',         // shorten multiple whitespace
+    '/<!--(.|\s)*?-->/' // remove HTML comments
+  ];
+  
+  $replace = ['>', '<', '\\1', ''];
+  
+  return preg_replace($search, $replace, $buffer);
+}
+
+function buffer_start() { ob_start("minify_html_output"); }
+function buffer_end() { ob_end_flush(); }
+
+add_action('after_setup_theme', 'buffer_start');
+add_action('shutdown', 'buffer_end');

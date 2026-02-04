@@ -7,6 +7,7 @@ import FaqToggle from "./components/faq";
 import JumpNavMenu from "./components/jump-nav-menu";
 import TextAnimation from "./components/text-animation";
 import WaveLines from "./components/wave-lines";
+import RandomImages from "./components/random-images";
 
 function domReady(fn) {
   document.addEventListener("DOMContentLoaded", fn);
@@ -22,6 +23,7 @@ function domReady(fn) {
     new FaqToggle();
     new JumpNavMenu();
     new TextAnimation();
+    new RandomImages();
   } else {
     setTimeout(() => {
       domReady(fn);
