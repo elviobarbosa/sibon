@@ -1852,3 +1852,182 @@ figure {
   height: auto;
   border-radius: 40px;
 }
+
+.unforgettable {
+  position: relative;
+  padding: 6rem 2rem 8rem;
+  overflow: hidden;
+  min-height: 100vh;
+}
+.unforgettable__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite;
+}
+.unforgettable__glow--blue {
+  width: 500px;
+  height: 500px;
+  background: #D3EBFF;
+  top: 5%;
+  left: 5%;
+  animation-delay: 0s;
+}
+.unforgettable__glow--yellow {
+  width: 400px;
+  height: 400px;
+  background: #FFF9E5;
+  bottom: 10%;
+  right: 10%;
+  animation-delay: 4s;
+}
+.unforgettable__container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.unforgettable__header {
+  position: relative;
+  text-align: center;
+  z-index: 10;
+}
+.unforgettable__title {
+  margin-bottom: 1.5rem;
+}
+.unforgettable__title-line {
+  display: block;
+}
+.unforgettable__title-line--headline {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: #b8860b;
+  text-transform: uppercase;
+}
+.unforgettable__title-line--highlight {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #b8860b;
+}
+.unforgettable__description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--gray-500, #666);
+  text-align: center;
+}
+.unforgettable__gallery {
+  position: relative;
+  height: 550px;
+  margin-top: -2rem;
+}
+.unforgettable__image {
+  position: absolute;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  will-change: transform;
+}
+.unforgettable__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.unforgettable__image--1 {
+  width: 280px;
+  height: 380px;
+  left: 0;
+  top: 30px;
+  z-index: 1;
+}
+.unforgettable__image--2 {
+  width: 320px;
+  height: 260px;
+  left: 75%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 2;
+}
+.unforgettable__image--3 {
+  width: 300px;
+  height: 320px;
+  right: 0;
+  top: 80px;
+  z-index: 3;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.5;
+  }
+  25% {
+    transform: scale(1.1) translate(10px, -10px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05) translate(-5px, 5px);
+    opacity: 0.6;
+  }
+  75% {
+    transform: scale(1.15) translate(5px, 10px);
+    opacity: 0.7;
+  }
+}
+@media (max-width: 1024px) {
+  .unforgettable__gallery {
+    height: 450px;
+  }
+  .unforgettable__image--1 {
+    width: 220px;
+    height: 300px;
+  }
+  .unforgettable__image--2 {
+    width: 260px;
+    height: 220px;
+  }
+  .unforgettable__image--3 {
+    width: 240px;
+    height: 260px;
+  }
+}
+@media (max-width: 768px) {
+  .unforgettable {
+    padding: 4rem 1rem 6rem;
+  }
+  .unforgettable__gallery {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .unforgettable__image {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 250px !important;
+  }
+  .unforgettable__image--2 {
+    transform: none !important;
+  }
+  .unforgettable__glow--blue {
+    width: 250px;
+    height: 250px;
+  }
+  .unforgettable__glow--yellow {
+    width: 200px;
+    height: 200px;
+  }
+}
