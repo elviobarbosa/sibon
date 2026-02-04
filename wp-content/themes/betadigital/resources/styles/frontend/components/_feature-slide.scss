@@ -5,8 +5,56 @@
 @use "../placeholders/texts";
 
 .feature-slide {
-  max-width: 90vw;
-  margin: 0 auto;
+  overflow: hidden;
+  padding: fn.px-rem(40px) 0;
+
+  .swiper {
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    width: 80%;
+    max-width: fn.px-rem(1100px);
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+
+    &-active {
+      opacity: 1;
+    }
+  }
+
+  // Navigation buttons
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: fn.px-rem(50px);
+    height: fn.px-rem(50px);
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #fff;
+    transition: all 0.3s ease;
+
+    &::after {
+      font-size: fn.px-rem(18px);
+      color: #B59449;
+    }
+
+    &:hover {
+      background: #B59449;
+      border-color: #B59449;
+
+      &::after {
+        color: #fff;
+      }
+    }
+  }
+
+  .swiper-button-prev {
+    left: fn.px-rem(20px);
+  }
+
+  .swiper-button-next {
+    right: fn.px-rem(20px);
+  }
 
   &__image {
     @include pimg.image-proportional(790px, 676px);
@@ -28,12 +76,13 @@
     width: 100%;
     text-align: center;
     transform: translate(0px, 40px);
-    -webkit-text-stroke: 1px #D9D9D9; 
+    -webkit-text-stroke: 1px #D9D9D9;
     color: transparent;
   }
 
   &__title {
     @extend %highlight;
-    line-height: 1.5em;
+    line-height: 1em;
+    margin: 0;
   }
 }

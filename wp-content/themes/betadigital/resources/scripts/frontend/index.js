@@ -9,6 +9,7 @@ import TextAnimation from "./components/text-animation";
 import WaveLines from "./components/wave-lines";
 import RandomImages from "./components/random-images";
 import Unforgettable from "./components/unforgettable";
+import FeatureSlide from "./components/feature-slide";
 
 function domReady(fn) {
   document.addEventListener("DOMContentLoaded", fn);
@@ -26,6 +27,7 @@ function domReady(fn) {
     new TextAnimation();
     new RandomImages();
     new Unforgettable();
+    new FeatureSlide();
   } else {
     setTimeout(() => {
       domReady(fn);
