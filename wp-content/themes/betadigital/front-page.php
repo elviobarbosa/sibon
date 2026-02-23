@@ -1,5 +1,9 @@
 <?php
 get_header();
 hero_parallax();
+random_images();
+unforgettable();
+feature_slide();
+experience();
 get_footer();
 ?>

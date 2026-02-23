@@ -1,0 +1,198 @@
+@use "../mixins/breakpoints" as bp;
+@use "../functions" as fn;
+@use "../placeholders/texts";
+@use "../mixins/fluidsize" as fsz;
+
+// ─── Enquire Form Section ──────────────────────────────────────────────────
+.enquire-form {
+  background-color: #fff;
+  padding: fn.px-rem(80px) 0 fn.px-rem(100px);
+  position: relative;
+  z-index: 1;
+
+  &__inner {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 0 fn.px-rem(24px);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &__title {
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: fn.px-rem(56px);
+
+    &--headline {
+      @extend %headline;
+      display: block;
+    }
+
+    &--highlight {
+      @extend %highlight;
+      display: block;
+    }
+  }
+
+  // ─── Contact Form 7 ────────────────────────────────────────────────────
+  &__form {
+    // Grid de 2 colunas — labels são os items diretos
+    .wpcf7-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: fn.px-rem(20px) fn.px-rem(24px);
+      align-items: start;
+
+      @include bp.max-md {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    // Textarea (message), submit e select injetado — largura total
+    label:has(textarea),
+    p:has(textarea),
+    .enquire-form__trip-select,
+    input[type="submit"],
+    p:has(input[type="submit"]),
+    .wpcf7-spinner,
+    .wpcf7-response-output {
+      grid-column: 1 / -1;
+    }
+
+    // Centraliza o submit — direto no grid ou dentro de <p> (CF7 autop)
+    input[type="submit"] {
+      justify-self: center;
+    }
+
+    p:has(input[type="submit"]) {
+      display: flex;
+      justify-content: center;
+    }
+
+    // Labels
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: fn.px-rem(6px);
+      font-size: fn.px-rem(13px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888;
+      font-family: var(--body-font);
+    }
+
+    // Inputs, select e textarea
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: var(--body-font);
+      font-size: fn.px-rem(16px);
+      color: #222;
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 0;
+      padding: fn.px-rem(14px) fn.px-rem(16px);
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      appearance: none;
+
+      &:focus {
+        border-color: #4b9eff;
+        background: #fff;
+      }
+
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+
+    // Select — seta customizada
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right fn.px-rem(16px) center;
+      padding-right: fn.px-rem(40px);
+      cursor: pointer;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: fn.px-rem(140px);
+    }
+
+    // Wrappers internos do CF7
+    .wpcf7-form-control-wrap {
+      display: block;
+      width: 100%;
+    }
+
+    // Mensagens de erro inline
+    .wpcf7-not-valid-tip {
+      display: block;
+      margin-top: fn.px-rem(4px);
+      font-size: fn.px-rem(12px);
+      color: #e05c5c;
+      font-family: var(--body-font);
+    }
+
+    // Botão submit
+    input[type="submit"] {
+      display: inline-block;
+      padding: fn.px-rem(14px) fn.px-rem(80px);
+      border-radius: fn.px-rem(50px);
+      border: 1px solid var(--primary-color, #4b9eff);
+      color: var(--primary-color, #4b9eff);
+      background: transparent;
+      font-family: var(--body-font);
+      font-size: fn.px-rem(16px);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      margin-top: fn.px-rem(12px);
+      width: auto;
+
+      &:hover {
+        background: var(--primary-color, #4b9eff);
+        color: #fff;
+      }
+    }
+
+    // Resposta de envio
+    .wpcf7-response-output {
+      margin-top: fn.px-rem(16px);
+      padding: fn.px-rem(12px) fn.px-rem(16px);
+      font-size: fn.px-rem(14px);
+      font-family: var(--body-font);
+      border: none;
+    }
+
+    .wpcf7-mail-sent-ok {
+      background: #edfbf3;
+      color: #2d7a4f;
+    }
+
+    .wpcf7-mail-sent-ng,
+    .wpcf7-aborted,
+    .wpcf7-validation-errors,
+    .wpcf7-acceptance-missing {
+      background: #fff0f0;
+      color: #c0392b;
+    }
+
+    // Spinner
+    .wpcf7-spinner {
+      justify-self: center;
+      margin-top: fn.px-rem(8px);
+    }
+  }
+}

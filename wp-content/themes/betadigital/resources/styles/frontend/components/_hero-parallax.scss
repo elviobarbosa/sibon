@@ -1,6 +1,8 @@
+@use "../mixins/breakpoints" as bp;
 .hero-parallax {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
 
   #birds-3d-container {
     position: fixed;
@@ -8,7 +10,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
@@ -24,11 +26,12 @@
 
     &--first,
     &--second {
-      background: transparent;
+      background-color: white;
     }
 
     &--first {
       z-index: 2;
+      
     }
 
     &--second {
@@ -40,8 +43,10 @@
       z-index: 10;
       opacity: 1;
       display: block;
-      background: white;
-      height: inherit;
+      transition: opacity 0.1s ease;
+      background: #70c7f1;
+      height: auto;
+      min-height: auto;
 
       .hero-parallax {
         &__title {
@@ -90,9 +95,16 @@
       font-weight: 100;
       text-transform: uppercase;
     }
+
+    &.animate-text {
+      .char {
+        display: inline-block;
+        transform-origin: center center;
+        will-change: transform, opacity, filter;
+      }
+    }
   }
 
-  // Transição com nuvens
   &__transition {
     position: fixed;
     top: 0;
@@ -104,10 +116,10 @@
     overflow: hidden;
   }
 
-  // Céu com degradê - complementa o céu da imagem do barco
   &__sky {
     width: 100%;
-    height: 50vh;
+    height: 100vh;
+    position: relative;
     z-index: 1;
     pointer-events: none;
     background: linear-gradient(to top, #70c7f1 0%, #70c7f1 100%);
@@ -121,46 +133,147 @@
 
   &__cloud {
     position: absolute;
+    opacity: 0;
 
     transition:
-      transform 0.1s ease,
+      left 0.1s ease,
+      top 0.1s ease,
       opacity 0.1s ease;
 
     &--1 {
       width: 300px;
       height: 150px;
-      top: 50%;
-      left: -40%;
+      top: 110%;
+      left: -15%;
     }
 
     &--2 {
       width: 250px;
       height: 120px;
-      top: 80%;
-      right: 35%;
+      top: 110%;
+      left: 55%;
     }
 
     &--3 {
       width: 350px;
       height: 180px;
-      top: 90%;
-      left: 30%;
+      top: 110%;
+      left: 5%;
+    }
+
+    &--4 {
+      width: 280px;
+      height: 140px;
+      top: 110%;
+      left: 70%;
+    }
+
+    &--5 {
+      width: 320px;
+      height: 160px;
+      top: 110%;
+      left: -10%;
     }
   }
 
-  // Seção do barco
   &__boat-image {
     width: 100%;
-    height: 100%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__boat-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
+
+    &--fallback {
+      display: block;
+    }
   }
+
+  #water-effect-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__section--explore {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 0;
+    z-index: 12;
+
+    .hero-parallax__title {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__explore-container {
+    display: grid;
+    gap: 60px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 40px;
+    align-items: center;
+
+    @include bp.max-md {
+      grid-template-columns: 1fr;
+    }
+
+    @include bp.min-xxl {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include bp.min-xxl {
+      grid-template-columns: 40% auto;
+    }
+  }
+
+  &__explore-content {
+    .hero-parallax__title-line {
+      &--headline {
+        @extend %headline;
+      }
+
+      &--highlight {
+        @extend %highlight;
+      }
+    }
+  }
+
+  &__explore-text {
+   @extend %body_text;
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__explore-image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 40px;
+    }
+  }
+
+  // @include bp.max-md {
+  //   &__explore-container {
+  //     grid-template-columns: 1fr;
+  //     gap: 40px;
+  //     padding: 0 20px;
+  //   }
+  // }
 }
 
 // .hero-parallax__section--boat
