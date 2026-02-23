@@ -1,0 +1,66 @@
+@use "../functions" as fn;
+
+.btn {
+  display: inline-block;
+  padding: fn.px-rem(12px) fn.px-rem(80px);
+  border-radius: fn.px-rem(50px);
+  font-family: var(--body-font);
+  font-size: fn.px-rem(18px);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  // ── Variante: outline (borda secundária) ─────────────────────────
+  &--outline {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    background: transparent;
+
+    &:hover {
+      background: var(--secondary-color);
+      color: #fff;
+    }
+  }
+
+  // ── Variante: solid (preenchido secundário) ───────────────────────
+  &--solid {
+    border: 1px solid var(--secondary-color);
+    background: var(--secondary-color);
+    color: #fff;
+
+    &:hover {
+      background: transparent;
+      color: var(--secondary-color);
+    }
+  }
+
+  // ── Variante: ghost (borda neutra) ───────────────────────────────
+  &--ghost {
+    border: 1px solid currentColor;
+    color: var(--gray-500, #4d4d4d);
+    background: transparent;
+
+    &:hover {
+      background: var(--gray-500, #4d4d4d);
+      color: #fff;
+      border-color: var(--gray-500, #4d4d4d);
+    }
+  }
+
+  // ── Variante: primary (borda + cor primária — azul) ───────────────
+  &--primary {
+    border: 1px solid var(--primary-color, #4b9eff);
+    color: var(--primary-color, #4b9eff);
+    background: transparent;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+
+    &:hover {
+      background: var(--primary-color, #4b9eff);
+      color: #fff;
+    }
+  }
+}

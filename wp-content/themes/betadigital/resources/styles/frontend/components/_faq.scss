@@ -1,0 +1,117 @@
+@use "../mixins/breakpoints" as bp;
+
+.faq {
+  padding: 6rem 0;
+  background-color: white;
+
+  @include bp.max-md {
+    padding: 4rem 2rem;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__title {
+    text-align: center;
+    font-family: var(--heading-font);
+    font-style: italic;
+    font-size: clamp(5rem, 12vw, 10rem);
+    color: var(--secondary-color);
+    margin: 0 0 4rem;
+    line-height: 1;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ── Item ────────────────────────────────────────────────────────
+
+  &__item {
+    border-bottom: 1px solid #e0e0e0;
+
+  }
+
+  // ── Toggle (hidden checkbox) ─────────────────────────────────────
+
+  &__toggle {
+    display: none;
+  }
+
+  // ── Label / Question row ─────────────────────────────────────────
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__question {
+    font-family: var(--body-font);
+    font-weight: 700;
+    font-size: clamp(14px, 1.1vw, 18px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dark-500, #333);
+    flex: 1;
+  }
+
+  // ── Arrow icon ───────────────────────────────────────────────────
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: transform 0.35s ease;
+
+    svg {
+      width: 20px;
+      height: auto;
+    }
+  }
+
+  // ── Answer panel ────────────────────────────────────────────────
+
+  &__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+    overflow: hidden;
+  }
+
+  &__answer-inner {
+    overflow: hidden;
+
+    p {
+      margin: 0 0 1rem;
+      font-size: clamp(14px, 1vw, 16px);
+      line-height: 1.7;
+      color: var(--gray-500, #555);
+
+      &:last-child {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  // ── Open state — use :has() on parent item ───────────────────────
+
+  &__item:has(&__toggle:checked) {
+
+    .faq__answer {
+      grid-template-rows: 1fr;
+    }
+
+    .faq__arrow {
+      transform: rotate(180deg);
+    }
+  }
+}

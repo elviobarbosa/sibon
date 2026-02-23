@@ -1,0 +1,44 @@
+{
+  "key": "group_7a0depoiment01",
+  "title": "Depoimento Fields",
+  "fields": [
+    {
+      "key": "field_7a0depoiment02",
+      "label": "Cargo / Empresa",
+      "name": "role",
+      "type": "text",
+      "instructions": "Ex: WQS surfer, WTS surfer, Fotógrafo...",
+      "required": 0,
+      "wrapper": {"width": "", "class": "", "id": ""}
+    },
+    {
+      "key": "field_7a0depoiment03",
+      "label": "Depoimento",
+      "name": "quote",
+      "type": "textarea",
+      "instructions": "Texto do depoimento.",
+      "required": 1,
+      "rows": 5,
+      "new_lines": "wpautop",
+      "wrapper": {"width": "", "class": "", "id": ""}
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post_depoiment"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}

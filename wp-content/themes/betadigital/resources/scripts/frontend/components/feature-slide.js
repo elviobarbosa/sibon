@@ -17,17 +17,19 @@ export default class FeatureSlide {
   initSwiper(sliderEl) {
     new Swiper(sliderEl, {
       slidesPerView: "auto",
-      centeredSlides: true,
-      spaceBetween: 30,
+      centeredSlides: false,
+      spaceBetween: 60,
       speed: 600,
       loop: true,
+      slidesOffsetBefore: 80,
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: ".feature-slide__btn--next",
+        prevEl: ".feature-slide__btn--prev",
       },
       breakpoints: {
         768: {
           spaceBetween: 50,
+          slidesOffsetBefore: 80,
         },
       },
     });

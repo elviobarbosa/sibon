@@ -53,3 +53,51 @@ if ( ! function_exists( 'feature_slide' ) ) {
     load_component( 'feature-slide', $args );
   }
 }
+
+if ( ! function_exists( 'experience' ) ) {
+  function experience( $args = [] ) {
+    load_component( 'experience', $args );
+  }
+}
+
+if ( ! function_exists( 'hero_sibon_baru' ) ) {
+  function hero_sibon_baru( $args = [] ) {
+    load_component( 'hero-sibon-baru', $args );
+  }
+}
+
+if ( ! function_exists( 'features_charters' ) ) {
+  function features_charters( $args = [] ) {
+    load_component( 'features-charters', $args );
+  }
+}
+
+if ( ! function_exists( 'photo_slide' ) ) {
+  function photo_slide( $args = [] ) {
+    load_component( 'photo-slide', $args );
+  }
+}
+
+if ( ! function_exists( 'schedule_booking' ) ) {
+  function schedule_booking( $args = [] ) {
+    load_component( 'schedule-booking', $args );
+  }
+}
+
+if ( ! function_exists( 'cta_boat' ) ) {
+  function cta_boat( $args = [] ) {
+    load_component( 'cta-boat', $args );
+  }
+}
+
+if ( ! function_exists( 'depoiments' ) ) {
+  function depoiments( $args = [] ) {
+    load_component( 'depoiments', $args );
+  }
+}
+
+if ( ! function_exists( 'enquire_form' ) ) {
+  function enquire_form( $args = [] ) {
+    load_component( 'enquire-form', $args );
+  }
+}

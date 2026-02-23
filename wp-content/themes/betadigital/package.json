@@ -31,6 +31,7 @@
     "webpack-dev-server": "^4.11.0"
   },
   "dependencies": {
+    "@fancyapps/ui": "^6.1.11",
     "@wordpress/api-fetch": "^6.53.0",
     "@wordpress/block-editor": "^14.21.0",
     "@wordpress/components": "^29.12.0",
