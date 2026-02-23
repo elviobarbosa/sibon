@@ -126,20 +126,13 @@ export default class TextAnimation {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
         const textObj = this.animatedTexts.find(t => t.element === entry.target);
         if (!textObj) return;
 
-        if (entry.isIntersecting) {
-          // Elemento entrando na viewport
-          this.animateIn(textObj);
-        } else {
-          // Elemento saindo da viewport
-          if (textObj.hasAnimatedIn) {
-            this.animateOut(textObj);
-            // Reset para poder animar novamente se voltar
-            textObj.hasAnimatedIn = false;
-          }
-        }
+        this.animateIn(textObj);
+        observer.unobserve(entry.target); // anima apenas uma vez
       });
     }, options);
 
