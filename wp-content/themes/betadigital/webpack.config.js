@@ -49,6 +49,10 @@ module.exports = {
       //   use: [ '@svgr/webpack', 'url-loader' ],
       // },
       {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,

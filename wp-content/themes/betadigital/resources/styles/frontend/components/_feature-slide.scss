@@ -1,0 +1,104 @@
+@use "../mixins/breakpoints" as bp;
+@use "../mixins/proportional-image" as pimg;
+@use "../mixins/mixins" as mx;
+@use "../functions" as fn;
+@use "../placeholders/texts";
+
+.feature-slide {
+  overflow: hidden;
+  padding: fn.px-rem(40px) 0 fn.px-rem(40px) fn.px-rem(80px);
+
+  .swiper {
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    width: 80%;
+    max-width: 80vw;
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+
+    &-active {
+      opacity: 1;
+    }
+  }
+
+  // Navigation buttons
+  &__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: fn.px-rem(64px);
+    height: fn.px-rem(64px);
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    padding: 0;
+    color: var(--secondary-color);
+
+    svg {
+      width: fn.px-rem(28px);
+      height: auto;
+      fill: #B78D00;
+    }
+
+    &:hover {
+      border-color: var(--secondary-color, #B78D00);
+      background: #fafafa;
+    }
+
+    &--prev {
+      left: fn.px-rem(20px);
+
+      svg {
+        transform: scaleX(-1);
+      }
+    }
+
+    &--next {
+      right: fn.px-rem(20px);
+    }
+  }
+
+  &__image {
+    @include pimg.image-proportional(790px, 676px);
+    @include mx.border-radius(fn.px-rem(40px));
+    overflow: hidden;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: fn.px-rem(30px);
+    align-items: center;
+  }
+
+  &__highlight {
+    font-size: clamp(2.5rem, 2rem + 9vw, 150px);
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    transform: translate(0px, 70px);
+    -webkit-text-stroke: 1px #D9D9D9;
+    color: transparent;
+  }
+
+  &__description {
+    font-size: clamp(18px, 2rem + 3vw, 20px)!important;
+    line-height: 1.4em;
+  }
+
+  &__title {
+    @extend %highlight;
+    font-size: clamp(32px, 2rem + 3vw, 50px)!important;
+    line-height: 1em;
+    margin: 0;
+  }
+}
