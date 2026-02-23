@@ -1,0 +1,285 @@
+@use "../mixins/breakpoints" as bp;
+@use "../functions" as fn;
+@use "../placeholders/texts";
+@use "../mixins/fluidsize" as fsz;
+
+$sb-status-colors: (
+  "closed":    #c0c0c0,
+  "sold-out":  #e05c5c,
+  "few-spots": #c8870a,
+  "on-hold":   #5b96e8,
+  "open":      #377E22,
+);
+
+.schedule-booking {
+  padding: fn.px-rem(60px) 0 fn.px-rem(80px);
+  background-color: white;
+  z-index: 1;
+  position: relative;
+
+
+  &__title {
+    text-align: center;
+    line-height: 1.4em;
+    &--headline {
+      @extend %headline;
+      display: block
+    }
+
+    &--highlight {
+      @extend %highlight;
+    }
+  }
+
+  // ─── Legend ───────────────────────────────────────
+  &__legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: fn.px-rem(32px);
+    flex-wrap: wrap;
+    margin-bottom: fn.px-rem(48px);
+
+    @include bp.max-md {
+      gap: fn.px-rem(16px);
+    }
+  }
+
+  &__legend-item {
+    font-size: fn.px-rem(16px);
+    color: black;
+    text-align: center;
+    svg { flex-shrink: 0; }
+
+    @each $key, $color in $sb-status-colors {
+      &--#{$key} svg { color: $color; }
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  // ─── Grid ─────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(192px, 1fr) );
+    max-width: 90vw;
+    margin: 0 auto;
+    
+    &[hidden] { display: none; }
+  }
+
+  // ─── Card ─────────────────────────────────────────
+  &__card {
+    position: relative;
+    padding: fn.px-rem(20px) fn.px-rem(16px) fn.px-rem(52px);
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #fafafa;
+
+      .schedule-booking__cta {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+      }
+    }
+
+    @each $key, $color in $sb-status-colors {
+      &--#{$key} {
+        .schedule-booking__wave  { color: $color; }
+        .schedule-booking__period { color: $color; }
+      }
+    }
+
+    &--closed {
+      .schedule-booking__local,
+      .schedule-booking__people-icon,
+      .schedule-booking__spots,
+      .schedule-booking__season { opacity: 0.45; }
+    }
+  }
+
+  &__star-icon {
+     position: absolute;
+      bottom: -15px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      background-color: white;
+      fill: #AAA;
+      color: #AAA;
+      z-index: 1;
+  }
+
+  // ─── Card elements ────────────────────────────────
+  &__wave {
+    flex-shrink: 0;
+    margin-bottom: fn.px-rem(2px);
+  }
+
+  &__period {
+    font-size: fn.px-rem(20px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  &__local {
+    font-size: fn.px-rem(20px);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__people-icon {
+    color: #999;
+    margin-top: fn.px-rem(6px);
+  }
+
+  &__spots {
+    font-size: fn.px-rem(16px);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__season {
+    font-size: fn.px-rem(14px);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &__cta {
+    position: absolute;
+    bottom: fn.px-rem(14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    background: #4b9eff;
+    color: #fff;
+    font-size: fn.px-rem(12px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: fn.px-rem(7px) fn.px-rem(14px);
+    border-radius: fn.px-rem(50px);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  // ─── Year Tabs ────────────────────────────────────
+  &__year-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: fn.px-rem(20px);
+    padding: fn.px-rem(52px) 0 fn.px-rem(16px);
+    
+  }
+
+  &__year-tab {
+    @include fsz.fluid-size("font-size", 24px, 32px);
+    font-family: var(--body-font);
+    font-weight: 400;
+    color: #c0c0c0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s ease;
+
+    &.is-active { color: #4b9eff; }
+
+    &:hover:not(.is-active) { color: #888; }
+  }
+
+  &__year-divider {
+    display: block;
+    width: fn.px-rem(60px);
+    height: 1px;
+    background: #c0c0c0;
+    flex-shrink: 0;
+  }
+
+  // ─── Enquire button ───────────────────────────────
+  &__enquire-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: fn.px-rem(100px);
+  }
+
+  &__divider {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: fn.px-rem(48px);
+
+    // linhas horizontais gradiente
+    &::before {
+      content: '';
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(75, 158, 255, 0.35) 20%,
+        rgba(75, 158, 255, 0.35) 80%,
+        transparent 100%
+      );
+    }
+
+    // linha vertical acima da estrela
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      @include fsz.fluid-size("height", 60px, 150px);
+      background: linear-gradient(to bottom, transparent, rgba(75, 158, 255, 0.35));
+    }
+  }
+
+  &__divider-star {
+    position: relative;
+    z-index: 1;
+    color: #4b9eff;
+    background: white;
+    padding: fn.px-rem(6px);
+    flex-shrink: 0;
+    width: fn.px-rem(40px);
+    height: fn.px-rem(40px);
+  }
+
+  // linha vertical acima do botão enquire
+  &__enquire-wrap .btn {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      @include fsz.fluid-size("height", 30px, 100px);
+      background: linear-gradient(to bottom, rgba(75, 158, 255, 0.35), transparent);
+    }
+  }
+}

@@ -2,20 +2,14 @@
 @use "../functions" as fn;
 @use "../variables" as v;
 @use "../mixins/breakpoints" as bp;
+@use "../mixins/fluidsize" as flz;
 
 %body_text {
   color: var(--gray-500) ;
   @include bp.max-lg {
     line-height: 1.4rem;
-    font-size: fn.px-rem(18px);;
+    @include flz.fluid-size("font-size", 18px, 24px);
   }
-
-  
-
-  // @include bp.min-lg {
-  //   line-height: fn.px-rem(36px);
-  //   font-size: 24px;
-  // }
 
   strong {
     font-weight: 600;
@@ -23,7 +17,6 @@
 }
 
 %heading_h2 {
-  // font-size: clamp(40px, 5vw, 56px);
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-family: var(--body-font)!important;
   font-style: normal;
@@ -34,7 +27,7 @@
 }
 
 %headline {
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(32px, 2rem + 3vw, 100px);
   color: var(--secondary-color);
   font-family: var(--body-font) !important;
   font-weight: 100;
@@ -42,7 +35,13 @@
 }
 
 %highlight {
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(40px, 2rem + 4vw, 150px);
   color: var(--secondary-color);
+}
+
+%description {
+  @include flz.fluid-size("font-size", 18px, 24px);
+  color: var(--dark-500);
+  line-height: 2.2rem;
 }
 

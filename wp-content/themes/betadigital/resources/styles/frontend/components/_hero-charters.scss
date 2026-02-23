@@ -1,0 +1,151 @@
+@use 'sass:math';
+@use "../mixins/breakpoints" as bp;
+@use "../mixins/mixins" as mx;
+@use "../mixins/fluidsize" as fsz;
+@use "../mixins/proportional-image" as pi;
+
+.hero-charters {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 6rem 5rem 6rem 8rem;
+  min-height: 90vh;
+  background-color: white;
+
+  @include bp.max-md {
+    flex-direction: column;
+    padding: 4rem 2rem;
+    min-height: auto;
+  }
+
+  &__content {
+    flex: 0 0 40%;
+    max-width: 40%;
+
+    @include bp.max-md {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    h1 {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      margin: 0;
+    }
+  }
+
+  &__title--small {
+    font-family: var(--body-font) !important;
+    font-style: normal;
+    font-weight: 200;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    color: var(--primary-color, #4b9eff);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  &__title--large {
+    font-family: var(--heading-font);
+    font-style: normal !important;
+    font-weight: 400;
+    font-size: clamp(7rem, 14vw, 16rem);
+    color: var(--primary-color, #4b9eff);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+
+  &__description {
+    margin-top: 3rem;
+  }
+
+  &__description--text {
+    @include fsz.fluid-size(font-size, 18px, 32px);
+    line-height: 1.55;
+    color: var(--gray-500, #4d4d4d);
+    font-weight: 400;
+  }
+
+  &__description--features {
+    margin-top: 1.5rem;
+    font-size: 18px;
+    color: var(--primary-color, #4b9eff) !important;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+
+    @include bp.max-md {
+      font-size: 14px;
+    }
+  }
+
+  &__images {
+    flex: 1;
+    position: relative;
+    height: 620px;
+    margin-left: 2rem;
+
+    @include bp.max-md {
+      width: 100%;
+      height: 480px;
+      margin-left: 0;
+      margin-top: 3rem;
+    }
+  }
+
+  &__image {
+    @include mx.border-radius(40px);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    will-change: transform, opacity;
+
+    &:nth-child(1) {
+      $w: 65%;
+      @include pi.image-proportional(738, 669);
+      position: absolute;
+      width: $w;
+      padding-bottom: $w * math.div(669, 738);
+      left: 15%;
+      top: 20%;
+      z-index: 4;
+    }
+
+    &:nth-child(2) {
+      $w: 33%;
+      @include pi.image-proportional(349, 440);
+      position: absolute;
+      width: $w;
+      padding-bottom: $w * math.div(440, 349);
+      left: 0;
+      top: 0;
+      z-index: 2;
+    }
+
+    &:nth-child(3) {
+      $w: 34%;
+      @include pi.image-proportional(444, 463);
+      position: absolute;
+      width: $w;
+      padding-bottom: $w * math.div(463, 444);
+      right: 0;
+      top: 5%;
+      z-index: 1;
+    }
+
+    &:nth-child(4) {
+      $w: 57%;
+      @include pi.image-proportional(563, 383);
+      position: absolute;
+      width: $w;
+      padding-bottom: $w * math.div(383, 563);
+      left: 8%;
+      bottom: 0;
+      z-index: 3;
+      bottom: -45%;
+    }
+  }
+}

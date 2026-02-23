@@ -37,8 +37,17 @@ if ($slides->have_posts()) : ?>
       <?php endwhile; ?>
     </div>
 
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <button class="feature-slide__btn feature-slide__btn--prev" aria-label="Slide anterior">
+      <svg width="48" height="24" viewBox="0 0 48.442 24.35" aria-hidden="true">
+        <use href="<?php echo SVGPATH; ?>arrow"></use>
+      </svg>
+    </button>
+
+    <button class="feature-slide__btn feature-slide__btn--next" aria-label="Próximo slide">
+      <svg width="48" height="24" viewBox="0 0 48.442 24.35" aria-hidden="true">
+        <use href="<?php echo SVGPATH; ?>arrow"></use>
+      </svg>
+    </button>
 
   </div>
 </div>

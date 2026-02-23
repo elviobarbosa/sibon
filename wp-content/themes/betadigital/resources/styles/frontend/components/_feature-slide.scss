@@ -6,7 +6,7 @@
 
 .feature-slide {
   overflow: hidden;
-  padding: fn.px-rem(40px) 0;
+  padding: fn.px-rem(40px) 0 fn.px-rem(40px) fn.px-rem(80px);
 
   .swiper {
     overflow: visible;
@@ -14,7 +14,7 @@
 
   .swiper-slide {
     width: 80%;
-    max-width: fn.px-rem(1100px);
+    max-width: 80vw;
     opacity: 0.3;
     transition: opacity 0.4s ease;
 
@@ -24,36 +24,46 @@
   }
 
   // Navigation buttons
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: fn.px-rem(50px);
-    height: fn.px-rem(50px);
+  &__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: fn.px-rem(64px);
+    height: fn.px-rem(64px);
     border-radius: 50%;
-    border: 1px solid #ccc;
     background: #fff;
-    transition: all 0.3s ease;
+    border: 1px solid #D1D1D1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    padding: 0;
+    color: var(--secondary-color);
 
-    &::after {
-      font-size: fn.px-rem(18px);
-      color: #B59449;
+    svg {
+      width: fn.px-rem(28px);
+      height: auto;
+      fill: #B78D00;
     }
 
     &:hover {
-      background: #B59449;
-      border-color: #B59449;
+      border-color: var(--secondary-color, #B78D00);
+      background: #fafafa;
+    }
 
-      &::after {
-        color: #fff;
+    &--prev {
+      left: fn.px-rem(20px);
+
+      svg {
+        transform: scaleX(-1);
       }
     }
-  }
 
-  .swiper-button-prev {
-    left: fn.px-rem(20px);
-  }
-
-  .swiper-button-next {
-    right: fn.px-rem(20px);
+    &--next {
+      right: fn.px-rem(20px);
+    }
   }
 
   &__image {
@@ -70,18 +80,24 @@
   }
 
   &__highlight {
-    font-size: clamp(2.5rem, 10vw, 9rem);
+    font-size: clamp(2.5rem, 2rem + 9vw, 150px);
     padding: 0;
     margin: 0 auto;
     width: 100%;
     text-align: center;
-    transform: translate(0px, 40px);
+    transform: translate(0px, 70px);
     -webkit-text-stroke: 1px #D9D9D9;
     color: transparent;
   }
 
+  &__description {
+    font-size: clamp(18px, 2rem + 3vw, 20px)!important;
+    line-height: 1.4em;
+  }
+
   &__title {
     @extend %highlight;
+    font-size: clamp(32px, 2rem + 3vw, 50px)!important;
     line-height: 1em;
     margin: 0;
   }

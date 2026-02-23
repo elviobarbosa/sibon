@@ -10,6 +10,10 @@ import WaveLines from "./components/wave-lines";
 import RandomImages from "./components/random-images";
 import Unforgettable from "./components/unforgettable";
 import FeatureSlide from "./components/feature-slide";
+import HeroCharters from "./components/hero-charters";
+import PhotoSlide from "./components/photo-slide";
+import ScheduleBooking from "./components/schedule-booking";
+import Depoiments from "./components/depoiments";
 
 function domReady(fn) {
   document.addEventListener("DOMContentLoaded", fn);
@@ -28,6 +32,10 @@ function domReady(fn) {
     new RandomImages();
     new Unforgettable();
     new FeatureSlide();
+    new HeroCharters();
+    new PhotoSlide();
+    new ScheduleBooking();
+    new Depoiments();
   } else {
     setTimeout(() => {
       domReady(fn);
