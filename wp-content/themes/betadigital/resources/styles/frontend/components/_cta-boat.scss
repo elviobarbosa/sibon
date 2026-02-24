@@ -28,6 +28,10 @@
     grid-column: 1;
     grid-row: 2;
     align-self: start;
+
+    @include bp.max-md {
+      grid-row: 3;
+    }
   }
 
   &__eyebrow {
@@ -39,6 +43,10 @@
     letter-spacing: 0.4em;
     text-transform: uppercase;
     line-height: 0;
+
+    @include bp.max-md {
+      line-height: 1.2;
+    }
   }
 
   &__name {
@@ -108,7 +116,7 @@
 
     @include bp.max-md {
       grid-column: 1;
-      grid-row: auto;
+      grid-row: 2;
       margin-top: 2rem;
     }
   }

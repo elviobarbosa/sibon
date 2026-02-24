@@ -21,13 +21,23 @@ $sb-status-colors: (
   &__title {
     text-align: center;
     line-height: 1.4em;
+
+    @include bp.max-md {
+      line-height: 1;
+      padding: 0 5vw;
+    }
+
     &--headline {
       @extend %headline;
-      display: block
+      display: block;
     }
 
     &--highlight {
       @extend %highlight;
+
+      @include bp.max-md {
+        font-size: clamp(24px, 7vw, 40px);
+      }
     }
   }
 
@@ -79,6 +89,10 @@ $sb-status-colors: (
     text-align: center;
     transition: background 0.2s ease;
 
+    @include bp.max-md {
+      border-right: none;
+    }
+
     &:hover {
       background: #fafafa;
 
@@ -105,17 +119,27 @@ $sb-status-colors: (
   }
 
   &__star-icon {
-     position: absolute;
-      bottom: -15px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    fill: #AAA;
+    color: #AAA;
+    z-index: 1;
+
+    @include bp.max-md {
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -16px;
+    }
+
+    @include bp.min-md {
       right: -10px;
-      width: 20px;
-      height: 20px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      background-color: white;
-      fill: #AAA;
-      color: #AAA;
-      z-index: 1;
+      bottom: -15px;
+    }
   }
 
   // ─── Card elements ────────────────────────────────
@@ -172,6 +196,12 @@ $sb-status-colors: (
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
+
+    @include bp.max-md {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
   }
 
   // ─── Year Tabs ────────────────────────────────────

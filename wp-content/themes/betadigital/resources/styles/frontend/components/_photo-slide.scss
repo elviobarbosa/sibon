@@ -131,6 +131,10 @@
     &--next {
       right: fn.px-rem(28px);
     }
+
+    @include bp.max-md {
+      display: none;
+    }
   }
 
   // Pagination

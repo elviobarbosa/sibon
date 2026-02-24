@@ -52,10 +52,6 @@ $modifier    = $args['modifier']    ?? '';
     <?php endif; ?>
 
     <?php if ($cta_label) : ?>
-    <!-- <a href="<?php echo esc_url($cta_url); ?>" class="cta-boat__cta">
-      <?php echo esc_html($cta_label); ?>
-    </a> -->
-
     <?php load_component('btn', ['variant' => 'primary', 'label' => $cta_label, 'url' => $cta_url]); ?>
     <?php endif; ?>
   </div>
