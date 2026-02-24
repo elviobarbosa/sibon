@@ -14,25 +14,25 @@
           unforgettable</span>
       </h2>
       <p class="unforgettable__description">
-        Deixe a Sibon Charters ser seu guia para uma experiência de surf
-        que transcende o comum. Navegue por águas cristalinas, explore
-        ilhas intocadas e surfe ondas que você sonhou a vida toda.
-        A lenda aguarda você.
+        Let Sibon Charters be your guide to a surf experience that
+        transcends the ordinary. Sail through crystal-clear waters, explore
+        untouched islands and ride waves you've dreamed of your whole life.
+        The legend awaits you.
       </p>
     </header>
 
     <div class="unforgettable__gallery">
       <figure class="unforgettable__image unforgettable__image--1" data-parallax-speed="0.15">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-1.jpg'); ?>"
-          alt="Aurora boreal">
+          alt="Northern lights">
       </figure>
       <figure class="unforgettable__image unforgettable__image--2" data-parallax-speed="0.25">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-2.jpg'); ?>"
-          alt="Barco no mar cristalino">
+          alt="Boat in crystal clear sea">
       </figure>
       <figure class="unforgettable__image unforgettable__image--3" data-parallax-speed="0.35">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-3.jpg'); ?>"
-          alt="Pôr do sol no barco">
+          alt="Sunset on the boat">
       </figure>
     </div>
   </div>

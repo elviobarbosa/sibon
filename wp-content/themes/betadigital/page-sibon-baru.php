@@ -3,13 +3,13 @@ get_header();
 hero_sibon_baru([
   'title_small' => 'SIBON',
   'title_large' => 'BARU',
-  'description' => 'Desfrute de um refúgio espaçoso e acessível, onde o valor se encontra com a aventura. O Sibon Baru redefine o que você espera de um barco em sua faixa de preço, oferecendo amplo espaço para relaxar e compartilhar histórias de surf.',
+  'description' => 'Enjoy a spacious and accessible retreat where value meets adventure. The Sibon Baru redefines what you expect from a boat in its price range, offering ample space to relax and share surf stories.',
   'features'    => '12 people · 6 cabins · 6 berths · 4 bathrooms',
   'images'      => [
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-sibon-baru.jpg' ),          'alt' => 'Sibon Baru' ],
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-coqueiros.jpg' ),      'alt' => 'Sibon Baru - Coqueiros' ],
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-pordosol.jpg' ),       'alt' => 'Sibon Baru - Por do sol' ],
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-oceano-cristalino.jpg' ), 'alt' => 'Sibon Baru - Oceano Cristalino' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-sibon-baru.jpg' ),             'alt' => 'Sibon Baru' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-coqueiros.jpg' ),         'alt' => 'Sibon Baru - Palm Trees' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-pordosol.jpg' ),          'alt' => 'Sibon Baru - Sunset' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-oceano-cristalino.jpg' ), 'alt' => 'Sibon Baru - Crystal Ocean' ],
   ],
 ]);
 random_images();
@@ -21,19 +21,19 @@ features_charters([
   'items'     => [
     [
       'title'       => '62-Foot aluminum powered Catamaran',
-      'description' => 'O Sibon Baru é um catamarã de 62 pés construído em alumínio, projetado para oferecer uma combinação perfeita de desempenho, espaço e conforto em sua expedição de surf. Pensado para a aventura, ele garante que cada momento em alto mar seja tão relaxante quanto emocionante.',
+      'description' => 'The Sibon Baru is a 62-foot aluminum catamaran designed to deliver the perfect blend of performance, space, and comfort on your surf expedition. Built for adventure, it ensures that every moment at sea is as relaxing as it is thrilling.',
     ],
     [
       'title'       => 'Six large cabins with comfortable twin beds and fully air conditioned',
-      'description' => 'A bordo, você encontrará seis cabines amplas, equipadas com camas confortáveis, garantindo uma boa noite de sono após um dia épico de ondas. Todas as áreas do barco são totalmente climatizadas, proporcionando um refúgio agradável do calor tropical.',
+      'description' => 'On board, you\'ll find six spacious cabins equipped with comfortable beds, guaranteeing a great night\'s sleep after an epic day of waves. All areas of the boat are fully air-conditioned, providing a pleasant escape from the tropical heat.',
     ],
     [
       'title'       => 'Twin Hyundai Marine 260 HP main engines',
-      'description' => 'Impulsionado por dois motores principais Hyundai Marine de 260 HP, o Sibon Baru oferece uma navegação suave e eficiente, levando você rapidamente aos melhores picos de surf. Para o seu entretenimento e relaxamento, contamos com uma TV LCD de 50 polegadas, perfeita para assistir a vídeos das suas sessões de surf ou descontrair com um filme.',
+      'description' => 'Powered by twin Hyundai Marine 260 HP main engines, the Sibon Baru offers smooth and efficient navigation, quickly taking you to the best surf breaks. For your entertainment and relaxation, we also have a 50-inch LCD TV, perfect for watching footage from your surf sessions or unwinding with a movie.',
     ],
     [
       'title'       => 'Affordable luxury for your surf crew',
-      'description' => 'O Sibon Baru é o barco ideal para grupos de surfistas que buscam uma experiência de alto nível sem abrir mão da economia. Com amplo espaço para socialização e relaxamento, ele é o ponto de encontro perfeito para compartilhar histórias das ondas e criar memórias duradouras. Sua aventura privativa espera por você.',
+      'description' => 'The Sibon Baru is the ideal boat for groups of surfers looking for a high-end experience without breaking the bank. With ample space for socializing and relaxation, it\'s the perfect gathering place to share stories from the waves and create lasting memories. Your private adventure awaits.',
     ],
   ],
 ]);
@@ -44,10 +44,10 @@ feature_slide();
 cta_boat([
   'eyebrow'   => 'SIBON',
   'name'      => 'JAYA',
-  'description' => 'Mergulhe em um oásis de luxo flutuante. O Sibon Jaya é um iate sofisticado com quatro suítes privativas, desenhado para quem busca o máximo em conforto e exclusividade. Imagine-se em um hotel 5 estrelas, com o oceano como seu quintal e as melhores ondas do mundo ao seu alcance.',
+  'description' => 'Dive into a floating luxury oasis. The Sibon Jaya is a sophisticated yacht with four private suites, designed for those seeking the ultimate in comfort and exclusivity. Picture yourself in a 5-star hotel, with the ocean as your backyard and the world\'s best waves at your fingertips.',
   'specs'     => ['12 people', '6 cabins', '6 berths', '4 bathrooms'],
   'cta_label' => "See Jaya's schedule",
-  'cta_url'   => '#enquire',
+  'cta_url'   => '/sibon-jaya',
   'image'     => esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-jaya.jpg'),
   'image_alt' => 'Sibon Jaya',
 ]);

@@ -67,9 +67,10 @@
         data-boat-image="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
         data-water-mask="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-water-mask.png'); ?>">
       </div>
-      <!-- Imagem original como fallback (hidden quando WebGL ativo) -->
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
-        alt="Boat adventure" class="hero-parallax__boat-img hero-parallax__boat-img--fallback">
+      <!-- Barcos em PNG transparente sobre o efeito de água -->
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-boats.png'); ?>"
+        alt="Sibon boats" class="hero-parallax__boat-overlay"
+        fetchpriority="high">
 
       <!-- Select de experiência -->
       <div class="hero-parallax__boat-select">
@@ -99,19 +100,19 @@
           </span>
         </h2>
         <div class="hero-parallax__explore-text">
-          <p>Prepare-se para desvendar os segredos das ondas mais épicas do planeta. A Sibon Charters convida você a uma
-            jornada inesquecível pelos lendários picos de surf de <strong>Mentawai</strong>, <strong>Telos</strong>,
-            <strong>Banyaks</strong> e <strong>Enggano</strong>. Mais do que uma simples viagem, oferecemos uma imersão
-            completa no paraíso do surf, onde cada onda é uma promessa e cada pôr do sol, uma celebração.
+          <p>Get ready to unlock the secrets of the most epic waves on the planet. Sibon Charters invites you on an
+            unforgettable journey to the legendary surf breaks of <strong>Mentawai</strong>, <strong>Telos</strong>,
+            <strong>Banyaks</strong> and <strong>Enggano</strong>. More than just a trip, we offer a complete immersion
+            in the surf paradise, where every wave is a promise and every sunset, a celebration.
           </p>
-          <p>Com a <strong>Sibon Charters</strong>, sua experiência vai além do convencional. Nossos dois catamarãs
-            modernos, construídos em alumínio, foram projetados para proporcionar o máximo conforto e segurança enquanto
-            você busca a onda perfeita.</p>
+          <p>With <strong>Sibon Charters</strong>, your experience goes beyond the conventional. Our two modern
+            aluminum catamarans were designed to provide the utmost comfort and safety while you chase the perfect
+            wave.</p>
         </div>
       </div>
       <div class="hero-parallax__explore-image">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/surfer.jpg'); ?>"
-          alt="Surfista na onda">
+          alt="Surfer on the wave" loading="lazy">
       </div>
     </div>
   </div>

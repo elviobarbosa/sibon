@@ -3,13 +3,13 @@ get_header();
 hero_sibon_baru([
   'title_small' => 'SIBON',
   'title_large' => 'JAYA',
-  'description' => 'Mergulhe em um oásis de luxo flutuante. O Sibon Jaya é um iate sofisticado com quatro suítes privativas, desenhado para quem busca o máximo em conforto e exclusividade. Imagine-se em um hotel 5 estrelas, com o oceano como seu quintal e as melhores ondas do mundo ao seu alcance.',
+  'description' => 'Dive into a floating luxury oasis. The Sibon Jaya is a sophisticated yacht with four private suites, designed for those seeking the ultimate in comfort and exclusivity. Picture yourself in a 5-star hotel, with the ocean as your backyard and the world\'s best waves at your fingertips.',
   'features'    => '12 people · 5 cabins · 4 suites · 4 bathrooms',
   'images'      => [
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya.jpg' ),           'alt' => 'Sibon Jaya' ],
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-aereo.jpg' ),     'alt' => 'Sibon Jaya - Vista aérea' ],
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-por-do-sol.jpg' ), 'alt' => 'Sibon Jaya - Por do sol' ],
-    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-por-do-sol-2.jpg' ), 'alt' => 'Sibon Jaya - Por do sol 2' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya.jpg' ),              'alt' => 'Sibon Jaya' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-aereo.jpg' ),        'alt' => 'Sibon Jaya - Aerial View' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-por-do-sol.jpg' ),   'alt' => 'Sibon Jaya - Sunset' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-por-do-sol-2.jpg' ), 'alt' => 'Sibon Jaya - Sunset 2' ],
   ],
 ]);
 random_images();
@@ -20,20 +20,20 @@ features_charters([
   'cta_url'   => '#schedule-booking',
   'items'     => [
     [
-      'title'       => 'A 2015’ 70-foot Aluminum Powered Catamaran',
-      'description' => 'O Sibon Jaya é um catamarã de 70 pés, construído em 2015 em alumínio, que redefine o conceito de luxo e conforto em suas aventuras de surf. Projetado para oferecer uma experiência exclusiva, ele combina engenharia de ponta com um design interior sofisticado, garantindo uma viagem inesquecível pelas águas da Indonésia.',
+      'title'       => 'A 2015\u2019 70-foot Aluminum Powered Catamaran',
+      'description' => 'The Sibon Jaya is a 70-foot aluminum catamaran, built in 2015, that redefines the concept of luxury and comfort on your surf adventures. Designed to deliver an exclusive experience, it combines cutting-edge engineering with a sophisticated interior, ensuring an unforgettable journey through the waters of Indonesia.',
     ],
     [
       'title'       => '4 privates suites and 1 big cabin on the top',
-      'description' => 'A bordo, você encontrará quatro suítes privativas elegantemente decoradas, além de uma ampla cabine adicional no convés superior, oferecendo privacidade e conforto para todos os hóspedes. Todos os espaços internos são totalmente climatizados, proporcionando um refúgio de frescor e bem-estar em qualquer clima tropical.',
+      'description' => 'On board, you\'ll find four elegantly decorated private suites, plus a spacious additional cabin on the upper deck, offering privacy and comfort for all guests. All interior spaces are fully air-conditioned, providing a cool and refreshing retreat in any tropical climate.',
     ],
     [
       'title'       => 'Twin Cummins QSB 6.7 main engines and 4 x Solar Panels',
-      'description' => 'Para uma navegação potente e confiável, o Sibon Jaya é equipado com dois motores principais Cummins QSB 6.7, assegurando que você chegue aos picos de surf mais remotos com eficiência e segurança. Pensando na sustentabilidade, o barco também conta com quatro painéis solares, contribuindo para uma operação mais limpa e eficiente.',
+      'description' => 'For powerful and reliable navigation, the Sibon Jaya is equipped with twin Cummins QSB 6.7 main engines, ensuring you reach the most remote surf breaks with efficiency and safety. With sustainability in mind, the boat also features four solar panels, contributing to a cleaner and more efficient operation.',
     ],
     [
       'title'       => 'Your 5-Star floating hotel',
-      'description' => 'O Sibon Jaya é mais do que um barco; é um hotel 5 estrelas flutuante, onde cada detalhe é cuidadosamente pensado para proporcionar o máximo de conforto, luxo e uma experiência de surf incomparável. Sua aventura premium espera por você.',
+      'description' => 'The Sibon Jaya is more than a boat; it\'s a floating 5-star hotel, where every detail is carefully crafted to deliver the utmost comfort, luxury, and an unparalleled surf experience. Your premium adventure awaits.',
     ],
   ],
 ]);
@@ -44,10 +44,10 @@ feature_slide();
 cta_boat([
   'eyebrow'   => 'SIBON',
   'name'      => 'BARU',
-  'description' => 'Desfrute de um refúgio espaçoso e acessível, onde o valor se encontra com a aventura. O Sibon Baru redefine o que você espera de um barco em sua faixa de preço, oferecendo amplo espaço para relaxar e compartilhar histórias de surf.',
+  'description' => 'Enjoy a spacious and accessible retreat where value meets adventure. The Sibon Baru redefines what you expect from a boat in its price range, offering ample space to relax and share surf stories.',
   'specs'     => ['12 people', '6 cabins', '6 berths', '4 bathrooms'],
   'cta_label' => "See Baru's schedule",
-  'cta_url'   => '#enquire',
+  'cta_url'   => '/sibon-baru',
   'image'     => esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-jaya.jpg'),
   'image_alt' => 'Sibon Baru',
 ]);

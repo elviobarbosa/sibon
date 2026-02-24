@@ -28,11 +28,12 @@ $images      = $images      ?? [];
   </div>
 
   <div class="hero-charters__images">
-    <?php foreach ( $images as $image ) : ?>
+    <?php foreach ( $images as $i => $image ) : ?>
       <div class="hero-charters__image">
         <figure>
           <img src="<?php echo esc_url( $image['src'] ); ?>"
-            alt="<?php echo esc_attr( $image['alt'] ); ?>">
+            alt="<?php echo esc_attr( $image['alt'] ); ?>"
+            <?php if ( $i === 0 ) : ?>fetchpriority="high"<?php else : ?>loading="lazy"<?php endif; ?>>
         </figure>
       </div>
     <?php endforeach; ?>
