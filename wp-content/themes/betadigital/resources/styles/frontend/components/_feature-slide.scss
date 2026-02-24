@@ -81,11 +81,11 @@
 
   &__image {
     @include pimg.image-proportional(790px, 676px);
-    @include mx.border-radius(fn.px-rem(40px));
+    @include mx.border-radius(24px);
     overflow: hidden;
 
     @include bp.max-md {
-      border-radius: fn.px-rem(20px);
+      border-radius: 12px;
     }
   }
 

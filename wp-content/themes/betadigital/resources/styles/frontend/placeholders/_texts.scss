@@ -8,8 +8,9 @@
   color: var(--gray-500) ;
   // @include bp.max-lg {
   //   line-height: 1.4rem;
-  //   @include flz.fluid-size("font-size", 18px, 24px);
+  //  
   // }
+   @include flz.fluid-size("font-size", 16px, 18px);
 
   strong {
     font-weight: 600;
@@ -41,7 +42,7 @@
 
 %description {
   // @include flz.fluid-size("font-size", 18px, 24px);
-  font-size: fn.px-rem(24px);
+  font-size: fn.px-rem(24px)!important;
   color: var(--dark-500);
   line-height: 2.2rem;
 }

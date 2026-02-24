@@ -29,7 +29,7 @@
   </div>
 
   <!-- Transição com nuvens -->
-  <div class="hero-parallax__transition">
+  <!-- <div class="hero-parallax__transition">
     <div class="hero-parallax__clouds">
       <div class="hero-parallax__cloud hero-parallax__cloud--1">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
@@ -47,12 +47,12 @@
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud-out.png'); ?>">
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Céu com degradê -->
   <div class="hero-parallax__sky">
-    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud1.png'); ?>" alt="Cloud"
-      class="hero-parallax__cloud-1">
+    <!-- <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/cloud1.png'); ?>" alt="Cloud"
+      class="hero-parallax__cloud-1"> -->
   </div>
 
   <!-- Terceira dobra - Barco -->
@@ -70,6 +70,19 @@
       <!-- Imagem original como fallback (hidden quando WebGL ativo) -->
       <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
         alt="Boat adventure" class="hero-parallax__boat-img hero-parallax__boat-img--fallback">
+
+      <!-- Select de experiência -->
+      <div class="hero-parallax__boat-select">
+        <select class="hero-parallax__experience-select" onchange="if(this.value) window.location.href=this.value">
+          <option value="" selected disabled>CHOOSE YOUR SIBON EXPERIENCE</option>
+          <option value="<?php echo esc_url(home_url('/sibon-baru')); ?>">Sibon Baru</option>
+          <option value="<?php echo esc_url(home_url('/sibon-jaya')); ?>">Sibon Jaya</option>
+        </select>
+        <svg class="hero-parallax__select-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="8"
+          viewBox="0 0 12 8" fill="none">
+          <path d="M1 1L6 6L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
     </div>
   </div>
 

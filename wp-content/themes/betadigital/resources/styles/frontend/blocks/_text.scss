@@ -4,20 +4,4 @@
   h2.wp-block-heading {
     @extend %heading_h2;
   }
-
-  p,
-  ul,
-  ol,
-  li {
-    @extend %body_text;
-  }
-
-  body p span,
-  body p a,
-  ul span,
-  ul a,
-  li span,
-  li a {
-    font-family: inherit;
-  }
 }
