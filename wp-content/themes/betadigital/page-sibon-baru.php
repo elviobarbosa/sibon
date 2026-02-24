@@ -1,6 +1,17 @@
 <?php
 get_header();
-hero_sibon_baru();
+hero_sibon_baru([
+  'title_small' => 'SIBON',
+  'title_large' => 'BARU',
+  'description' => 'Desfrute de um refúgio espaçoso e acessível, onde o valor se encontra com a aventura. O Sibon Baru redefine o que você espera de um barco em sua faixa de preço, oferecendo amplo espaço para relaxar e compartilhar histórias de surf.',
+  'features'    => '12 people · 6 cabins · 6 berths · 4 bathrooms',
+  'images'      => [
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-sibon-baru.jpg' ),          'alt' => 'Sibon Baru' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-coqueiros.jpg' ),      'alt' => 'Sibon Baru - Coqueiros' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-pordosol.jpg' ),       'alt' => 'Sibon Baru - Por do sol' ],
+    [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-baru-oceano-cristalino.jpg' ), 'alt' => 'Sibon Baru - Oceano Cristalino' ],
+  ],
+]);
 random_images();
 features_charters([
   'headline'  => 'The beauty inside',

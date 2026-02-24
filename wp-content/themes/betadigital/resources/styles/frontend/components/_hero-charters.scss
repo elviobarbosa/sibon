@@ -65,6 +65,7 @@
 
   &__description--text {
     @include fsz.fluid-size(font-size, 18px, 32px);
+    margin-top: 1.5rem;
     line-height: 1.55;
     color: var(--gray-500, #4d4d4d);
     font-weight: 400;
@@ -101,14 +102,14 @@
   }
 
   &__image {
-    @include mx.border-radius(40px);
+    @include mx.border-radius(24px);
     overflow: hidden;
     opacity: 0;
     transform: translateY(50px);
     will-change: transform, opacity;
 
     @include bp.max-md {
-      border-radius: 16px;
+      border-radius: 12px;
     }
 
     &:nth-child(1) {

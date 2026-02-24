@@ -12,6 +12,7 @@
  *   @type string $image       URL da imagem do barco
  *   @type string $image_alt   Alt text da imagem
  *   @type string $modifier    Modificador BEM opcional (ex: 'baru')
+ *   @type bool   $reversed    Inverte o layout: imagem à esquerda, texto à direita
  * }
  */
 
@@ -24,9 +25,14 @@ $cta_url     = $args['cta_url']     ?? '#';
 $image       = $args['image']       ?? '';
 $image_alt   = $args['image_alt']   ?? $name;
 $modifier    = $args['modifier']    ?? '';
+$reversed    = $args['reversed']    ?? false;
+
+$classes = 'cta-boat';
+if ($modifier)  $classes .= ' cta-boat--' . esc_attr($modifier);
+if ($reversed)  $classes .= ' cta-boat--reversed';
 ?>
 
-<section class="cta-boat<?php echo $modifier ? ' cta-boat--' . esc_attr($modifier) : ''; ?>">
+<section class="<?php echo $classes; ?>">
 
   <header class="cta-boat__header">
     <?php if ($eyebrow) : ?>

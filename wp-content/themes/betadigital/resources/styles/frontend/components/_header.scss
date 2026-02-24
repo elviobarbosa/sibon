@@ -38,7 +38,8 @@
     width: auto;
 
     @include bp.min-lg {
-      height: 70px;
+      height: 60px;
+      padding: 1rem 0;
     }
   }
 
