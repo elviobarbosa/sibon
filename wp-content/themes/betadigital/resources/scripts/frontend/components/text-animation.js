@@ -21,26 +21,46 @@ export default class TextAnimation {
   }
 
   splitTextByChar(element) {
-    const text = element.textContent;
+    const text = element.textContent.trim();
     element.innerHTML = '';
 
-    // Criar spans para cada caractere
-    const chars = text.split('').map((char, index) => {
-      const span = document.createElement('span');
-      span.textContent = char === ' ' ? '\u00A0' : char; // Preservar espaços
-      span.style.display = 'inline-block';
-      span.style.opacity = '0';
-      span.className = 'char';
-      span.dataset.index = index;
-      return span;
-    });
+    const words = text.split(' ');
+    const allChars = [];
 
-    chars.forEach(char => element.appendChild(char));
+    words.forEach((word, wordIndex) => {
+      // Wrapper por palavra impede quebra de linha no meio da palavra
+      const wordWrapper = document.createElement('span');
+      wordWrapper.style.display = 'inline-block';
+      wordWrapper.style.whiteSpace = 'nowrap';
+
+      word.split('').forEach((char) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.display = 'inline-block';
+        span.style.opacity = '0';
+        span.className = 'char';
+        allChars.push(span);
+        wordWrapper.appendChild(span);
+      });
+
+      element.appendChild(wordWrapper);
+
+      // Espaço entre palavras (fora do wrapper para permitir quebra de linha)
+      if (wordIndex < words.length - 1) {
+        const space = document.createElement('span');
+        space.textContent = '\u00A0';
+        space.style.display = 'inline-block';
+        space.style.opacity = '0';
+        space.className = 'char';
+        allChars.push(space);
+        element.appendChild(space);
+      }
+    });
 
     // Armazenar referência
     this.animatedTexts.push({
       element,
-      chars,
+      chars: allChars,
       isVisible: false,
       hasAnimatedIn: false,
       currentTimeline: null // referência para cancelar animações

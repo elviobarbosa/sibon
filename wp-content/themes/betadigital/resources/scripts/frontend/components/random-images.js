@@ -10,7 +10,13 @@ export default class RandomImages {
     this.init();
   }
 
+  isMobile() {
+    return window.innerWidth < 768;
+  }
+
   init() {
+    if (this.isMobile()) return;
+
     window.addEventListener('scroll', () => {
       if (!this.ticking) {
         requestAnimationFrame(() => {

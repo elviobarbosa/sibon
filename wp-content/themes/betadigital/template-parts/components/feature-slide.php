@@ -50,6 +50,7 @@ if ($slides->have_posts()) : ?>
     </button>
 
   </div>
+  <div class="feature-slide__pagination"></div>
 </div>
 <?php endif;
 wp_reset_postdata();

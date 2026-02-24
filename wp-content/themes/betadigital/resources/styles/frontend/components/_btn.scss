@@ -1,8 +1,13 @@
 @use "../functions" as fn;
+@use "../mixins/breakpoints" as bp;
 
 .btn {
   display: inline-block;
   padding: fn.px-rem(12px) fn.px-rem(80px);
+
+  @include bp.max-md {
+    padding: fn.px-rem(12px) fn.px-rem(32px);
+  }
   border-radius: fn.px-rem(50px);
   font-family: var(--body-font);
   font-size: fn.px-rem(18px);

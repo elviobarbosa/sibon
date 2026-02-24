@@ -48,6 +48,10 @@
   &__title {
     margin: 0 0 fn.px-rem(24px) 0;
     line-height: 1.8em;
+
+    @include bp.max-md {
+      line-height: 1;
+    }
   }
 
   &__title-line {
@@ -69,6 +73,10 @@
 
   &__list {
     order: 3;
+
+    @include bp.max-md {
+      padding: 0 5vw;
+    }
 
     @include bp.min-lg {
       order: unset;
