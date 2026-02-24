@@ -8,7 +8,7 @@
                         </span>
                         <address class="footer__address">
                             Jl. Pulau Karam, Berok Nipah, Kec. Padang Bar., Kota Padang,<br>
-                            Sumatera Barat 25119, Indonésia
+                            Sumatera Barat 25119, Indonesia
                         </address>
                     </div>
 

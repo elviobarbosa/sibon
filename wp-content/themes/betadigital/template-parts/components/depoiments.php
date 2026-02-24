@@ -79,10 +79,10 @@ $depoiments = new WP_Query([
       </div>
 
       <div class="depoiments__navigation">
-        <button class="depoiments__prev" aria-label="Anterior">
+        <button class="depoiments__prev" aria-label="Previous">
           <?php echo file_get_contents(get_template_directory() . '/dist/images/svg/arrow.svg'); ?>
         </button>
-        <button class="depoiments__next" aria-label="Próximo">
+        <button class="depoiments__next" aria-label="Next">
           <?php echo file_get_contents(get_template_directory() . '/dist/images/svg/arrow.svg'); ?>
         </button>
       </div>

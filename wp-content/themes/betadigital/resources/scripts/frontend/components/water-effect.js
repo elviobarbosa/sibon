@@ -138,15 +138,15 @@ export default class WaterEffect {
         float wave2 = snoise(vec2(uv.x * 3.0 - uTime * 0.12, uv.y * 2.0 + uTime * 0.05));
         float combinedWave = wave1 * 0.6 + wave2 * 0.4;
 
-        // Displacement
-        float strength = waterIntensity * 0.012;
+        // Displacement — livre agora que os barcos estão em camada separada
+        float strength = waterIntensity * 0.022;
         vec2 displacement = vec2(
           combinedWave * strength,
-          combinedWave * strength * 0.4
+          combinedWave * strength * 0.5
         );
 
         // Ondulação horizontal
-        displacement.x += sin(uv.y * 15.0 + uTime * 0.7) * 0.003 * waterIntensity;
+        displacement.x += sin(uv.y * 15.0 + uTime * 0.7) * 0.005 * waterIntensity;
 
         vec2 distortedUv = uv + displacement;
 
@@ -161,13 +161,18 @@ export default class WaterEffect {
         vec4 color = texture2D(uTexture, distortedUv);
 
         // Specular - brilho nas cristas
-        float specular = pow(max(0.0, combinedWave), 2.0) * 0.15 * waterIntensity;
-        color.rgb += vec3(specular * 0.9, specular * 0.95, specular);
+        float specular = pow(max(0.0, combinedWave), 1.5) * 0.38 * waterIntensity;
+        color.rgb += vec3(specular * 0.88, specular * 0.94, specular);
 
         // Caustics - padrões de luz
         float caustic = snoise(vec2(uv.x * 10.0 + uTime * 0.12, uv.y * 10.0 - uTime * 0.06));
-        caustic = pow(max(0.0, caustic), 2.0) * 0.08 * waterIntensity;
-        color.rgb += vec3(caustic * 0.85, caustic * 0.95, caustic);
+        caustic = pow(max(0.0, caustic), 1.8) * 0.22 * waterIntensity;
+        color.rgb += vec3(caustic * 0.82, caustic * 0.93, caustic);
+
+        // Segunda camada de caustics para mais complexidade
+        float caustic2 = snoise(vec2(uv.x * 7.0 - uTime * 0.09, uv.y * 8.0 + uTime * 0.07));
+        caustic2 = pow(max(0.0, caustic2), 2.2) * 0.12 * waterIntensity;
+        color.rgb += vec3(caustic2 * 0.8, caustic2 * 0.92, caustic2);
 
         gl_FragColor = color;
       }

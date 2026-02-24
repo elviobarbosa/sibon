@@ -258,13 +258,14 @@
     flex-shrink: 0;
   }
 
-  &__boat-img {
+  &__boat-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: auto;
-
-    &--fallback {
-      display: block;
-    }
+    z-index: 2;
+    pointer-events: none;
   }
 
   #water-effect-container {

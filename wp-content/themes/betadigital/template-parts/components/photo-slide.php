@@ -36,13 +36,13 @@ $chunks = array_chunk($gallery, 6);
       <?php endforeach; ?>
     </div>
 
-    <button class="photo-slide__btn photo-slide__btn--prev" aria-label="Slide anterior">
+    <button class="photo-slide__btn photo-slide__btn--prev" aria-label="Previous slide">
       <svg width="48" height="24" viewBox="0 0 48.442 24.35" aria-hidden="true">
         <use href="<?php echo SVGPATH; ?>arrow"></use>
       </svg>
     </button>
 
-    <button class="photo-slide__btn photo-slide__btn--next" aria-label="Próximo slide">
+    <button class="photo-slide__btn photo-slide__btn--next" aria-label="Next slide">
       <svg width="48" height="24" viewBox="0 0 48.442 24.35" aria-hidden="true">
         <use href="<?php echo SVGPATH; ?>arrow"></use>
       </svg>

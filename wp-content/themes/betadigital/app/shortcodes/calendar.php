@@ -13,7 +13,7 @@ function calendar($atts) {
 
     ob_start();
     echo '<h2 class="wp-block-heading has-text-align-center">' . $atts['title'] . '</h2>';
-    $ingressoText = ($atts['title'] === 'Shows') ? 'Ingressos' : '';
+    $ingressoText = ($atts['title'] === 'Shows') ? 'Tickets' : '';
     // echo '<pre>';
     // var_dump($eventsData);
     // echo '</pre>';
@@ -99,7 +99,7 @@ function calendar($atts) {
                                 } else {
                                     echo '<span class="event__price-label"><span></span></span>';
                                     if ($minPrice !== $maxPrice) :
-                                      echo ' de ' . number_format_brl($minPrice) . ' a ' .  number_format_brl($maxPrice);
+                                      echo ' from ' . number_format_brl($minPrice) . ' to ' . number_format_brl($maxPrice);
                                     else :
                                        echo number_format_brl( (float)$ticket['price'] );
                                     endif;
@@ -116,10 +116,10 @@ function calendar($atts) {
                 </div>
                 <div class="event__action-container">
                     <div class="event__action">
-                        <a href="<?php echo $event->data->post->guid; ?>" class="event__btn event__btn--more">Veja mais</a>
+                        <a href="<?php echo $event->data->post->guid; ?>" class="event__btn event__btn--more">See more</a>
                         <a class="event__btn event__btn--buy" data-js="buy-ticket" data-id="<?php echo $event_id; ?>">
                             <span class="loading"><img src="<?php echo get_stylesheet_directory_uri() . '/dist/images/bmp/loading.gif' ?>"></span>
-                            <span class="label">Comprar</span>
+                            <span class="label">Buy</span>
                         </a>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ function calendar($atts) {
         endforeach;
         echo '</div></div>';
     else :  
-        echo '<p style="text-align: center; color: white;">Ops! No momento não há ' . strtolower($atts['title']) . ' cadastradas. :(</p>';  
+        echo '<p style="text-align: center; color: white;">No ' . strtolower($atts['title']) . ' available at the moment.</p>';  
     endif;
     echo '</div>';
     wp_reset_postdata();  

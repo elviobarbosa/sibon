@@ -3,12 +3,12 @@
  * enquire-form.php
  *
  * Vars esperadas via load_component():
- *   $cf7_id    (string|int) ID do formulário Contact Form 7 — padrão: 'c235649'
- *   $headline  (string)     Texto menor acima do título
- *   $highlight (string)     Título principal em destaque
+ *   $cf7_title (string) Título do formulário Contact Form 7 — padrão: 'Enquire now'
+ *   $headline  (string) Texto menor acima do título
+ *   $highlight (string) Título principal em destaque
  */
 
-$cf7_id    = $cf7_id    ?? 'c235649';
+$cf7_title = $cf7_title ?? 'Enquire now';
 $headline  = $headline  ?? 'Book Your Adventure';
 $highlight = $highlight ?? 'Enquire Now';
 ?>
@@ -21,7 +21,7 @@ $highlight = $highlight ?? 'Enquire Now';
     </h2>
 
     <div class="enquire-form__form">
-      <?php echo do_shortcode('[contact-form-7 id="' . esc_attr($cf7_id) . '"]'); ?>
+      <?php echo do_shortcode('[contact-form-7 title="' . esc_attr($cf7_title) . '"]'); ?>
     </div>
 
   </div>

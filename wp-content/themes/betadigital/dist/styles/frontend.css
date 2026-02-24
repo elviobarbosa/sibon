@@ -2019,12 +2019,14 @@ figure {
   pointer-events: none;
   flex-shrink: 0;
 }
-.hero-parallax__boat-img {
+.hero-parallax__boat-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: auto;
-}
-.hero-parallax__boat-img--fallback {
-  display: block;
+  z-index: 2;
+  pointer-events: none;
 }
 .hero-parallax #water-effect-container {
   width: 100%;
@@ -3954,7 +3956,7 @@ figure {
   z-index: 1;
 }
 .enquire-form__inner {
-  max-width: 90vw;
+  max-width: 1366px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -4521,7 +4523,7 @@ figure {
   }
 }
 .faq__container {
-  max-width: 90vw;
+  max-width: 1366px;
   margin: 0 auto;
 }
 .faq__title {
