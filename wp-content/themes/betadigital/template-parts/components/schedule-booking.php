@@ -177,9 +177,11 @@ foreach ($calendario as $_entry) {
         <?php echo esc_html($season_labels[$temporada] ?? ''); ?>
       </p>
 
+      <?php if (in_array($status, ['few-spots', 'on-hold', 'open'])) : ?>
       <a href="<?php echo esc_url($enquire_url); ?>" class="schedule-booking__cta" data-period="<?php echo esc_attr($period_label); ?>">
         ENQUIRE NOW
       </a>
+      <?php endif; ?>
     </div>
     <?php endforeach; ?>
 

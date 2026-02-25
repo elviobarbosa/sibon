@@ -17,7 +17,6 @@
         Let Sibon Charters be your guide to a surf experience that
         transcends the ordinary. Sail through crystal-clear waters, explore
         untouched islands and ride waves you've dreamed of your whole life.
-        The legend awaits you.
       </p>
     </header>
 

@@ -76,6 +76,9 @@ export default class TextAnimation {
       textObj.currentTimeline = null;
     }
 
+    // Torna o elemento pai visível (estava oculto via CSS antes do JS carregar)
+    textObj.element.style.opacity = '1';
+
     const chars = textObj.element.querySelectorAll('.char');
 
     // Resetar estado visual antes de animar
@@ -151,7 +154,8 @@ export default class TextAnimation {
         const textObj = this.animatedTexts.find(t => t.element === entry.target);
         if (!textObj) return;
 
-        this.animateIn(textObj);
+        const delay = parseInt(entry.target.dataset.animateDelay || '0', 10);
+        setTimeout(() => this.animateIn(textObj), delay);
         observer.unobserve(entry.target); // anima apenas uma vez
       });
     }, options);

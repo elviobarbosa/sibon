@@ -266,6 +266,14 @@
     height: auto;
     z-index: 2;
     pointer-events: none;
+    transform-origin: center bottom;
+    animation: boat-rock 14s ease-in-out infinite;
+  }
+
+  @keyframes boat-rock {
+    0%   { transform: rotate(-0.3deg) translateY(0px); }
+    50%  { transform: rotate(0.3deg) translateY(4px); }
+    100% { transform: rotate(-0.3deg) translateY(0px); }
   }
 
   #water-effect-container {

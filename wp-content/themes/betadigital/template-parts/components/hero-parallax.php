@@ -11,8 +11,10 @@
   <div class="hero-parallax__section hero-parallax__section--first" data-section="1">
     <div class="hero-parallax__content">
       <h1 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Enjoy in the</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">Wildest nature</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text"
+          data-animate-delay="900">Enjoy in the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text"
+          data-animate-delay="1050">Wildest nature</span>
       </h1>
     </div>
   </div>
@@ -69,8 +71,7 @@
       </div>
       <!-- Barcos em PNG transparente sobre o efeito de água -->
       <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-boats.png'); ?>"
-        alt="Sibon boats" class="hero-parallax__boat-overlay"
-        fetchpriority="high">
+        alt="Sibon boats" class="hero-parallax__boat-overlay" fetchpriority="high">
 
       <!-- Select de experiência -->
       <div class="hero-parallax__boat-select">
@@ -106,7 +107,7 @@
             in the surf paradise, where every wave is a promise and every sunset, a celebration.
           </p>
           <p>With <strong>Sibon Charters</strong>, your experience goes beyond the conventional. Our two modern
-            aluminum catamarans were designed to provide the utmost comfort and safety while you chase the perfect
+            aluminum catamarans were designed to provide the most comfort and safety while you chase the perfect
             wave.</p>
         </div>
       </div>
