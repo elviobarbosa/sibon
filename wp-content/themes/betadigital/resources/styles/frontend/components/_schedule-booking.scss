@@ -6,8 +6,8 @@
 $sb-status-colors: (
   "closed":    #c0c0c0,
   "sold-out":  #e05c5c,
-  "few-spots": #c8870a,
-  "on-hold":   #5b96e8,
+  "few-spots": #D4AC0D,
+  "on-hold":   #E26B0A,
   "open":      #377E22,
 );
 
@@ -16,7 +16,6 @@ $sb-status-colors: (
   background-color: white;
   z-index: 1;
   position: relative;
-
 
   &__title {
     text-align: center;
@@ -72,8 +71,6 @@ $sb-status-colors: (
 
   // ─── Grid ─────────────────────────────────────────
   &__grid {
-    display: grid;
-    grid-template-columns: repeat( auto-fill, minmax(192px, 1fr) );
     max-width: 90vw;
     margin: 0 auto;
     
@@ -82,16 +79,13 @@ $sb-status-colors: (
 
   // ─── Card ─────────────────────────────────────────
   &__card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     position: relative;
     padding: fn.px-rem(20px) fn.px-rem(16px) fn.px-rem(52px);
-    border-right: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
     transition: background 0.2s ease;
-
-    @include bp.max-md {
-      border-right: none;
-    }
 
     &:hover {
       background: #fafafa;
@@ -107,6 +101,7 @@ $sb-status-colors: (
       &--#{$key} {
         .schedule-booking__wave  { color: $color; }
         .schedule-booking__period { color: $color; }
+        .schedule-booking__spots { color: $color; }
       }
     }
 
@@ -124,22 +119,21 @@ $sb-status-colors: (
     height: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: white;
     fill: #AAA;
     color: #AAA;
     z-index: 1;
 
-    @include bp.max-md {
+    // @include bp.max-md {
       right: auto;
       left: 50%;
       transform: translateX(-50%);
       bottom: -16px;
-    }
+    // }
 
-    @include bp.min-md {
-      right: -10px;
-      bottom: -15px;
-    }
+    // @include bp.min-md {
+    //   right: -10px;
+    //   bottom: -15px;
+    // }
   }
 
   // ─── Card elements ────────────────────────────────
@@ -167,15 +161,14 @@ $sb-status-colors: (
   }
 
   &__spots {
-    font-size: fn.px-rem(16px);
+    font-size: fn.px-rem(20px);
     font-weight: 500;
     margin: 0;
   }
 
   &__season {
-    font-size: fn.px-rem(14px);
+    font-size: fn.px-rem(20px);
     letter-spacing: 0.06em;
-    text-transform: uppercase;
     margin: 0;
   }
 
