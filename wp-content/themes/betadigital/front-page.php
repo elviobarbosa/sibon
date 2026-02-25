@@ -1,7 +1,6 @@
 <?php
 get_header();
-hero_parallax();
-random_images();
+hero_spline();
 unforgettable();
 feature_slide();
 experience();

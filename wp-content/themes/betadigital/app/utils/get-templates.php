@@ -29,6 +29,12 @@ if ( ! function_exists( 'hero_parallax' ) ) {
   }
 }
 
+if ( ! function_exists( 'hero_spline' ) ) {
+  function hero_spline( $args = [] ) {
+    load_component( 'hero-spline', $args );
+  }
+}
+
 if ( ! function_exists( 'random_images' ) ) {
   function random_images( $args = [] ) {
     load_component( 'random-images', $args );
