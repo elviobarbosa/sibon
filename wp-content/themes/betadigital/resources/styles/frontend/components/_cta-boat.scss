@@ -9,7 +9,7 @@
   grid-template-columns: 42% 1fr;
   grid-template-rows: auto 1fr;
   column-gap: 4rem;
-  padding: 15rem 8rem;
+  padding: 10rem 8rem;
 
   @include bp.max-md {
     grid-template-columns: 1fr;
@@ -28,6 +28,10 @@
     grid-column: 1;
     grid-row: 2;
     align-self: start;
+
+    @include bp.max-md {
+      grid-row: 3;
+    }
   }
 
   &__eyebrow {
@@ -38,13 +42,17 @@
     color: var(--primary-color, #4b9eff);
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    line-height: 0;
+    line-height: 0.6em;
+
+    @include bp.max-md {
+      line-height: 1.2;
+    }
   }
 
   &__name {
     font-family: var(--heading-font);
     font-weight: 400;
-    font-size: clamp(6rem, 2rem + 50vw, 20vw);
+    font-size: clamp(6rem, 2rem + 50vw, 18vw);
     color: var(--primary-color, #4b9eff);
     line-height: 0.85;
     letter-spacing: -0.02em;
@@ -52,7 +60,7 @@
   }
 
   &__description {
-    @include fsz.fluid-size(font-size, 16px, 20px);
+    @include fsz.fluid-size(font-size, 18px, 24px);
     line-height: 1.6;
     color: var(--gray-500, #4d4d4d);
     margin-bottom: 1.5rem;
@@ -99,17 +107,78 @@
   &__image {
     grid-column: 2;
     grid-row: 2;
-    @include mx.border-radius(40px);
+    @include mx.border-radius(24px);
     @include pi.image-proportional(961px, 541px);
     overflow: hidden;
-  
+
     margin: 0;
     transform: translateY(-10%);
 
     @include bp.max-md {
+      @include mx.border-radius(12px);
       grid-column: 1;
-      grid-row: auto;
+      grid-row: 2;
       margin-top: 2rem;
+    }
+  }
+
+  // ── Reversed: imagem à esquerda, texto à direita ─────────────────
+  &--reversed {
+    grid-template-columns: 1fr 42%;
+
+    @include bp.max-md {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-boat__header {
+      grid-column: 2;
+      grid-row: 1;
+
+      @include bp.max-md {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    .cta-boat__body {
+      grid-column: 2;
+      grid-row: 2;
+
+      @include bp.max-md {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+
+    .cta-boat__image {
+      grid-column: 1;
+      grid-row: 2;
+      transform: translateY(-10%);
+
+      @include bp.max-md {
+        grid-column: 1;
+        grid-row: 2;
+        transform: none;
+      }
+    }
+  }
+
+  // ── Estados iniciais para animação (aplicados via JS) ────────────
+  &--will-animate {
+    .cta-boat__eyebrow,
+    .cta-boat__name,
+    .cta-boat__description,
+    .cta-boat__specs li,
+    .btn {
+      opacity: 0;
+    }
+
+    .cta-boat__image {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    &.cta-boat--reversed .cta-boat__image {
+      clip-path: inset(0 0 0 100%);
     }
   }
 }

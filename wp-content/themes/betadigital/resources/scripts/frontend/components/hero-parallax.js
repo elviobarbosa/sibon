@@ -49,12 +49,6 @@ export default class HeroParallax {
     const waterMaskUrl = waterContainer.dataset.waterMask;
     if (!boatImageUrl) return;
 
-    // Esconder imagem fallback quando WebGL estiver ativo
-    const fallbackImg = document.querySelector('.hero-parallax__boat-img--fallback');
-    if (fallbackImg) {
-      fallbackImg.style.display = 'none';
-    }
-
     this.waterEffect = new WaterEffect(waterContainer, boatImageUrl, waterMaskUrl);
   }
 

@@ -37,19 +37,20 @@ if ($slides->have_posts()) : ?>
       <?php endwhile; ?>
     </div>
 
-    <button class="feature-slide__btn feature-slide__btn--prev" aria-label="Slide anterior">
+    <button class="feature-slide__btn feature-slide__btn--prev" aria-label="Previous slide">
       <svg width="48" height="24" viewBox="0 0 48.442 24.35" aria-hidden="true">
         <use href="<?php echo SVGPATH; ?>arrow"></use>
       </svg>
     </button>
 
-    <button class="feature-slide__btn feature-slide__btn--next" aria-label="Próximo slide">
+    <button class="feature-slide__btn feature-slide__btn--next" aria-label="Next slide">
       <svg width="48" height="24" viewBox="0 0 48.442 24.35" aria-hidden="true">
         <use href="<?php echo SVGPATH; ?>arrow"></use>
       </svg>
     </button>
 
   </div>
+  <div class="feature-slide__pagination"></div>
 </div>
 <?php endif;
 wp_reset_postdata();

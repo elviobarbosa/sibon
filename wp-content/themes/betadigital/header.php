@@ -23,6 +23,8 @@
 
 <body <?php body_class() ?>>
 
+  <div id="page-loader" aria-hidden="true"></div>
+
   <div class="nav-container">
     <div class="container nav-container__container">
       <?php 

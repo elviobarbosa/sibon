@@ -37,7 +37,11 @@
   &__mosaic-item {
     margin: 0;
     overflow: hidden;
-    border-radius: fn.px-rem(20px);
+    border-radius: 24px;
+
+    @include bp.max-md {
+      border-radius: 12px;
+    }
 
     img {
       width: 100%;
@@ -130,6 +134,10 @@
 
     &--next {
       right: fn.px-rem(28px);
+    }
+
+    @include bp.max-md {
+      display: none;
     }
   }
 

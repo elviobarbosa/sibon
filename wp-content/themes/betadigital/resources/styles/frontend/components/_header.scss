@@ -2,15 +2,20 @@
 @use "../functions" as fn;
 
 .nav-container {
-  position: relative;
-  z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  
   &__wrapper.nav-container--primary {
     padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    
+
+    @include bp.max-md {
+      padding: 0 20px;
+    }
   }
 
   .sr-only {
@@ -30,6 +35,16 @@
     padding: 0;
   }
 
+  img {
+    height: 48px;
+    width: auto;
+
+    @include bp.min-lg {
+      height: 60px;
+      padding: 1rem 0;
+    }
+  }
+
   svg {
     width: 100px;
     @include bp.min-lg {
@@ -38,7 +53,9 @@
   }
 
   &--primary {
-    background-color: var(--wp--preset--color--white);
+    background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
     .menu-item,
     .page_item {
@@ -117,8 +134,17 @@
         }
       }
 
-      ~ div .nav-container__control .h-menu {
+      ~ div .nav-container__control {
+        @include bp.max-xl {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1001;
+        }
+
         .h-menu__line {
+          background-color: #fff;
+
           &:nth-child(1) {
             transform: rotate(45deg) translate(7px, 7px);
           }
@@ -148,18 +174,21 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 280px;
+      width: 100vw;
       height: 100vh;
       background-color: var(--primary-color);
       transform: translateX(-100%);
       transition:
-        transform 0.3s ease-in-out,
+        transform 0.4s cubic-bezier(0.77, 0, 0.18, 1),
         opacity 0.3s ease-in-out;
       opacity: 0;
       visibility: hidden;
       z-index: 999;
-      padding: 80px 40px 40px;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     ul {
@@ -173,10 +202,13 @@
         align-items: center;
       }
 
-      @include bp.max-lg {
+      @include bp.max-xl {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        text-align: center;
       }
     }
 
@@ -190,11 +222,12 @@
       opacity: 1;
 
       @include bp.max-xl {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        width: 100%;
+        text-align: center;
 
-        &:last-child {
-          border-bottom: none;
+        &:first-child {
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
         }
       }
 
@@ -203,8 +236,13 @@
         display: block;
 
         @include bp.max-xl {
-          font-size: 18px;
-          padding: 15px 0;
+          font-size: clamp(24px, 6vw, 36px);
+          font-weight: 300;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          padding: 20px 0;
+          text-align: center;
+          color: #fff !important;
         }
       }
     }
@@ -229,7 +267,7 @@
       &__line {
         width: 36px;
         height: 1px;
-        background-color: white;
+        background-color: var(--primary-color);
         display: block;
         transition: all 0.3s ease;
         transform-origin: center;
@@ -243,24 +281,7 @@
 }
 
 .nav-overlay {
-  @include bp.max-xl {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
-    z-index: 998;
-  }
-
-  @include bp.min-xl {
-    display: none;
-  }
+  display: none;
 }
 @keyframes rippleOut {
   0% {

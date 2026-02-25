@@ -8,6 +8,10 @@
   overflow: hidden;
   padding: fn.px-rem(40px) 0 fn.px-rem(40px) fn.px-rem(80px);
 
+  @include bp.max-md {
+    padding: fn.px-rem(32px) 0;
+  }
+
   .swiper {
     overflow: visible;
   }
@@ -20,6 +24,11 @@
 
     &-active {
       opacity: 1;
+    }
+
+    @include bp.max-md {
+      width: 88%;
+      max-width: 88vw;
     }
   }
 
@@ -64,12 +73,20 @@
     &--next {
       right: fn.px-rem(20px);
     }
+
+    @include bp.max-md {
+      display: none;
+    }
   }
 
   &__image {
     @include pimg.image-proportional(790px, 676px);
-    @include mx.border-radius(fn.px-rem(40px));
+    @include mx.border-radius(24px);
     overflow: hidden;
+
+    @include bp.max-md {
+      border-radius: 12px;
+    }
   }
 
   &__content {
@@ -77,22 +94,39 @@
     grid-template-columns: 1fr 1fr;
     gap: fn.px-rem(30px);
     align-items: center;
+
+    @include bp.max-md {
+      grid-template-columns: 1fr;
+      gap: fn.px-rem(20px);
+    }
   }
 
   &__highlight {
-    font-size: clamp(2.5rem, 2rem + 9vw, 150px);
+    
     padding: 0;
     margin: 0 auto;
     width: 100%;
     text-align: center;
-    transform: translate(0px, 70px);
     -webkit-text-stroke: 1px #D9D9D9;
     color: transparent;
+    font-size: clamp(2.5rem, 2rem + 9vw, 150px);
+
+    @include bp.max-md {
+      transform: translate(0px, 30px);
+    }
+
+    @include bp.min-md {
+      transform: translate(0px, 70px);
+    }
   }
 
   &__description {
     font-size: clamp(18px, 2rem + 3vw, 20px)!important;
     line-height: 1.4em;
+
+    @include bp.max-md {
+      font-size: clamp(14px, 4vw, 17px) !important;
+    }
   }
 
   &__title {
@@ -100,5 +134,51 @@
     font-size: clamp(32px, 2rem + 3vw, 50px)!important;
     line-height: 1em;
     margin: 0;
+
+    @include bp.max-md {
+      font-size: clamp(22px, 5.5vw, 32px) !important;
+    }
+  }
+
+  // Pagination — mobile only
+  &__pagination {
+    display: none;
+
+    @include bp.max-md {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: fn.px-rem(12px);
+      margin-top: fn.px-rem(24px);
+      position: static !important;
+      width: 100% !important;
+
+      .swiper-pagination-bullet {
+        width: fn.px-rem(20px);
+        height: fn.px-rem(20px);
+        background: none;
+        border-radius: 0;
+        opacity: 1;
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .bullet-active  { display: none; }
+        .bullet-default { display: block; }
+
+        &.swiper-pagination-bullet-active {
+          .bullet-default { display: none; }
+          .bullet-active  { display: block; }
+        }
+
+        svg {
+          width: fn.px-rem(20px);
+          height: fn.px-rem(20px);
+          display: block;
+        }
+      }
+    }
   }
 }
