@@ -53,7 +53,8 @@
   position: relative;
   height: 300vh;
   width: 100%;
-  background: #70c7f1; /* boat section colour — visible during bg fade-out */
+  background: #70c7f2;
+  /* boat section colour — visible during bg fade-out */
   z-index: 1;
 }
 
@@ -63,7 +64,8 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background: #0d2454; /* deep ocean blue — matches Three.js sky zenith */
+  background: #70c7f2;
+  /* bright sky cyan — matches Three.js sky uMid */
 }
 
 /* ── Canvas ────────────────────────────────────────────────────────────────── */
@@ -74,6 +76,19 @@
   height: 100%;
   z-index: 1;
   display: block;
+  /* Disable pointer events so the Spline canvas never captures scroll/touch */
+  pointer-events: none;
+}
+
+/* ── Spline watermark suppression ──────────────────────────────────────────── */
+a[href*="spline.design"],
+#logo,
+#spline-logo,
+.spline-watermark,
+[data-logo] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* ── Text containers ───────────────────────────────────────────────────────── */
@@ -81,64 +96,50 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* transform is driven entirely by JS — initial state set here */
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   max-width: 1100px;
   padding: 0 32px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 1000;
   box-sizing: border-box;
   will-change: opacity, transform;
 }
 
 .hero-spline-text-1 { opacity: 1; }
-.hero-spline-text-2 { opacity: 0; transform: translate(-50%, calc(-50% + 30px)); }
+.hero-spline-text-2 { opacity: 0; }
 
-/* ── Typography — matches site's eyebrow + TT Moons highlight pattern ──────── */
+/* ── Typography — mirrors .hero-parallax__title styling ─────────────────────── */
 .heading-hero {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  color: #fff;
+  line-height: 0.8;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 2px 12px rgba(0, 40, 80, 0.30),
+    0 8px 40px rgba(0, 60, 100, 0.35);
 }
 
+/* Mirrors .hero-parallax__title-line--headline */
 .heading-hero__eyebrow {
   display: block;
-  font-family: var(--body-font, "Avenir Next Condensed", sans-serif);
-  font-weight: 200;
-  font-size: clamp(0.7rem, 1.6vw, 1rem);
-  letter-spacing: 0.45em;
+  font-family: var(--body-font, "Avenir Next Condensed", sans-serif) !important;
+  font-weight: 100;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  /* subtle separator below eyebrow */
-  padding-bottom: 10px;
-  position: relative;
+  font-style: normal;
 }
 
-.heading-hero__eyebrow::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 24px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.35);
-}
-
+/* Mirrors .hero-parallax__title-line--highlight */
 .heading-hero__main {
   display: block;
-  font-family: var(--heading-font, "TT Moons", serif);
   font-style: italic;
-  font-weight: 400;
-  font-size: clamp(3.2rem, 9.5vw, 7.5rem);
-  line-height: 0.92;
-  color: #fff;
-  text-shadow:
-    0 2px 40px rgba(0, 0, 0, 0.25),
-    0 0 100px rgba(0, 148, 192, 0.18);
+}
+
+/* Char spans injected by JS animation */
+.heading-hero .char {
+  display: inline-block;
+  will-change: transform, opacity, filter;
 }
 </style>
