@@ -12,12 +12,11 @@
 .wave-line {
   position: absolute;
   width: 150%;
-  height: 100px;
-  will-change: transform, opacity, top, left;
+  height: 130px;
+  will-change: transform, top, left;
   transform-origin: center center;
 
   path {
-    will-change: opacity, d;
-    vector-effect: non-scaling-stroke;
+    will-change: d;
   }
 }
