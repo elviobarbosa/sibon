@@ -1,8 +1,15 @@
+@use "../mixins/breakpoints" as bp;
+
 .random-images {
   position: relative;
   height: 100vh;
   overflow: hidden;
   background-color: white;
+
+  @include bp.max-md {
+    height: auto;
+    overflow: visible;
+  }
 
   &__figure {
     position: absolute;
@@ -12,11 +19,25 @@
     height: 120%;
     will-change: transform;
     transform: translateY(0);
+
+    @include bp.max-md {
+      position: relative;
+      width: 100vw;
+      height: auto;
+      transform: none;
+      will-change: auto;
+    }
   }
 
   &__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    @include bp.max-md {
+      width: 100vw;
+      height: auto;
+      object-fit: initial;
+    }
   }
 }

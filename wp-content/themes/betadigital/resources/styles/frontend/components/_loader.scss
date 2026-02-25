@@ -1,0 +1,16 @@
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  &.is-done {
+    display: none;
+  }
+}

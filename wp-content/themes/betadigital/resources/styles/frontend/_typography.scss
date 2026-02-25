@@ -79,3 +79,8 @@ $headings: "TT Moons", serif;
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
 }
+
+// Oculta textos animados antes do JS carregar para evitar flash
+.animate-text {
+  opacity: 0;
+}

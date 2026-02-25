@@ -13,8 +13,8 @@ $item = new WP_Query(array(
           <span class="experience__title-line experience__title-line--highlight animate-text">Experience</span>
         </h2>
         <p class="experience__intro">
-          Nossas viagens com a Sibon Charters são pensadas para que você desfrute de cada momento sem preocupações.
-          Veja o que está incluído em sua jornada:
+          Our trips with Sibon Charters are designed so you can enjoy every moment without a worry in the world.
+          See what's included in your journey:
         </p>
       </header>
     </div>

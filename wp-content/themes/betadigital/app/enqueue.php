@@ -4,24 +4,21 @@
 function wpdocs_theme_name_scripts() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
     wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
-    function prefix_add_footer_styles() {
-        wp_enqueue_style('site-style', get_stylesheet_directory_uri() . '/dist/styles/frontend.css?' . rand(), array());
-               
-    };
-    
+    wp_enqueue_style('site-style', get_stylesheet_directory_uri() . '/dist/styles/frontend.css', array(), filemtime(get_stylesheet_directory() . '/dist/styles/frontend.css'));
+
     //scripts
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script('js-site', get_stylesheet_directory_uri() . '/dist/scripts/frontend-bundle.js?' . rand(), array(), '1.0', true);
+    wp_enqueue_script('js-site', get_stylesheet_directory_uri() . '/dist/scripts/frontend-bundle.js', array(), filemtime(get_stylesheet_directory() . '/dist/scripts/frontend-bundle.js'), true);
     wp_localize_script('js-site', 'ajaxData', array( 'url' => admin_url('admin-ajax.php') ));
  }
 
 function admin_style() {
     //styles
-    wp_enqueue_style('autem-style-admin', get_stylesheet_directory_uri() . '/dist/styles/admin.css', array(), '1.0', true);
+    wp_enqueue_style('sibon-style-admin', get_stylesheet_directory_uri() . '/dist/styles/admin.css', array(), '1.0', true);
 
     //script
     // wp_enqueue_script( 'jquery' );
-    wp_enqueue_script('autem-script-admin', get_stylesheet_directory_uri() . '/dist/scripts/admin-bundle.js', array(), '1.0', true);
+    wp_enqueue_script('sibon-script-admin', get_stylesheet_directory_uri() . '/dist/scripts/admin-bundle.js', array(), '1.0', true);
 }
 
 function be_gutenberg_scripts() {
@@ -37,7 +34,6 @@ function be_gutenberg_scripts() {
 }
 
 add_action( 'enqueue_block_editor_assets', 'be_gutenberg_scripts' );
-add_action( 'get_footer', 'prefix_add_footer_styles' );
 add_action('admin_enqueue_scripts', 'admin_style');
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 

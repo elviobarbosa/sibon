@@ -14,6 +14,14 @@ import HeroCharters from "./components/hero-charters";
 import PhotoSlide from "./components/photo-slide";
 import ScheduleBooking from "./components/schedule-booking";
 import Depoiments from "./components/depoiments";
+import CtaBoatAnimation from "./components/cta-boat-animation";
+
+function hideLoader() {
+  const loader = document.getElementById('page-loader');
+  if (!loader) return;
+  loader.classList.add('is-hidden');
+  loader.addEventListener('transitionend', () => loader.classList.add('is-done'), { once: true });
+}
 
 function domReady(fn) {
   document.addEventListener("DOMContentLoaded", fn);
@@ -36,6 +44,8 @@ function domReady(fn) {
     new PhotoSlide();
     new ScheduleBooking();
     new Depoiments();
+    new CtaBoatAnimation();
+    hideLoader();
   } else {
     setTimeout(() => {
       domReady(fn);
