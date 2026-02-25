@@ -292,6 +292,7 @@ html {
 body {
   padding: 0;
   margin: 0;
+  background-color: #f0f8ff;
 }
 
 body,
@@ -1692,7 +1693,6 @@ figure {
   }
 }
 .footer {
-  background-color: #fff;
   position: relative;
   z-index: 1;
 }
@@ -1787,20 +1787,18 @@ figure {
 .wave-line {
   position: absolute;
   width: 150%;
-  height: 100px;
-  will-change: transform, opacity, top, left;
+  height: 130px;
+  will-change: transform, top, left;
   transform-origin: center center;
 }
 .wave-line path {
-  will-change: opacity, d;
-  vector-effect: non-scaling-stroke;
+  will-change: d;
 }
 
 .random-images {
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background-color: white;
 }
 @media (max-width: 767.9px) {
   .random-images {
@@ -4782,7 +4780,6 @@ figure {
 
 .faq {
   padding: 6rem 0;
-  background-color: white;
 }
 @media (max-width: 767.9px) {
   .faq {
