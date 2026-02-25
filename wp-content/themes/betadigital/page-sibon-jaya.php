@@ -4,7 +4,7 @@ hero_sibon_baru([
   'title_small' => 'SIBON',
   'title_large' => 'JAYA',
   'description' => 'Dive into a floating luxury oasis. The Sibon Jaya is a sophisticated yacht with four private suites, designed for those seeking the ultimate in comfort and exclusivity. Picture yourself in a 5-star hotel, with the ocean as your backyard and the world\'s best waves at your fingertips.',
-  'features'    => '12 people · 5 cabins · 4 suites · 4 bathrooms',
+  'features'    => '12 people · 5 cabins · 4 suites · 5 bathrooms',
   'images'      => [
     [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya.jpg' ),              'alt' => 'Sibon Jaya' ],
     [ 'src' => esc_url( get_template_directory_uri() . '/dist/images/bmp/hero-jaya-aereo.jpg' ),        'alt' => 'Sibon Jaya - Aerial View' ],
@@ -47,7 +47,7 @@ cta_boat([
   'description' => 'Enjoy a spacious and accessible retreat where value meets adventure. The Sibon Baru redefines what you expect from a boat in its price range, offering ample space to relax and share surf stories.',
   'specs'     => ['12 people', '6 cabins', '6 berths', '4 bathrooms'],
   'cta_label' => "See Baru's schedule",
-  'cta_url'   => '/sibon-baru',
+  'cta_url'   => home_url('/sibon-baru'),
   'image'     => esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-jaya.jpg'),
   'image_alt' => 'Sibon Baru',
 ]);

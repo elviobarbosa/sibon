@@ -159,6 +159,10 @@
   --heading-font: "TT Moons", serif;
 }
 
+.animate-text {
+  opacity: 0;
+}
+
 .button {
   text-align: center;
   font-family: var(--body-font);
@@ -754,6 +758,10 @@ figure {
   --heading-font: "TT Moons", serif;
 }
 
+.animate-text {
+  opacity: 0;
+}
+
 /* stylelint-disable scss/dollar-variable-pattern */
 .hero-parallax__explore-text {
   color: var(--gray-500);
@@ -856,6 +864,10 @@ figure {
   --heading-font: "TT Moons", serif;
 }
 
+.animate-text {
+  opacity: 0;
+}
+
 /* stylelint-disable scss/dollar-variable-pattern */
 .hero-parallax__explore-text {
   color: var(--gray-500);
@@ -958,6 +970,10 @@ figure {
 :root {
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
+}
+
+.animate-text {
+  opacity: 0;
 }
 
 /* stylelint-disable scss/dollar-variable-pattern */
@@ -1319,6 +1335,25 @@ figure {
 :root {
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
+}
+
+.animate-text {
+  opacity: 0;
+}
+
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+#page-loader.is-hidden {
+  opacity: 0;
+}
+#page-loader.is-done {
+  display: none;
 }
 
 .btn {
@@ -2027,6 +2062,19 @@ figure {
   height: auto;
   z-index: 2;
   pointer-events: none;
+  transform-origin: center bottom;
+  animation: boat-rock 14s ease-in-out infinite;
+}
+@keyframes boat-rock {
+  0% {
+    transform: rotate(-0.3deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(0.3deg) translateY(4px);
+  }
+  100% {
+    transform: rotate(-0.3deg) translateY(0px);
+  }
 }
 .hero-parallax #water-effect-container {
   width: 100%;
@@ -2130,6 +2178,10 @@ figure {
 :root {
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
+}
+
+.animate-text {
+  opacity: 0;
 }
 
 /* stylelint-disable scss/dollar-variable-pattern */
@@ -2361,6 +2413,10 @@ figure {
 :root {
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
+}
+
+.animate-text {
+  opacity: 0;
 }
 
 /* stylelint-disable scss/dollar-variable-pattern */
@@ -2645,6 +2701,10 @@ figure {
 :root {
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
+}
+
+.animate-text {
+  opacity: 0;
 }
 
 /* stylelint-disable scss/dollar-variable-pattern */
@@ -3463,6 +3523,10 @@ figure {
   --heading-font: "TT Moons", serif;
 }
 
+.animate-text {
+  opacity: 0;
+}
+
 /* stylelint-disable scss/dollar-variable-pattern */
 .hero-parallax__explore-text {
   color: var(--gray-500);
@@ -3901,6 +3965,10 @@ figure {
 :root {
   --body-font: "Avenir Next Condensed", sans-serif;
   --heading-font: "TT Moons", serif;
+}
+
+.animate-text {
+  opacity: 0;
 }
 
 /* stylelint-disable scss/dollar-variable-pattern */
