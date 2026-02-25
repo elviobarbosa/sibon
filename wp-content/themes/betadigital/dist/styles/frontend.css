@@ -3577,7 +3577,6 @@ figure {
 }
 
 .schedule-booking {
-  padding: 3.75rem 0 5rem;
   background-color: white;
   z-index: 1;
   position: relative;
@@ -3625,7 +3624,7 @@ figure {
   color: #c0c0c0;
 }
 .schedule-booking__legend-item--sold-out svg {
-  color: #e05c5c;
+  color: #ce2f2f;
 }
 .schedule-booking__legend-item--few-spots svg {
   color: #D4AC0D;
@@ -3639,6 +3638,31 @@ figure {
 .schedule-booking__legend-item span {
   display: block;
 }
+.schedule-booking__table-header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) 10rem;
+  max-width: 90vw;
+  margin: 0 auto;
+  position: sticky;
+  top: var(--nav-h, 80px);
+  z-index: 10;
+  background-color: white;
+  border-bottom: 2px solid #e5e5e5;
+  padding: 0.625rem 1rem;
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__table-header {
+    display: none;
+  }
+}
+.schedule-booking__table-header span {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  text-align: center;
+}
 .schedule-booking__grid {
   max-width: 90vw;
   margin: 0 auto;
@@ -3646,22 +3670,48 @@ figure {
 .schedule-booking__grid[hidden] {
   display: none;
 }
+@media (max-width: 767.9px) {
+  .schedule-booking__grid {
+    max-width: 100%;
+    padding: 1rem 5vw 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
 .schedule-booking__card {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr) 10rem;
   position: relative;
-  padding: 1.25rem 1rem 3.25rem;
   border-bottom: 1px solid #e5e5e5;
   text-align: center;
   transition: background 0.2s ease;
+}
+.schedule-booking__card:has(.schedule-booking__cta) {
+  cursor: pointer;
 }
 .schedule-booking__card:hover {
   background: #fafafa;
 }
 .schedule-booking__card:hover .schedule-booking__cta {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
   pointer-events: auto;
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto auto;
+    gap: 0.25rem 0.75rem;
+    padding: 1.125rem 1rem 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: left;
+    background: white;
+  }
+  .schedule-booking__card:hover {
+    background: white;
+  }
 }
 .schedule-booking__card--closed .schedule-booking__wave {
   color: #c0c0c0;
@@ -3669,17 +3719,37 @@ figure {
 .schedule-booking__card--closed .schedule-booking__period {
   color: #c0c0c0;
 }
-.schedule-booking__card--closed .schedule-booking__spots {
+.schedule-booking__card--closed .schedule-booking__status {
   color: #c0c0c0;
 }
+.schedule-booking__card--closed .schedule-booking__booked {
+  color: #c0c0c0;
+}
+.schedule-booking__card--closed .schedule-booking__available {
+  color: #c0c0c0;
+}
+.schedule-booking__card--closed .schedule-booking__status {
+  color: white;
+  background-color: #c0c0c0;
+}
 .schedule-booking__card--sold-out .schedule-booking__wave {
-  color: #e05c5c;
+  color: #ce2f2f;
 }
 .schedule-booking__card--sold-out .schedule-booking__period {
-  color: #e05c5c;
+  color: #ce2f2f;
 }
-.schedule-booking__card--sold-out .schedule-booking__spots {
-  color: #e05c5c;
+.schedule-booking__card--sold-out .schedule-booking__status {
+  color: #ce2f2f;
+}
+.schedule-booking__card--sold-out .schedule-booking__booked {
+  color: #ce2f2f;
+}
+.schedule-booking__card--sold-out .schedule-booking__available {
+  color: #ce2f2f;
+}
+.schedule-booking__card--sold-out .schedule-booking__status {
+  color: white;
+  background-color: #ce2f2f;
 }
 .schedule-booking__card--few-spots .schedule-booking__wave {
   color: #D4AC0D;
@@ -3687,8 +3757,18 @@ figure {
 .schedule-booking__card--few-spots .schedule-booking__period {
   color: #D4AC0D;
 }
-.schedule-booking__card--few-spots .schedule-booking__spots {
+.schedule-booking__card--few-spots .schedule-booking__status {
   color: #D4AC0D;
+}
+.schedule-booking__card--few-spots .schedule-booking__booked {
+  color: #D4AC0D;
+}
+.schedule-booking__card--few-spots .schedule-booking__available {
+  color: #D4AC0D;
+}
+.schedule-booking__card--few-spots .schedule-booking__status {
+  color: white;
+  background-color: #D4AC0D;
 }
 .schedule-booking__card--on-hold .schedule-booking__wave {
   color: #E26B0A;
@@ -3696,8 +3776,18 @@ figure {
 .schedule-booking__card--on-hold .schedule-booking__period {
   color: #E26B0A;
 }
-.schedule-booking__card--on-hold .schedule-booking__spots {
+.schedule-booking__card--on-hold .schedule-booking__status {
   color: #E26B0A;
+}
+.schedule-booking__card--on-hold .schedule-booking__booked {
+  color: #E26B0A;
+}
+.schedule-booking__card--on-hold .schedule-booking__available {
+  color: #E26B0A;
+}
+.schedule-booking__card--on-hold .schedule-booking__status {
+  color: white;
+  background-color: #E26B0A;
 }
 .schedule-booking__card--open .schedule-booking__wave {
   color: #377E22;
@@ -3705,12 +3795,23 @@ figure {
 .schedule-booking__card--open .schedule-booking__period {
   color: #377E22;
 }
-.schedule-booking__card--open .schedule-booking__spots {
+.schedule-booking__card--open .schedule-booking__status {
   color: #377E22;
+}
+.schedule-booking__card--open .schedule-booking__booked {
+  color: #377E22;
+}
+.schedule-booking__card--open .schedule-booking__available {
+  color: #377E22;
+}
+.schedule-booking__card--open .schedule-booking__status {
+  color: white;
+  background-color: #377E22;
 }
 .schedule-booking__card--closed .schedule-booking__local,
 .schedule-booking__card--closed .schedule-booking__people-icon,
-.schedule-booking__card--closed .schedule-booking__spots,
+.schedule-booking__card--closed .schedule-booking__booked,
+.schedule-booking__card--closed .schedule-booking__available,
 .schedule-booking__card--closed .schedule-booking__season {
   opacity: 0.45;
 }
@@ -3737,31 +3838,122 @@ figure {
   font-weight: 500;
   line-height: 1.2;
   margin: 0;
+  padding: 0.625rem 0 0.625rem;
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__period {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 0;
+    align-self: center;
+  }
 }
 .schedule-booking__local {
   font-size: 1.25rem;
   font-weight: 500;
   margin: 0;
+  padding: 0.625rem 0 0.625rem;
 }
-.schedule-booking__people-icon {
-  color: #999;
-  margin-top: 0.375rem;
+@media (max-width: 767.9px) {
+  .schedule-booking__local {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #666;
+    padding: 0;
+  }
 }
 .schedule-booking__spots {
   font-size: 1.25rem;
   font-weight: 500;
   margin: 0;
+  padding: 0.625rem 0 0.625rem;
+}
+.schedule-booking__status {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.625rem 0 0.625rem;
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__status {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0;
+    font-size: 0.875rem;
+    align-self: center;
+    justify-self: end;
+    padding: 2px 15px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+  }
+}
+.schedule-booking__booked, .schedule-booking__available {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.625rem 0 0.625rem;
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__booked {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 0.8125rem;
+    color: #666;
+    font-weight: 400;
+    padding: 0.375rem 0 0;
+  }
+  .schedule-booking__booked::before {
+    content: "Booked: ";
+    font-weight: 600;
+    color: inherit;
+  }
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__available {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 0.8125rem;
+    color: #666;
+    font-weight: 400;
+    padding: 0.375rem 0 0;
+    text-align: right;
+    justify-self: end;
+  }
+  .schedule-booking__available::before {
+    content: "Available: ";
+    font-weight: 600;
+    color: inherit;
+  }
 }
 .schedule-booking__season {
   font-size: 1.25rem;
   letter-spacing: 0.06em;
   margin: 0;
+  padding: 0.625rem 0 0.625rem;
+}
+@media (max-width: 767.9px) {
+  .schedule-booking__season {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    padding: 0;
+    justify-self: end;
+    align-self: center;
+  }
 }
 .schedule-booking__cta {
-  position: absolute;
-  bottom: 0.875rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #4b9eff;
   color: #fff;
   font-size: 0.75rem;
@@ -3773,13 +3965,20 @@ figure {
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease;
+  margin: auto 0.75rem auto 0;
+  align-self: center;
+  box-sizing: border-box;
 }
 @media (max-width: 767.9px) {
   .schedule-booking__cta {
+    grid-column: 1/-1;
+    grid-row: 4;
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    margin: 0.75rem 0 0;
+    justify-content: center;
+    width: 100%;
   }
 }
 .schedule-booking__year-tabs {

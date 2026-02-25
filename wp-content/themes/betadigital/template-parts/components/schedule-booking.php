@@ -53,8 +53,8 @@ $status_labels = [
 ];
 
 $season_labels = [
-  'low_season'  => 'Low season',
-  'high_season' => 'High season',
+  'low_season'  => 'Low',
+  'high_season' => 'High',
 ];
 
 $local_labels = [
@@ -121,6 +121,16 @@ foreach ($calendario as $_entry) {
     <?php endforeach; ?>
   </div>
 
+  <div class="schedule-booking__table-header">
+    <span>Schedule</span>
+    <span>Destination</span>
+    <span>Status</span>
+    <span>Booked</span>
+    <span>Available</span>
+    <span>Season</span>
+    <span></span>
+  </div>
+
   <?php foreach ($posts_by_year as $year => $entries) : ?>
   <div class="schedule-booking__grid" data-year="<?php echo esc_attr($year); ?>"
     <?php echo (string) $year !== $active_year ? 'hidden' : ''; ?>>
@@ -158,17 +168,19 @@ foreach ($calendario as $_entry) {
 
       <p class="schedule-booking__local"><?php echo esc_html($local_labels[$local] ?? ucfirst($local)); ?></p>
 
-      <svg class="schedule-booking__star-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden=" true">
-        <use href="<?php echo SVGPATH; ?>star"></use>
-      </svg>
+      <p class="schedule-booking__status"><?php echo esc_html($status_labels[$status] ?? ucfirst($status)); ?></p>
 
-      <p class="schedule-booking__spots">
-        <?php echo $booked; ?> booked &middot; <?php echo $remaining; ?> available
-      </p>
+      <p class="schedule-booking__booked"><?php echo $booked; ?></p>
+
+      <p class="schedule-booking__available"><?php echo $remaining; ?></p>
 
       <p class="schedule-booking__season">
         <?php echo esc_html($season_labels[$temporada] ?? ''); ?>
       </p>
+
+      <svg class="schedule-booking__star-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <use href="<?php echo SVGPATH; ?>star"></use>
+      </svg>
 
       <?php if (in_array($status, ['few-spots', 'on-hold', 'open'])) : ?>
       <a href="<?php echo esc_url($enquire_url); ?>" class="schedule-booking__cta"

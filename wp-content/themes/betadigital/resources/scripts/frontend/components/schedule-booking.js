@@ -10,9 +10,26 @@ export default class ScheduleBooking {
     const container = document.querySelector(this.selector);
     if (!container) return;
 
+    this.initNavHeight();
     this.initYearTabs(container);
     this.initEnquireSelect(container);
     this.initEnquireLinks(container);
+  }
+
+  // ─── Mede o nav e expõe como CSS var para o sticky header ──────────────
+  initNavHeight() {
+    const nav = document.querySelector(".nav-container");
+    if (!nav) return;
+
+    const update = () => {
+      document.documentElement.style.setProperty(
+        "--nav-h",
+        nav.offsetHeight + "px"
+      );
+    };
+
+    update();
+    window.addEventListener("resize", update);
   }
 
   // ─── Troca de abas por ano ──────────────────────────────────────────────
@@ -101,13 +118,16 @@ export default class ScheduleBooking {
     });
   }
 
-  // ─── Click em ENQUIRE NOW: scroll + pré-seleciona a data ───────────────
+  // ─── Click na linha: scroll + pré-seleciona a data ─────────────────────
   initEnquireLinks(container) {
-    container.querySelectorAll("a.schedule-booking__cta").forEach((link) => {
-      link.addEventListener("click", (e) => {
+    container.querySelectorAll(".schedule-booking__card").forEach((card) => {
+      const cta = card.querySelector("a.schedule-booking__cta");
+      if (!cta) return; // somente linhas com ação disponível
+
+      card.addEventListener("click", (e) => {
         e.preventDefault();
 
-        const period = link.dataset.period;
+        const period = cta.dataset.period;
         const target = document.querySelector("#enquire");
         if (!target) return;
 
