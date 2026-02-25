@@ -134,19 +134,19 @@ export default class WaterEffect {
         float waterIntensity = maskValue;
 
         // Ondas
-        float wave1 = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uv.y * 1.5 + uTime * 0.06));
-        float wave2 = snoise(vec2(uv.x * 3.0 - uTime * 0.12, uv.y * 2.0 + uTime * 0.05));
+        float wave1 = snoise(vec2(uv.x * 1.4 + uTime * 0.07, uv.y * 1.0 + uTime * 0.04));
+        float wave2 = snoise(vec2(uv.x * 2.0 - uTime * 0.08, uv.y * 1.4 + uTime * 0.035));
         float combinedWave = wave1 * 0.6 + wave2 * 0.4;
 
         // Displacement — livre agora que os barcos estão em camada separada
-        float strength = waterIntensity * 0.022;
+        float strength = waterIntensity * 0.011;
         vec2 displacement = vec2(
           combinedWave * strength,
           combinedWave * strength * 0.5
         );
 
         // Ondulação horizontal
-        displacement.x += sin(uv.y * 15.0 + uTime * 0.7) * 0.005 * waterIntensity;
+        displacement.x += sin(uv.y * 10.0 + uTime * 0.45) * 0.003 * waterIntensity;
 
         vec2 distortedUv = uv + displacement;
 
@@ -161,17 +161,17 @@ export default class WaterEffect {
         vec4 color = texture2D(uTexture, distortedUv);
 
         // Specular - brilho nas cristas
-        float specular = pow(max(0.0, combinedWave), 1.5) * 0.38 * waterIntensity;
+        float specular = pow(max(0.0, combinedWave), 2.0) * 0.18 * waterIntensity;
         color.rgb += vec3(specular * 0.88, specular * 0.94, specular);
 
         // Caustics - padrões de luz
-        float caustic = snoise(vec2(uv.x * 10.0 + uTime * 0.12, uv.y * 10.0 - uTime * 0.06));
-        caustic = pow(max(0.0, caustic), 1.8) * 0.22 * waterIntensity;
+        float caustic = snoise(vec2(uv.x * 8.0 + uTime * 0.09, uv.y * 8.0 - uTime * 0.05));
+        caustic = pow(max(0.0, caustic), 2.2) * 0.10 * waterIntensity;
         color.rgb += vec3(caustic * 0.82, caustic * 0.93, caustic);
 
         // Segunda camada de caustics para mais complexidade
-        float caustic2 = snoise(vec2(uv.x * 7.0 - uTime * 0.09, uv.y * 8.0 + uTime * 0.07));
-        caustic2 = pow(max(0.0, caustic2), 2.2) * 0.12 * waterIntensity;
+        float caustic2 = snoise(vec2(uv.x * 5.0 - uTime * 0.07, uv.y * 6.0 + uTime * 0.05));
+        caustic2 = pow(max(0.0, caustic2), 2.8) * 0.05 * waterIntensity;
         color.rgb += vec3(caustic2 * 0.8, caustic2 * 0.92, caustic2);
 
         gl_FragColor = color;
@@ -202,7 +202,7 @@ export default class WaterEffect {
   }
 
   animate() {
-    this.time += 0.008;
+    this.time += 0.005;
 
     if (this.material) {
       this.material.uniforms.uTime.value = this.time;

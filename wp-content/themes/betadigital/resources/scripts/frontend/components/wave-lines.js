@@ -54,27 +54,27 @@ export default class WaveLines {
       svg.appendChild(path);
       this.container.appendChild(svg);
 
-      const baseAmplitude = 15 + Math.random() * 25;
+      const baseAmplitude = 6 + Math.random() * 10;
 
       // Posição e rotação inicial randômica
       const initialTop = positions[index];
       const initialLeft = -20 + Math.random() * 20;
-      const initialRotation = -20 + Math.random() * 40; // -20 a +20 graus
+      const initialRotation = -8 + Math.random() * 16; // -8 a +8 graus
 
       this.waves.push({
         svg,
         path,
         // Amplitude
         amplitude: baseAmplitude,
-        amplitudeVariation: baseAmplitude * 0.4,
+        amplitudeVariation: baseAmplitude * 0.2,
         amplitudePhase: Math.random() * Math.PI * 2,
-        amplitudeSpeed: 0.0005 + Math.random() * 0.0005,
+        amplitudeSpeed: 0.0002 + Math.random() * 0.0003,
         // Frequência e fase
-        frequency: 0.01 + Math.random() * 0.02,
+        frequency: 0.005 + Math.random() * 0.008,
         phaseOffset: Math.random() * Math.PI * 2,
-        animationSpeed: 0.03 + Math.random() * 0.04,
+        animationSpeed: 0.010 + Math.random() * 0.012,
         // Opacidade
-        opacity: 0.3 + Math.random() * 0.4,
+        opacity: 0.2 + Math.random() * 0.25,
         // Posicionamento dinâmico
         currentTop: initialTop,
         currentLeft: initialLeft,
@@ -83,9 +83,9 @@ export default class WaveLines {
         targetLeft: initialLeft,
         targetRotation: initialRotation,
         // Timing para reposicionamento
-        repositionTimer: Math.random() * 500,
-        repositionInterval: 500 + Math.random() * 400,
-        transitionSpeed: 0.003 + Math.random() * 0.004
+        repositionTimer: Math.random() * 700,
+        repositionInterval: 800 + Math.random() * 600,
+        transitionSpeed: 0.001 + Math.random() * 0.002
       });
 
       // Aplicar posição inicial
@@ -105,9 +105,9 @@ export default class WaveLines {
 
       // Definir novos targets periodicamente
       if (wave.repositionTimer >= wave.repositionInterval) {
-        wave.targetTop = wave.currentTop + (-6 + Math.random() * 12);
-        wave.targetLeft = wave.currentLeft + (-4 + Math.random() * 8);
-        wave.targetRotation = -20 + Math.random() * 40;
+        wave.targetTop = wave.currentTop + (-3 + Math.random() * 6);
+        wave.targetLeft = wave.currentLeft + (-2 + Math.random() * 4);
+        wave.targetRotation = -8 + Math.random() * 16;
 
         // Limitar dentro dos bounds
         wave.targetTop = Math.max(5, Math.min(85, wave.targetTop));
