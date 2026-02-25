@@ -53,8 +53,8 @@ $status_labels = [
 ];
 
 $season_labels = [
-  'low_season'  => 'LOW SEASON',
-  'high_season' => 'HIGH SEASON',
+  'low_season'  => 'Low season',
+  'high_season' => 'High season',
 ];
 
 $local_labels = [
@@ -102,7 +102,8 @@ foreach ($calendario as $_entry) {
   }
 }
 ?>
-<section class="schedule-booking" id="schedule-booking" data-dates="<?php echo esc_attr(wp_json_encode($dates_for_select)); ?>">
+<section class="schedule-booking" id="schedule-booking"
+  data-dates="<?php echo esc_attr(wp_json_encode($dates_for_select)); ?>">
   <h2 class="schedule-booking__title">
     <span class="schedule-booking__title--headline animate-text"><?php echo $boat_posts[0]->post_title; ?></span>
     <span class="schedule-booking__title--highlight animate-text">Schedule & Bookings</span>
@@ -153,19 +154,11 @@ foreach ($calendario as $_entry) {
       $remaining = max(0, $available - $booked);
     ?>
     <div class="schedule-booking__card schedule-booking__card--<?php echo $status; ?>">
-      <svg class="schedule-booking__wave" width="33" height="13" viewBox="0 0 33.697 13.035" aria-hidden="true">
-        <use href="<?php echo SVGPATH; ?>booking-wave"></use>
-      </svg>
-
       <p class="schedule-booking__period"><?php echo esc_html($period_label); ?></p>
 
       <p class="schedule-booking__local"><?php echo esc_html($local_labels[$local] ?? ucfirst($local)); ?></p>
 
-      <svg class="schedule-booking__people-icon" width="23" height="18" viewBox="0 0 23 18" aria-hidden="true">
-        <use href="<?php echo SVGPATH; ?>people"></use>
-      </svg>
-
-      <svg class="schedule-booking__star-icon" width="20" height="20" viewBox="0 0 20 20" " aria-hidden=" true">
+      <svg class="schedule-booking__star-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden=" true">
         <use href="<?php echo SVGPATH; ?>star"></use>
       </svg>
 
@@ -178,7 +171,8 @@ foreach ($calendario as $_entry) {
       </p>
 
       <?php if (in_array($status, ['few-spots', 'on-hold', 'open'])) : ?>
-      <a href="<?php echo esc_url($enquire_url); ?>" class="schedule-booking__cta" data-period="<?php echo esc_attr($period_label); ?>">
+      <a href="<?php echo esc_url($enquire_url); ?>" class="schedule-booking__cta"
+        data-period="<?php echo esc_attr($period_label); ?>">
         ENQUIRE NOW
       </a>
       <?php endif; ?>
