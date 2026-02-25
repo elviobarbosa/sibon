@@ -3,8 +3,11 @@ import WaterEffect from './water-effect';
 
 export default class HeroParallax {
   constructor() {
-    this.container = document.getElementById('birds-3d-container');
+    // Water effect runs independently of birds
+    this.waterEffect = null;
+    this.setupWaterEffect();
 
+    this.container = document.getElementById('birds-3d-container');
     if (!this.container) return;
 
     this.birds = [];
@@ -27,9 +30,6 @@ export default class HeroParallax {
     this.boundaryMargin = 15;
     this.boundaryForceStrength = 0.05;
 
-    // Water effect
-    this.waterEffect = null;
-
     this.init();
   }
 
@@ -38,7 +38,6 @@ export default class HeroParallax {
     this.loadTexture();
     this.setupParallax();
     this.setupResize();
-    this.setupWaterEffect();
   }
 
   setupWaterEffect() {
