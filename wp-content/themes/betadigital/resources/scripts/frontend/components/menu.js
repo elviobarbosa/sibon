@@ -8,9 +8,10 @@ export default class Menu {
   }
 
   init() {
-    const menu = document.querySelector(this.selector);
-    const menuContainer = document.querySelector(this.classes.navContainer);
+    // Header transparente no hero — não depende do menu element
+    this._setupHeroHeader();
 
+    const menu = document.querySelector(this.selector);
     if (!menu) return;
 
     menu.addEventListener("click", (e) => {
@@ -22,15 +23,35 @@ export default class Menu {
       navMenu.classList.toggle("active");
       logo.classList.toggle("opacity-0");
     });
+  }
 
-    // window.addEventListener('scroll', () => {
-    //     if (window.pageYOffset > menuContainer.offsetTop + 250) {
-    //         if (menuContainer) menuContainer.classList.add('fixed');
-    //         document.body.style.marginBlockStart = `${menuContainer.clientHeight / 10}rem`;
-    //     } else {
-    //         if (menuContainer) menuContainer.classList.remove('fixed');
-    //         document.body.style.marginBlockStart = '0rem';
-    //     }
-    // })
+  _setupHeroHeader() {
+    const nav           = document.querySelector(this.classes.navContainer);
+    const hero          = document.querySelector('.hero-spline-wrapper');
+    const unforgettable = document.querySelector('.unforgettable');
+
+    // Só ativa se ambas as seções existirem nesta página
+    if (!nav || !hero || !unforgettable) return;
+
+    // Estado inicial: hero visível → header transparente
+    nav.classList.add('nav--hero');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ isIntersecting, boundingClientRect }) => {
+          if (isIntersecting) {
+            // Entrou em unforgettable → remove hero state → header opaco
+            nav.classList.remove('nav--hero');
+          } else if (boundingClientRect.top > 0) {
+            // Seção ainda abaixo do viewport → user voltou ao hero → transparente
+            nav.classList.add('nav--hero');
+          }
+          // top < 0: seção passou acima → user está em seções posteriores → mantém opaco
+        });
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(unforgettable);
   }
 }

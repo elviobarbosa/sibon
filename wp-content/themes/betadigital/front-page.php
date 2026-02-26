@@ -1,6 +1,6 @@
 <?php
 get_header();
-hero_spline();
+hero_parallax();
 unforgettable();
 feature_slide();
 experience();
@@ -27,5 +27,8 @@ cta_boat([
 ]);
 depoiments();
 faq();
+?>
+<div id="wave-lines-container"></div>
+<?php
 get_footer();
 ?>

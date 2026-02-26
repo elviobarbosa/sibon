@@ -16,8 +16,9 @@ export default class HeroOcean {
     this.canvas  = document.getElementById('hero-ocean-canvas');
     this.wrapper = document.querySelector('.hero-spline-wrapper');
     this.sticky  = document.querySelector('.hero-spline-sticky');
-    this.text1   = document.querySelector('.hero-spline-text-1');
-    this.text2   = document.querySelector('.hero-spline-text-2');
+    this.text1      = document.querySelector('.hero-spline-text-1');
+    this.text2      = document.querySelector('.hero-spline-text-2');
+    this.scrollHint = document.getElementById('hero-scroll-hint');
 
     if (!this.canvas || !this.wrapper) return;
 
@@ -27,7 +28,6 @@ export default class HeroOcean {
 
     this._setupSpline();
     this._setupScroll();
-    this._setupResize();
   }
 
   /* ── Spline ──────────────────────────────────────────────────────────────── */
@@ -43,9 +43,40 @@ export default class HeroOcean {
         .catch((err) => console.warn('[HeroOcean] Spline load error:', err));
 
       this._removeWatermark();
+      this._setupVisibility();
     } catch (err) {
       console.warn('[HeroOcean] Spline init error:', err);
     }
+  }
+
+  /* ── Pause/resume Spline when section leaves/enters viewport ─────────────── */
+  _setupVisibility() {
+    if (!this.wrapper || !this.app) return;
+    this._splineStopped = false;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (!this.app) return;
+          if (entry.isIntersecting) {
+            if (this._splineStopped) {
+              this.app.play();
+              this._splineStopped = false;
+            }
+          } else {
+            if (!this._splineStopped) {
+              this.app.stop();
+              this._splineStopped = true;
+            }
+          }
+        });
+      },
+      // 200px de buffer: resume um pouco antes do usuário ver a seção de volta
+      { rootMargin: '200px' }
+    );
+
+    observer.observe(this.wrapper);
+    this._visibilityObserver = observer;
   }
 
   /* ── Watermark removal ───────────────────────────────────────────────────── */
@@ -120,7 +151,16 @@ export default class HeroOcean {
       c.style.filter    = 'blur(15px)';
     });
 
-    createTimeline({ defaults: { ease: 'out(4)' } }).add(chars, {
+    createTimeline({
+      defaults: { ease: 'out(4)' },
+      onComplete: () => {
+        // Limpa filter e will-change após animação — libera compositing layers
+        chars.forEach(c => {
+          c.style.filter     = '';
+          c.style.willChange = 'auto';
+        });
+      },
+    }).add(chars, {
       opacity:    [0, 1],
       translateY: [100, 0],
       scale:      [0.2, 1],
@@ -133,56 +173,67 @@ export default class HeroOcean {
 
   /* ── Scroll-driven animation ─────────────────────────────────────────────── */
   _setupScroll() {
-    var self         = this;
-    var SLIDE        = 30;
-    var text1Done    = false;
-    var text2Done    = false;
+    var self      = this;
+    var SLIDE     = 30;
+    var text1Done = false;
+    var text2Done = false;
+    var ticking   = false;
+    var winH      = window.innerHeight; // cacheado — atualizado só no resize
+    var lastRaw   = -1;                 // evita writes repetidos quando o raw não mudou
+
+    // Background nunca muda — define uma vez só
+    self._bg('rgb(112,199,242)');
 
     function update() {
       if (!self.wrapper) return;
       var rect  = self.wrapper.getBoundingClientRect();
-      var winH  = window.innerHeight;
       var total = rect.height - winH;
       if (total <= 0) return;
 
+      // Seção completamente acima do viewport — nada a fazer
+      if (rect.bottom < 0) return;
+
       var raw = Math.max(0, Math.min(1, -rect.top / total));
-      var p, e, r, g, b;
+
+      // Pula se o progresso não mudou de forma perceptível
+      if (Math.abs(raw - lastRaw) < 0.0005) return;
+      lastRaw = raw;
+
+      var p, e;
 
       if (raw < 0.20) {
-        // ── Phase 1: text1 fully visible ──
+        // ── Phase 1: text1 + scroll hint fully visible ──
         if (!text1Done) { text1Done = true; self._animateIn(self.text1); }
         self._container(self.text1, 1, 0);
         self._container(self.text2, 0, SLIDE);
+        self._hint(1);
         self._canvasOpacity(1);
-        self._bg('rgb(112,199,242)');
 
       } else if (raw < 0.35) {
-        // ── Phase 2: text1 fades up and out ──
+        // ── Phase 2: text1 + scroll hint fade up and out ──
         if (!text1Done) { text1Done = true; self._animateIn(self.text1); }
         p = easeInOutCubic(1 - (raw - 0.20) / 0.15);
         self._container(self.text1, p, -(1 - p) * 16);
         self._container(self.text2, 0, SLIDE);
+        self._hint(p);
         self._canvasOpacity(1);
-        self._bg('rgb(112,199,242)');
 
       } else if (raw < 0.50) {
-        // ── Phase 3: empty stage ──
+        // ── Phase 3: empty stage — hint gone ──
         self._container(self.text1, 0, -16);
         self._container(self.text2, 0, SLIDE);
+        self._hint(0);
         self._canvasOpacity(1);
-        self._bg('rgb(112,199,242)');
 
       } else if (raw < 0.80) {
         // ── Phase 4+5: text2 reveals via char animation ──
         if (!text2Done) {
           text2Done = true;
-          // Show container immediately — chars animate themselves in
           self._container(self.text2, 1, 0);
           self._animateIn(self.text2);
         }
         self._container(self.text1, 0, -16);
         self._canvasOpacity(1);
-        self._bg('rgb(112,199,242)');
 
       } else {
         // ── Phase 6: everything fades, boat section emerges ──
@@ -190,12 +241,30 @@ export default class HeroOcean {
         self._container(self.text1, 0, -16);
         self._container(self.text2, e, -(1 - e) * 16);
         self._canvasOpacity(e);
-        self._bg('rgb(112,199,242)');
       }
     }
 
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
+    // rAF throttle: garante no máximo 1 update por frame de animação
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          update();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      winH = window.innerHeight; // atualiza cache
+      if (this.canvas) {
+        this.canvas.width  = window.innerWidth;
+        this.canvas.height = winH;
+      }
+      lastRaw = -1; // força re-render com novo winH
+      update();
+    }, { passive: true });
     update();
   }
 
@@ -206,6 +275,10 @@ export default class HeroOcean {
     el.style.transform = 'translate(-50%, calc(-50% + ' + translateY + 'px))';
   }
 
+  _hint(v) {
+    if (this.scrollHint) this.scrollHint.style.opacity = String(Math.max(0, Math.min(1, v)));
+  }
+
   _canvasOpacity(v) {
     if (this.canvas) this.canvas.style.opacity = String(Math.max(0, Math.min(1, v)));
   }
@@ -214,11 +287,4 @@ export default class HeroOcean {
     if (this.sticky) this.sticky.style.background = color;
   }
 
-  /* ── Resize ──────────────────────────────────────────────────────────────── */
-  _setupResize() {
-    window.addEventListener('resize', () => {
-      this.canvas.width  = window.innerWidth;
-      this.canvas.height = window.innerHeight;
-    });
-  }
 }
