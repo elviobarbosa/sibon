@@ -287,8 +287,8 @@
   display: none;
 }
 // ── Hero header: transparente enquanto nav--hero está ativo ──────────────────
-// Adicionado via JS quando .hero-spline-wrapper e .unforgettable existem na página.
-// Removido ao entrar em unforgettable; restaurado ao voltar pro hero.
+// Adicionado via JS nas páginas com hero (hero-spline ou hero-parallax).
+// Removido quando o hero sai do viewport; restaurado ao voltar.
 .nav-container.nav--hero .nav-container--primary {
   background-color: transparent;
   backdrop-filter: blur(0px);

@@ -10,6 +10,7 @@ export default class Menu {
   init() {
     // Header transparente no hero — não depende do menu element
     this._setupHeroHeader();
+    this._setupHeroParallaxHeader();
 
     const menu = document.querySelector(this.selector);
     if (!menu) return;
@@ -53,5 +54,35 @@ export default class Menu {
     );
 
     observer.observe(unforgettable);
+  }
+
+  _setupHeroParallaxHeader() {
+    const nav      = document.querySelector(this.classes.navContainer);
+    const boatSection = document.querySelector('.hero-parallax__section--boat');
+
+    if (!nav || !boatSection) return;
+
+    // Estado inicial: seção visível → header transparente
+    nav.classList.add('nav--hero');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ isIntersecting, boundingClientRect }) => {
+          if (isIntersecting) {
+            // Seção do barco visível → transparente
+            nav.classList.add('nav--hero');
+          } else if (boundingClientRect.top < 0) {
+            // Seção passou acima → user scrollou para baixo → opaco
+            nav.classList.remove('nav--hero');
+          } else {
+            // Seção ainda abaixo → voltou ao topo → transparente
+            nav.classList.add('nav--hero');
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(boatSection);
   }
 }

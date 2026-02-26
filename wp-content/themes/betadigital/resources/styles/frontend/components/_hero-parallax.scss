@@ -65,6 +65,16 @@
     }
   }
 
+  &__mata-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+  }
+
   &__content {
     position: relative;
     z-index: 5;
@@ -81,6 +91,7 @@
     line-height: 0.8;
     margin: 0;
     letter-spacing: -0.02em;
+    width: 100%;
   }
 
   &__title-line {
@@ -94,6 +105,9 @@
       font-family: var(--body-font) !important;
       font-weight: 100;
       text-transform: uppercase;
+      strong {
+        font-weight: 600
+      }
     }
 
     &.animate-text {

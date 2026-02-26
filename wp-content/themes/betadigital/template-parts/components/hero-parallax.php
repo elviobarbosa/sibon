@@ -1,36 +1,17 @@
 <section class="hero-parallax">
   <!-- Container das linhas ondulantes (camada de fundo) -->
-  <div id="wave-lines-container"></div>
+
 
   <!-- Primeira dobra -->
-  <!-- <div class="hero-parallax__section hero-parallax__section--first" data-section="1">
-    <div class="hero-parallax__content">
-      <h1 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text"
-          data-animate-delay="900">Enjoy in the</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text"
-          data-animate-delay="1050">Wildest nature</span>
-      </h1>
-    </div>
-  </div> -->
-
-  <!-- Segunda dobra -->
-  <!-- <div class="hero-parallax__section hero-parallax__section--second" data-section="2">
-    <div class="hero-parallax__content">
-      <h2 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Experience the</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">
-          Adventure of a lifetime</span>
-      </h2>
-    </div>
-  </div> -->
-
-  <!-- Terceira dobra - Barco -->
   <div class="hero-parallax__section hero-parallax__section--boat" data-section="3">
     <h2 class="hero-parallax__title">
-      <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Surfing</span>
-      <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">In the paradise</span>
+      <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text"><strong>Surfing</strong>
+        In the
+        paradise</span>
+      <!-- <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">In the paradise</span> -->
     </h2>
+    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-mata.png'); ?>" alt=""
+      class="hero-parallax__mata-overlay" aria-hidden="true">
     <div class="hero-parallax__boat-image">
       <!-- Container para efeito WebGL de água -->
       <div id="water-effect-container"
@@ -56,7 +37,7 @@
     </div>
   </div>
 
-  <!-- Quarta dobra - Explore Indonesia -->
+  <!-- Segunda dobra - Explore Indonesia -->
   <div class="hero-parallax__section hero-parallax__section--explore" data-section="4">
     <div class="hero-parallax__explore-container">
       <div class="hero-parallax__explore-content">
@@ -80,7 +61,11 @@
         </div>
       </div>
       <div class="hero-parallax__explore-image">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/surfer.jpg'); ?>"
+        <?php
+          $surfer_images = ['woman-surfer-tubo.jpg', 'man-surfer-tubo.jpg'];
+          $surfer_img    = $surfer_images[array_rand($surfer_images)];
+        ?>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/' . $surfer_img); ?>"
           alt="Surfer on the wave" loading="lazy">
       </div>
     </div>

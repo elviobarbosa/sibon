@@ -13,6 +13,7 @@ hero_sibon_baru([
   ],
 ]);
 random_images();
+schedule_booking(['barco' => 'sibon-baru']);
 features_charters([
   'headline'  => 'The beauty inside',
   'highlight' => 'Sibon Baru',
@@ -39,7 +40,7 @@ features_charters([
 ]);
 experience();
 photo_slide();
-schedule_booking(['barco' => 'sibon-baru']);
+
 feature_slide();
 cta_boat([
   'eyebrow'   => 'SIBON',

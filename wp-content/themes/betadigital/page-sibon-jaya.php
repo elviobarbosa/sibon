@@ -13,6 +13,7 @@ hero_sibon_baru([
   ],
 ]);
 random_images();
+schedule_booking(['barco' => 'sibon-jaya']);
 features_charters([
   'headline'  => 'The LUXURY inside',
   'highlight' => 'Sibon Jaya',
@@ -39,7 +40,7 @@ features_charters([
 ]);
 experience();
 photo_slide();
-schedule_booking(['barco' => 'sibon-jaya']);
+
 feature_slide();
 cta_boat([
   'eyebrow'   => 'SIBON',
@@ -48,7 +49,7 @@ cta_boat([
   'specs'     => ['12 people', '6 cabins', '6 berths', '4 bathrooms'],
   'cta_label' => "See Baru's schedule",
   'cta_url'   => home_url('/sibon-baru'),
-  'image'     => esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-jaya.jpg'),
+  'image'     => esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru.jpg'),
   'image_alt' => 'Sibon Baru',
 ]);
 depoiments();
