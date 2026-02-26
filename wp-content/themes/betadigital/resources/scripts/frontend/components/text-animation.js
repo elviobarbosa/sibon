@@ -21,24 +21,36 @@ export default class TextAnimation {
   }
 
   splitTextByChar(element) {
-    const text = element.textContent.trim();
-    element.innerHTML = '';
+    // Coleta palavras preservando contexto de formatação (ex: <strong>)
+    const tokens = []; // { word: string, bold: boolean }
+    element.childNodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split(/\s+/).filter(w => w).forEach(word => {
+          tokens.push({ word, bold: false });
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'STRONG') {
+        node.textContent.split(/\s+/).filter(w => w).forEach(word => {
+          tokens.push({ word, bold: true });
+        });
+      }
+    });
 
-    const words = text.split(' ');
+    element.innerHTML = '';
     const allChars = [];
 
-    words.forEach((word, wordIndex) => {
+    tokens.forEach((token, tokenIndex) => {
       // Wrapper por palavra impede quebra de linha no meio da palavra
       const wordWrapper = document.createElement('span');
       wordWrapper.style.display = 'inline-block';
       wordWrapper.style.whiteSpace = 'nowrap';
 
-      word.split('').forEach((char) => {
+      token.word.split('').forEach((char) => {
         const span = document.createElement('span');
         span.textContent = char;
         span.style.display = 'inline-block';
         span.style.opacity = '0';
         span.className = 'char';
+        if (token.bold) span.style.fontWeight = '600';
         allChars.push(span);
         wordWrapper.appendChild(span);
       });
@@ -46,7 +58,7 @@ export default class TextAnimation {
       element.appendChild(wordWrapper);
 
       // Espaço entre palavras (fora do wrapper para permitir quebra de linha)
-      if (wordIndex < words.length - 1) {
+      if (tokenIndex < tokens.length - 1) {
         const space = document.createElement('span');
         space.textContent = '\u00A0';
         space.style.display = 'inline-block';

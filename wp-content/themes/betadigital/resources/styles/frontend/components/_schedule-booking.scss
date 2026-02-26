@@ -13,7 +13,6 @@ $sb-status-colors: (
 );
 
 .schedule-booking {
-  background-color: white;
   z-index: 1;
   position: relative;
 
@@ -78,9 +77,12 @@ $sb-status-colors: (
     position: sticky;
     top: var(--nav-h, 80px);
     z-index: 10;
-    background-color: white;
+    background-color: #ffffffa6;
     border-bottom: 2px solid #e5e5e5;
     padding: fn.px-rem(10px) fn.px-rem(16px);
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     @include bp.max-md {
       display: none;
@@ -120,6 +122,7 @@ $sb-status-colors: (
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
     transition: background 0.2s ease;
+    background-color: #fff;
 
     &:has(.schedule-booking__cta) {
       cursor: pointer;
@@ -181,22 +184,10 @@ $sb-status-colors: (
     fill: #AAA;
     color: #AAA;
     z-index: 1;
-
-    // @include bp.max-md {
-    //   display: none;
-    // }
-
-    // @include bp.max-md {
-      right: auto;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -16px;
-    // }
-
-    // @include bp.min-md {
-    //   right: -10px;
-    //   bottom: -15px;
-    // }
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -16px;
   }
 
   // ─── Card elements ────────────────────────────────
@@ -444,7 +435,6 @@ $sb-status-colors: (
     position: relative;
     z-index: 1;
     color: #4b9eff;
-    background: white;
     padding: fn.px-rem(6px);
     flex-shrink: 0;
     width: fn.px-rem(40px);
