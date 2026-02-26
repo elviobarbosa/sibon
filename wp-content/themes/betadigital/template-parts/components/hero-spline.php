@@ -1,13 +1,23 @@
 <section class="hero-spline-wrapper">
   <div class="hero-spline-sticky">
 
-    <canvas id="hero-ocean-canvas"></canvas>
+    <canvas id="hero-ocean-canvas"
+      data-ocean-texture="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/ocean@1-2131x1000.jpg'); ?>">
+    </canvas>
 
     <div class="hero-spline-text hero-spline-text-1">
       <h1 class="heading-hero">
-        <span class="heading-hero__eyebrow">Enjoy the</span>
-        <span class="heading-hero__main">Wildest nature</span>
+        <span class="heading-hero__eyebrow">INTO THE BLUE</span>
+        <span class="heading-hero__main">Private waves wait</span>
       </h1>
+    </div>
+
+    <div class="hero-scroll-hint" id="hero-scroll-hint" aria-hidden="true">
+      <span class="hero-scroll-hint__label">Scroll down</span>
+      <div class="hero-scroll-hint__track">
+        <div class="hero-scroll-hint__line"></div>
+        <div class="hero-scroll-hint__chevron"></div>
+      </div>
     </div>
 
     <div class="hero-spline-text hero-spline-text-2">
@@ -61,7 +71,7 @@
 .hero-spline-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 110vh;
   width: 100%;
   overflow: hidden;
   background: #70c7f2;
@@ -107,8 +117,13 @@ a[href*="spline.design"],
   will-change: opacity, transform;
 }
 
-.hero-spline-text-1 { opacity: 1; }
-.hero-spline-text-2 { opacity: 0; }
+.hero-spline-text-1 {
+  opacity: 1;
+}
+
+.hero-spline-text-2 {
+  opacity: 0;
+}
 
 /* ── Typography — mirrors .hero-parallax__title styling ─────────────────────── */
 .heading-hero {
@@ -137,9 +152,76 @@ a[href*="spline.design"],
   font-style: italic;
 }
 
+/* ── Scroll hint ─────────────────────────────────────────────────────────── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.hero-scroll-hint__label {
+  font-family: var(--body-font, "Avenir Next Condensed", sans-serif);
+  font-weight: 100;
+  font-size: clamp(0.5rem, 1.1vw, 0.7rem);
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 10px rgba(0, 40, 80, 0.45);
+  /* nudge right to compensate letter-spacing on last char */
+  padding-left: 0.55em;
+}
+
+.hero-scroll-hint__track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  animation: scrollHintFloat 2.2s ease-in-out infinite;
+}
+
+.hero-scroll-hint__line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 100%);
+}
+
+.hero-scroll-hint__chevron {
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+@keyframes scrollHintFloat {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+}
+
 /* Char spans injected by JS animation */
 .heading-hero .char {
   display: inline-block;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 </style>
