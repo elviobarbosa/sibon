@@ -61,6 +61,10 @@ $swiperParams = [
         'nextEl' => '.video-depoiments__next',
         'prevEl' => '.video-depoiments__prev',
     ],
+    'pagination'               => [
+        'el'        => '.video-depoiments__pagination',
+        'clickable' => true,
+    ],
 ];
 $params = 'data-params=\'' . wp_json_encode( $swiperParams ) . '\'';
 ?>
@@ -68,7 +72,7 @@ $params = 'data-params=\'' . wp_json_encode( $swiperParams ) . '\'';
 <section class="video-depoiments">
   <div class="video-depoiments__inner">
 
-    <div class="swiper video-depoiments__swiper" <?php echo $params; ?>>
+    <div class="swiper video-depoiments__swiper" <?php echo $params; ?> data-manual>
       <div class="swiper-wrapper">
         <?php while ( $video_depoiments->have_posts() ) : $video_depoiments->the_post();
           $youtube_url = get_field( 'youtube_url' );
@@ -110,6 +114,8 @@ $params = 'data-params=\'' . wp_json_encode( $swiperParams ) . '\'';
         <?php endwhile; wp_reset_postdata(); ?>
       </div>
     </div>
+
+    <div class="video-depoiments__pagination"></div>
 
     <div class="video-depoiments__navigation">
       <button class="video-depoiments__prev" aria-label="Previous">

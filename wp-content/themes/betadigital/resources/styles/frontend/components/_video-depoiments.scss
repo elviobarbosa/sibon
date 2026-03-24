@@ -2,6 +2,7 @@
 
 // ── Card dimensions (vertical format ~9:16) ─────────────────────
 $card-w: clamp(180px, 18vw, 260px);
+$card-w-mobile: clamp(140px, 42vw, 180px);
 $card-h: calc(#{$card-w} * 16 / 9);
 
 .video-depoiments {
@@ -11,12 +12,14 @@ $card-h: calc(#{$card-w} * 16 / 9);
   margin-top: calc(#{$card-h} * -0.5);
 
   @include bp.max-md {
-    margin-top: -100px;
+    margin-top: -80px;
   }
 
   &__inner {
     position: relative;
     padding-bottom: 5rem;
+    // Clip horizontal overflow caused by overflow:visible on swiper
+    overflow: hidden;
 
     @include bp.max-md {
       padding-bottom: 3rem;
@@ -37,6 +40,11 @@ $card-h: calc(#{$card-w} * 16 / 9);
   &__slide {
     width: $card-w;
     height: $card-h;
+
+    @include bp.max-md {
+      width: $card-w-mobile;
+      height: calc(#{$card-w-mobile} * 16 / 9);
+    }
   }
 
   // ── Card ────────────────────────────────────────────────────────
@@ -124,6 +132,49 @@ $card-h: calc(#{$card-w} * 16 / 9);
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
 
+  // ── Pagination (mobile only) ─────────────────────────────────────
+
+  &__pagination {
+    display: none;
+
+    @include bp.max-md {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 1.25rem;
+      position: static !important;
+      width: 100% !important;
+
+      .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        background: none;
+        border-radius: 0;
+        opacity: 1;
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .bullet-active  { display: none; }
+        .bullet-default { display: block; }
+
+        &.swiper-pagination-bullet-active {
+          .bullet-default { display: none; }
+          .bullet-active  { display: block; }
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+          display: block;
+        }
+      }
+    }
+  }
+
   // ── Navigation ──────────────────────────────────────────────────
 
   &__navigation {
@@ -137,6 +188,12 @@ $card-h: calc(#{$card-w} * 16 / 9);
     padding: 0 1.5rem;
     pointer-events: none;
     z-index: 20;
+  }
+
+  &__navigation {
+    @include bp.max-md {
+      display: none;
+    }
   }
 
   &__prev,
