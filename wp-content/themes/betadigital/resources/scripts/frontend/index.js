@@ -1,4 +1,5 @@
 import $ from "jquery";
+import "swiper/css/bundle";
 import Menu from "./components/menu";
 import Hero from "./components/hero";
 import HeroParallax from "./components/hero-parallax";
@@ -14,8 +15,9 @@ import HeroCharters from "./components/hero-charters";
 import PhotoSlide from "./components/photo-slide";
 import ScheduleBooking from "./components/schedule-booking";
 import Depoiments from "./components/depoiments";
+import VideoDepoiments from "./components/video-depoiments";
 import CtaBoatAnimation from "./components/cta-boat-animation";
-import BoatTitlePositioner from "./components/boat-title-positioner";
+// import BoatTitlePositioner from "./components/boat-title-positioner";
 
 function hideLoader() {
   const loader = document.getElementById('page-loader');
@@ -45,8 +47,9 @@ function domReady(fn) {
     new PhotoSlide();
     new ScheduleBooking();
     new Depoiments();
+    new VideoDepoiments();
     new CtaBoatAnimation();
-    new BoatTitlePositioner();
+    // new BoatTitlePositioner();
     hideLoader();
   } else {
     setTimeout(() => {

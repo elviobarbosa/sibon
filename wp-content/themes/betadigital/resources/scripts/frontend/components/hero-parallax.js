@@ -1,21 +1,6 @@
-import WaterEffect from './water-effect';
-
 export default class HeroParallax {
   constructor() {
-    this.waterEffect = null;
-    this.setupWaterEffect();
     this.setupParallax();
-  }
-
-  setupWaterEffect() {
-    const waterContainer = document.getElementById('water-effect-container');
-    if (!waterContainer) return;
-
-    const boatImageUrl = waterContainer.dataset.boatImage;
-    const waterMaskUrl = waterContainer.dataset.waterMask;
-    if (!boatImageUrl) return;
-
-    this.waterEffect = new WaterEffect(waterContainer, boatImageUrl, waterMaskUrl);
   }
 
   setupParallax() {

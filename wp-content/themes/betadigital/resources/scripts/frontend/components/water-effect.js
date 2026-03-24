@@ -40,12 +40,12 @@ export default class WaterEffect {
   setup(texture, maskTexture) {
     const imageWidth = texture.image.width;
     const imageHeight = texture.image.height;
-    const imageAspect = imageWidth / imageHeight;
+    this.imageAspect = imageWidth / imageHeight;
 
-    // Calcular tamanho do canvas baseado na largura do container
-    const containerWidth = this.container.offsetWidth || window.innerWidth;
-    const canvasWidth = containerWidth;
-    const canvasHeight = containerWidth / imageAspect;
+    // Canvas fullscreen — cover proporcional via shader
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
+    this.screenAspect = canvasWidth / canvasHeight;
 
     // Criar cena
     this.scene = new THREE.Scene();
@@ -54,7 +54,7 @@ export default class WaterEffect {
     this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
     this.camera.position.z = 1;
 
-    // Renderer com tamanho proporcional à imagem
+    // Renderer fullscreen
     this.renderer = new THREE.WebGLRenderer({
       alpha: false,
       antialias: true
@@ -65,9 +65,6 @@ export default class WaterEffect {
 
     // Criar material e plano
     this.createWaterPlane(texture, maskTexture);
-
-    // Guardar aspect para resize
-    this.imageAspect = imageAspect;
 
     // Iniciar animação
     this.animate();
@@ -90,6 +87,8 @@ export default class WaterEffect {
       uniform sampler2D uMask;
       uniform float uTime;
       uniform bool uHasMask;
+      uniform float uImageAspect;
+      uniform float uScreenAspect;
 
       varying vec2 vUv;
 
@@ -121,8 +120,21 @@ export default class WaterEffect {
         return 130.0 * dot(m, g);
       }
 
+      // Cover: mapeia UV de tela para UV da imagem mantendo proporção centrada
+      vec2 coverUV(vec2 uv) {
+        if (uScreenAspect > uImageAspect) {
+          // Tela mais larga — imagem preenche largura, corta verticalmente
+          float scale = uImageAspect / uScreenAspect;
+          return vec2(uv.x, 0.5 + (uv.y - 0.5) * scale);
+        } else {
+          // Tela mais alta — imagem preenche altura, corta horizontalmente
+          float scale = uScreenAspect / uImageAspect;
+          return vec2(0.5 + (uv.x - 0.5) * scale, uv.y);
+        }
+      }
+
       void main() {
-        vec2 uv = vUv;
+        vec2 uv = coverUV(vUv);
 
         float maskValue = uHasMask ? texture2D(uMask, uv).r : 1.0;
 
@@ -138,7 +150,7 @@ export default class WaterEffect {
         float wave2 = snoise(vec2(uv.x * 2.0 - uTime * 0.08, uv.y * 1.4 + uTime * 0.035));
         float combinedWave = wave1 * 0.6 + wave2 * 0.4;
 
-        // Displacement — livre agora que os barcos estão em camada separada
+        // Displacement
         float strength = waterIntensity * 0.011;
         vec2 displacement = vec2(
           combinedWave * strength,
@@ -169,7 +181,7 @@ export default class WaterEffect {
         caustic = pow(max(0.0, caustic), 2.2) * 0.10 * waterIntensity;
         color.rgb += vec3(caustic * 0.82, caustic * 0.93, caustic);
 
-        // Segunda camada de caustics para mais complexidade
+        // Segunda camada de caustics
         float caustic2 = snoise(vec2(uv.x * 5.0 - uTime * 0.07, uv.y * 6.0 + uTime * 0.05));
         caustic2 = pow(max(0.0, caustic2), 2.8) * 0.05 * waterIntensity;
         color.rgb += vec3(caustic2 * 0.8, caustic2 * 0.92, caustic2);
@@ -189,7 +201,9 @@ export default class WaterEffect {
         uTexture: { value: texture },
         uMask: { value: maskTexture || whiteTex },
         uTime: { value: 0 },
-        uHasMask: { value: maskTexture !== null }
+        uHasMask: { value: maskTexture !== null },
+        uImageAspect: { value: this.imageAspect },
+        uScreenAspect: { value: this.screenAspect }
       },
       vertexShader,
       fragmentShader
@@ -216,13 +230,17 @@ export default class WaterEffect {
   }
 
   onResize() {
-    if (!this.container || !this.renderer || !this.imageAspect) return;
+    if (!this.renderer) return;
 
-    const containerWidth = this.container.offsetWidth || window.innerWidth;
-    const canvasWidth = containerWidth;
-    const canvasHeight = containerWidth / this.imageAspect;
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
+    this.screenAspect = canvasWidth / canvasHeight;
 
     this.renderer.setSize(canvasWidth, canvasHeight);
+
+    if (this.material) {
+      this.material.uniforms.uScreenAspect.value = this.screenAspect;
+    }
   }
 
   destroy() {

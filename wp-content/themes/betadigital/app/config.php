@@ -33,6 +33,7 @@ function setup() {
         acf_add_options_page();
     endif;
 
+
     register_nav_menu('header-menu',__( 'Menu Principal' ));
     register_nav_menu('content-menu',__( 'Menu Content' ));
     register_nav_menu('footer-menu',__( 'Menu Rodapé' ));

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html <?php language_attributes(); ?>>
 
 <head>
   <?php
@@ -14,8 +14,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name=viewport content="width=device-width">
   <meta charset="UTF-8">
-  <title><?php wp_title();?></title>
+  <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
   <link rel="shortcut icon" href="<?php bloginfo('wpurl');?>/favicon.ico" />
+  <link rel="preload" href="<?php echo esc_url(get_template_directory_uri()); ?>/dist/fonts/AvenirNextCondensed-UltraLight-11.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="<?php echo esc_url(get_template_directory_uri()); ?>/dist/fonts/TT Moons Trial Italic.woff2" as="font" type="font/woff2" crossorigin>
 
   <?php wp_head() ?>
 

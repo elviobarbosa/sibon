@@ -13,6 +13,7 @@ hero_sibon_baru([
   ],
 ]);
 random_images();
+video_depoiments(['barco' => 'sibon-baru']);
 schedule_booking(['barco' => 'sibon-baru']);
 features_charters([
   'headline'  => 'The beauty inside',

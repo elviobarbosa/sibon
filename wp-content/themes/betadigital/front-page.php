@@ -2,6 +2,7 @@
 get_header();
 hero_parallax();
 random_images();
+video_depoiments(['barco' => 'front-page']);
 unforgettable();
 feature_slide();
 experience();
