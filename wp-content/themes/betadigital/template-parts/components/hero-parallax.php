@@ -1,28 +1,13 @@
 <section class="hero-parallax">
-  <!-- Container das linhas ondulantes (camada de fundo) -->
-
-
   <!-- Primeira dobra -->
   <div class="hero-parallax__section hero-parallax__section--boat" data-section="3">
-    <h2 class="hero-parallax__title">
-      <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text"><strong>Surfing</strong>
-        In the
-        paradise</span>
-      <!-- <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">In the paradise</span> -->
-    </h2>
-    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-mata.png'); ?>" alt=""
-      class="hero-parallax__mata-overlay" aria-hidden="true">
-    <div class="hero-parallax__boat-image">
-      <!-- Container para efeito WebGL de água -->
-      <div id="water-effect-container"
-        data-boat-image="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
-        data-water-mask="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-water-mask.png'); ?>">
-      </div>
-      <!-- Barcos em PNG transparente sobre o efeito de água -->
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-boats.png'); ?>"
-        alt="Sibon boats" class="hero-parallax__boat-overlay" fetchpriority="high">
+    <div class="hero-parallax__hero-content">
+      <h2 class="hero-parallax__title">
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text"><strong>Surfing</strong></span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">In the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">paradise</span>
+      </h2>
 
-      <!-- Select de experiência -->
       <div class="hero-parallax__boat-select">
         <select class="hero-parallax__experience-select" onchange="if(this.value) window.location.href=this.value">
           <option value="" selected disabled>CHOOSE YOUR SIBON EXPERIENCE</option>
@@ -35,6 +20,15 @@
         </svg>
       </div>
     </div>
+
+    <div id="water-effect-container"
+      data-boat-image="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
+      data-water-mask="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-water-mask.png'); ?>">
+    </div>
+
+    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-boats.png'); ?>"
+      alt="Sibon boats" class="hero-parallax__boat-overlay" width="1920" height="1079" fetchpriority="high">
+
   </div>
 
   <!-- Segunda dobra - Explore Indonesia -->
@@ -66,7 +60,7 @@
           $surfer_img    = $surfer_images[array_rand($surfer_images)];
         ?>
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/' . $surfer_img); ?>"
-          alt="Surfer on the wave" loading="lazy">
+          alt="Surfer on the wave" loading="lazy" width="825" height="550">
       </div>
     </div>
   </div>

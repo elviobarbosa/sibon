@@ -28,31 +28,16 @@ export default class Unforgettable {
   updateParallax() {
     const rect = this.section.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-
-    // Só processa se a seção está visível
     if (rect.bottom < 0 || rect.top > windowHeight) return;
 
-    // Calcula o progresso do scroll dentro da seção
-    const scrolled = windowHeight - rect.top;
+    const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+    const ranges = [24, 36, 16];
 
-    // Parallax nas imagens - cada uma com velocidade diferente
-    this.images.forEach((image) => {
-      const speed = parseFloat(image.dataset.parallaxSpeed) || 0.2;
-      const translateY = -(scrolled * speed);
-
-      // Preservar translateX para imagem centralizada (--2)
-      if (image.classList.contains('unforgettable__image--2')) {
-        image.style.transform = `translateX(-50%) translateY(${translateY}px)`;
-      } else {
-        image.style.transform = `translateY(${translateY}px)`;
-      }
-    });
-
-    // Movimento sutil nos glows baseado no scroll
-    const glowOffset = scrolled * 0.05;
-    this.glows.forEach((glow, index) => {
-      const direction = index === 0 ? 1 : -1;
-      glow.style.transform = `translate(${glowOffset * direction}px, ${glowOffset * 0.5 * direction}px)`;
+    this.images.forEach((figure, i) => {
+      const img = figure.querySelector('img');
+      if (!img) return;
+      const offset = (progress - 0.5) * ranges[i];
+      img.style.transform = `translateY(${offset}px)`;
     });
   }
 }

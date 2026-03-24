@@ -13,6 +13,7 @@ hero_sibon_baru([
   ],
 ]);
 random_images();
+video_depoiments(['barco' => 'sibon-jaya']);
 schedule_booking(['barco' => 'sibon-jaya']);
 features_charters([
   'headline'  => 'The LUXURY inside',

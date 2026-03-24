@@ -3,14 +3,29 @@
 
 function wpdocs_theme_name_scripts() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
+    // Swiper CSS agora é importado localmente no bundle — removido CDN externo
     wp_enqueue_style('site-style', get_stylesheet_directory_uri() . '/dist/styles/frontend.css', array(), filemtime(get_stylesheet_directory() . '/dist/styles/frontend.css'));
 
-    //scripts
-    wp_enqueue_script( 'jquery' );
+    // jQuery no footer (in_footer=true) para não bloquear renderização
+    wp_enqueue_script('jquery', includes_url('/js/jquery/jquery.min.js'), array(), false, true);
+
     wp_enqueue_script('js-site', get_stylesheet_directory_uri() . '/dist/scripts/frontend-bundle.js', array(), filemtime(get_stylesheet_directory() . '/dist/scripts/frontend-bundle.js'), true);
+
+    // Three.js + efeito de água em bundle separado — carregado apenas na front-page
+    if (is_front_page()) {
+        wp_enqueue_script('water-effect', get_stylesheet_directory_uri() . '/dist/scripts/water-effect-bundle.js', array('js-site'), filemtime(get_stylesheet_directory() . '/dist/scripts/water-effect-bundle.js'), true);
+    }
     wp_localize_script('js-site', 'ajaxData', array( 'url' => admin_url('admin-ajax.php') ));
- }
+}
+
+// Remove block-library CSS em páginas sem Gutenberg
+add_action('wp_enqueue_scripts', function() {
+    if (!is_singular() || !has_blocks()) {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('global-styles');
+    }
+}, 100);
 
 function admin_style() {
     //styles

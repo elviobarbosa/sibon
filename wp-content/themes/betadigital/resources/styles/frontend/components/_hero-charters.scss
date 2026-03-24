@@ -112,12 +112,12 @@
     }
 
     &:nth-child(1) {
-      $w: 65%;
+      $w: 55%;
       @include pi.image-proportional(738, 669);
       position: absolute;
       width: $w;
       padding-bottom: $w * math.div(669, 738);
-      left: 15%;
+      left: 25%;
       top: 20%;
       z-index: 4;
 
@@ -173,7 +173,7 @@
     }
 
     &:nth-child(4) {
-      $w: 57%;
+      $w: 47%;
       @include pi.image-proportional(563, 383);
       position: absolute;
       width: $w;

@@ -10,3 +10,4 @@ require_once($scan_dir . 'cpt-experience-item.php');
 require_once($scan_dir . 'cpt-photo-slide.php');
 require_once($scan_dir . 'cpt-charter-schedule.php');
 require_once($scan_dir . 'cpt-depoiment.php');
+require_once($scan_dir . 'cpt-video-depoiment.php');

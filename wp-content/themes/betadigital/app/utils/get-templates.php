@@ -107,3 +107,9 @@ if ( ! function_exists( 'enquire_form' ) ) {
     load_component( 'enquire-form', $args );
   }
 }
+
+if ( ! function_exists( 'video_depoiments' ) ) {
+  function video_depoiments( $args = [] ) {
+    load_component( 'video-depoiments', $args );
+  }
+}

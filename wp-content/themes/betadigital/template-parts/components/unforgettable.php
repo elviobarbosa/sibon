@@ -22,8 +22,9 @@
 
     <div class="unforgettable__gallery">
       <figure class="unforgettable__image unforgettable__image--1" data-parallax-speed="0.15">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-1.jpg'); ?>"
-          alt="Northern lights">
+        <img
+          src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/women-jump-ocean-sibon-baru.jpg'); ?>"
+          alt="Women jumping into the ocean" width="750" height="500">
       </figure>
       <figure class="unforgettable__image unforgettable__image--2" data-parallax-speed="0.25">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-2.jpg'); ?>"
