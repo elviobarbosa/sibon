@@ -20,12 +20,11 @@ export default class FeatureSlide {
 
   initSwiper(sliderEl) {
     new Swiper(sliderEl, {
-      slidesPerView: "auto",
-      centeredSlides: false,
+      slidesPerView: 1.15,
+      centeredSlides: true,
       spaceBetween: 16,
       speed: 600,
       loop: true,
-      slidesOffsetBefore: 16,
       navigation: {
         nextEl: ".feature-slide__btn--next",
         prevEl: ".feature-slide__btn--prev",
@@ -42,6 +41,7 @@ export default class FeatureSlide {
       },
       breakpoints: {
         768: {
+          slidesPerView: "auto",
           centeredSlides: false,
           spaceBetween: 50,
           slidesOffsetBefore: 80,

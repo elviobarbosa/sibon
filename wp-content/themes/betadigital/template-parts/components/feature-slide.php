@@ -8,7 +8,7 @@ $slides = new WP_Query(array(
 
 if ($slides->have_posts()) : ?>
 <div class="feature-slide">
-  <div class="swiper feature-slide__swiper">
+  <div class="swiper feature-slide__swiper" data-manual>
     <div class="swiper-wrapper">
       <?php while ($slides->have_posts()) : $slides->the_post();
         $highlight = get_post_meta(get_the_ID(), '_feature_slide_highlight', true);
