@@ -243,6 +243,10 @@
     pointer-events: none;
     transform-origin: center bottom;
     animation: boat-rock 14s ease-in-out infinite;
+
+    @include bp.max-md {
+      display: none;
+    }
   }
 
   @keyframes boat-rock {
@@ -258,6 +262,25 @@
 
     canvas {
       display: block;
+    }
+
+    @include bp.max-md {
+      display: none;
+    }
+  }
+
+  &__mobile-bg {
+    display: none;
+
+    @include bp.max-md {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
     }
   }
 

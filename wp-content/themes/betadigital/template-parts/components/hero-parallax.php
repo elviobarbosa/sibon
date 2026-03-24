@@ -26,6 +26,13 @@
       data-water-mask="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-water-mask.png'); ?>">
     </div>
 
+    <img
+      src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-mobile.jpg'); ?>"
+      alt="Sibon Charters"
+      class="hero-parallax__mobile-bg"
+      fetchpriority="high"
+    >
+
     <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-boats.png'); ?>"
       alt="Sibon boats" class="hero-parallax__boat-overlay" width="1920" height="1079" fetchpriority="high">
 
