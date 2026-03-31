@@ -33,8 +33,8 @@
 <!-- Third fold — Boat -->
 <div class="hero-parallax__section hero-parallax__section--boat">
   <h2 class="hero-parallax__title">
-    <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">Surfing</span>
-    <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">In the paradise</span>
+    <span class="hero-parallax__title-line hero-parallax__title-line--headline ">Surfing</span>
+    <span class="hero-parallax__title-line hero-parallax__title-line--highlight ">In the paradise</span>
   </h2>
   <div class="hero-parallax__boat-image">
     <div id="water-effect-container"

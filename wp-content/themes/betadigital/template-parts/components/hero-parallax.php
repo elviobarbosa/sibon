@@ -1,15 +1,15 @@
 <section class="hero-parallax">
-  <!-- Primeira dobra -->
   <div class="hero-parallax__section hero-parallax__section--boat" data-section="3">
     <div class="hero-parallax__hero-content">
       <h2 class="hero-parallax__title">
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text"><strong>Surfing</strong></span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">In the</span>
-        <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">paradise</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline "><strong>Surfing</strong></span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline">In the</span>
+        <span class="hero-parallax__title-line hero-parallax__title-line--headline">paradise</span>
       </h2>
 
       <div class="hero-parallax__boat-select">
-        <select class="hero-parallax__experience-select" onchange="if(this.value) window.location.href=this.value">
+        <select class="hero-parallax__experience-select" aria-label="Choose your Sibon experience"
+          onchange="if(this.value) window.location.href=this.value">
           <option value="" selected disabled>CHOOSE YOUR SIBON EXPERIENCE</option>
           <option value="<?php echo esc_url(home_url('/sibon-baru')); ?>">Sibon Baru</option>
           <option value="<?php echo esc_url(home_url('/sibon-jaya')); ?>">Sibon Jaya</option>
@@ -21,54 +21,11 @@
       </div>
     </div>
 
-    <div id="water-effect-container"
-      data-boat-image="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru-jaya-cover.jpg'); ?>"
-      data-water-mask="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-water-mask.png'); ?>">
-    </div>
+    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-sibon-charters.jpg'); ?>"
+      alt="Sibon Charters" class="hero-parallax__bg hero-parallax__bg--desktop" fetchpriority="high">
 
-    <img
-      src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-mobile.jpg'); ?>"
-      alt="Sibon Charters"
-      class="hero-parallax__mobile-bg"
-      fetchpriority="high"
-    >
+    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-mobile.jpg'); ?>"
+      alt="Sibon Charters" class="hero-parallax__bg hero-parallax__bg--mobile" fetchpriority="high">
 
-    <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/hero-parallax-boats.png'); ?>"
-      alt="Sibon boats" class="hero-parallax__boat-overlay" width="1920" height="1079" fetchpriority="high">
-
-  </div>
-
-  <!-- Segunda dobra - Explore Indonesia -->
-  <div class="hero-parallax__section hero-parallax__section--explore" data-section="4">
-    <div class="hero-parallax__explore-container">
-      <div class="hero-parallax__explore-content">
-        <h2 class="hero-parallax__title">
-          <span class="hero-parallax__title-line hero-parallax__title-line--headline animate-text">
-            Explore Indonesia's
-          </span>
-          <span class="hero-parallax__title-line hero-parallax__title-line--highlight animate-text">
-            Legendary surf breaks
-          </span>
-        </h2>
-        <div class="hero-parallax__explore-text">
-          <p>Get ready to unlock the secrets of the most epic waves on the planet. Sibon Charters invites you on an
-            unforgettable journey to the legendary surf breaks of <strong>Mentawai</strong>, <strong>Telos</strong>,
-            <strong>Banyaks</strong> and <strong>Enggano</strong>. More than just a trip, we offer a complete immersion
-            in the surf paradise, where every wave is a promise and every sunset, a celebration.
-          </p>
-          <p>With <strong>Sibon Charters</strong>, your experience goes beyond the conventional. Our two modern
-            aluminum catamarans were designed to provide the most comfort and safety while you chase the perfect
-            wave.</p>
-        </div>
-      </div>
-      <div class="hero-parallax__explore-image">
-        <?php
-          $surfer_images = ['woman-surfer-tubo.jpg', 'man-surfer-tubo.jpg'];
-          $surfer_img    = $surfer_images[array_rand($surfer_images)];
-        ?>
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/' . $surfer_img); ?>"
-          alt="Surfer on the wave" loading="lazy" width="825" height="550">
-      </div>
-    </div>
   </div>
 </section>

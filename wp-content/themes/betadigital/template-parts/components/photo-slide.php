@@ -1,10 +1,18 @@
 <?php
-$slide_post = get_posts(array(
+$barco = isset( $barco ) ? $barco : '';
+
+$query_args = array(
     'post_type'      => 'post_photo_slide',
     'posts_per_page' => 1,
     'orderby'        => 'menu_order',
     'order'          => 'ASC',
-));
+);
+
+if ( $barco ) {
+    $query_args['title'] = $barco;
+}
+
+$slide_post = get_posts( $query_args );
 
 if (empty($slide_post)) return;
 

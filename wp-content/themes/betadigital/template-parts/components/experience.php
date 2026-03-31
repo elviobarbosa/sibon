@@ -9,8 +9,8 @@ $item = new WP_Query(array(
     <div class="experience__content">
       <header class="experience__header">
         <h2 class="experience__title">
-          <span class="experience__title-line experience__title-line--headline animate-text">THE SIBON CHARTERS</span>
-          <span class="experience__title-line experience__title-line--highlight animate-text">Experience</span>
+          <span class="experience__title-line experience__title-line--headline ">THE SIBON CHARTERS</span>
+          <span class="experience__title-line experience__title-line--highlight ">Experience</span>
         </h2>
         <p class="experience__intro">
           Our trips with Sibon Charters are designed so you can enjoy every moment without a worry in the world.
@@ -22,7 +22,7 @@ $item = new WP_Query(array(
     <div class="experience__image">
       <figure>
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/experience.jpg'); ?>"
-          alt="Sibon Charters Experience">
+          alt="Sibon Charters Experience" width="800" height="600" loading="lazy">
       </figure>
     </div>
     <?php if ($item->have_posts()) : $item->the_post(); ?>

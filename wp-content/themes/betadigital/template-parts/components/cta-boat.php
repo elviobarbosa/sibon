@@ -26,6 +26,7 @@ $image       = $args['image']       ?? '';
 $image_alt   = $args['image_alt']   ?? $name;
 $modifier    = $args['modifier']    ?? '';
 $reversed    = $args['reversed']    ?? false;
+$fetchpriority = $args['fetchpriority'] ?? '';
 
 $classes = 'cta-boat';
 if ($modifier)  $classes .= ' cta-boat--' . esc_attr($modifier);
@@ -65,7 +66,7 @@ if ($reversed)  $classes .= ' cta-boat--reversed';
   <?php if ($image) : ?>
   <div class="cta-boat__image">
     <figure>
-      <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+      <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($image_alt); ?>" width="800" height="450" <?php echo $fetchpriority ? 'fetchpriority="' . esc_attr($fetchpriority) . '"' : 'loading="lazy"'; ?>>
     </figure>
   </div>
   <?php endif; ?>

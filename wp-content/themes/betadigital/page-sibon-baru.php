@@ -40,7 +40,7 @@ features_charters([
   ],
 ]);
 experience();
-photo_slide();
+photo_slide(['barco' => 'sibon-baru']);
 
 feature_slide();
 cta_boat([

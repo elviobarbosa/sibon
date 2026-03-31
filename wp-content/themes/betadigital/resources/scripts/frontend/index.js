@@ -1,4 +1,3 @@
-import $ from "jquery";
 import "swiper/css/bundle";
 import Menu from "./components/menu";
 import Hero from "./components/hero";
@@ -6,7 +5,7 @@ import HeroParallax from "./components/hero-parallax";
 import Carrosel from "./components/carrosel";
 import FaqToggle from "./components/faq";
 import JumpNavMenu from "./components/jump-nav-menu";
-import TextAnimation from "./components/text-animation";
+// import TextAnimation from "./components/text-animation";
 import WaveLines from "./components/wave-line2";
 import RandomImages from "./components/random-images";
 import Unforgettable from "./components/unforgettable";
@@ -39,7 +38,7 @@ function domReady(fn) {
     new Carrosel();
     new FaqToggle();
     new JumpNavMenu();
-    new TextAnimation();
+    // new TextAnimation();
     new RandomImages();
     new Unforgettable();
     new FeatureSlide();

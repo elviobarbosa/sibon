@@ -33,7 +33,7 @@ $depoiments = new WP_Query([
   <div class="depoiments__content">
     <figure class="depoiments__bg">
       <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/vista-aerea-mentawai.jpg'); ?>"
-        alt="Mentawai">
+        alt="Mentawai" loading="lazy" width="1200" height="600">
     </figure>
 
     <?php if ($depoiments->have_posts()) : ?>
@@ -55,7 +55,7 @@ $depoiments = new WP_Query([
               <div class="depoiments__card-header">
                 <?php if ($photo) : ?>
                 <figure class="depoiments__avatar">
-                  <img src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr($name); ?>">
+                  <img src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr($name); ?>" loading="lazy" width="80" height="80">
                 </figure>
                 <?php else : ?>
                 <div class="depoiments__avatar depoiments__avatar--initials" aria-hidden="true">

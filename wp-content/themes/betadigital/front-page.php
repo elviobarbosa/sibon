@@ -1,8 +1,9 @@
 <?php
 get_header();
 hero_parallax();
-random_images();
 video_depoiments(['barco' => 'front-page']);
+explore_indonesia();
+random_images();
 unforgettable();
 feature_slide();
 experience();
@@ -25,7 +26,8 @@ cta_boat([
   'cta_url'   => home_url('/sibon-baru'),
   'image'     => esc_url(get_template_directory_uri() . '/dist/images/bmp/sibon-baru.jpg'),
   'image_alt' => 'Sibon Baru',
-  'reversed'  => true
+  'reversed'  => true,
+  'fetchpriority' => 'high'
 ]);
 depoiments();
 faq();
