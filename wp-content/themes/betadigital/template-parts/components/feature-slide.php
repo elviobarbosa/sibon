@@ -22,7 +22,7 @@ if ($slides->have_posts()) : ?>
           <?php if ($thumbnail) : ?>
           <div class="feature-slide__image">
             <figure>
-              <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+              <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" loading="lazy" width="635" height="543">
             </figure>
           </div>
           <?php endif; ?>

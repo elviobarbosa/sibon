@@ -8,8 +8,8 @@ $items     = $items     ?? [];
 <div class="feature-charters">
   <div class="feature-charters__header">
     <h2 class="feature-charters__title">
-      <span class="feature-charters__title-line feature-charters__title--headline animate-text"><?php echo esc_html($headline); ?></span>
-      <span class="feature-charters__title-line feature-charters__title--highlight animate-text"><?php echo esc_html($highlight); ?></span>
+      <span class="feature-charters__title-line feature-charters__title--headline "><?php echo esc_html($headline); ?></span>
+      <span class="feature-charters__title-line feature-charters__title--highlight "><?php echo esc_html($highlight); ?></span>
     </h2>
   </div>
 

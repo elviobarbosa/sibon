@@ -1,9 +1,9 @@
 @use "../mixins/breakpoints" as bp;
 
-// ── Card dimensions (vertical format ~9:16) ─────────────────────
-$card-w: clamp(180px, 18vw, 260px);
-$card-w-mobile: clamp(140px, 42vw, 180px);
-$card-h: calc(#{$card-w} * 16 / 9);
+// ── Card dimensions (vertical format 3:5) ─────────────────────
+$card-w: clamp(140px, 14vw, 200px);
+$card-w-mobile: clamp(110px, 34vw, 150px);
+$card-h: calc(#{$card-w} * 5 / 3);
 
 .video-depoiments {
   position: relative;
@@ -13,6 +13,16 @@ $card-h: calc(#{$card-w} * 16 / 9);
 
   @include bp.max-md {
     margin-top: -80px;
+  }
+
+  // Na front-page não deve sobrepor o hero — remove o margin negativo
+  .home & {
+    margin-top: 0;
+    padding-top: 5.125rem;
+
+    @include bp.max-md {
+      margin-top: 0;
+    }
   }
 
   &__inner {
@@ -43,7 +53,7 @@ $card-h: calc(#{$card-w} * 16 / 9);
 
     @include bp.max-md {
       width: $card-w-mobile;
-      height: calc(#{$card-w-mobile} * 16 / 9);
+      height: calc(#{$card-w-mobile} * 5 / 3);
     }
   }
 
@@ -59,10 +69,6 @@ $card-h: calc(#{$card-w} * 16 / 9);
     text-decoration: none;
     cursor: pointer;
 
-    &:hover .video-depoiments__play {
-      transform: scale(1.12);
-      background: rgba(255, 255, 255, 0.25);
-    }
   }
 
   // ── Thumbnail ───────────────────────────────────────────────────
@@ -92,15 +98,18 @@ $card-h: calc(#{$card-w} * 16 / 9);
       rgba(75, 158, 255, 0) 100%
     );
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: flex-end;
+    justify-content: center;
     padding: 1rem;
   }
 
-  // ── Play button ─────────────────────────────────────────────────
+  // ── Play button — centralizado no card, independente do caption ──
 
   &__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,14 +119,17 @@ $card-h: calc(#{$card-w} * 16 / 9);
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.6);
     color: #fff;
-    margin-bottom: 0.75rem;
     transition: transform 0.3s ease, background 0.3s ease;
-    flex-shrink: 0;
 
     svg {
       width: 22px;
       height: 22px;
     }
+  }
+
+  &__card:hover &__play {
+    transform: translate(-50%, -50%) scale(1.12);
+    background: rgba(255, 255, 255, 0.25);
   }
 
   // ── Caption ─────────────────────────────────────────────────────

@@ -113,3 +113,9 @@ if ( ! function_exists( 'video_depoiments' ) ) {
     load_component( 'video-depoiments', $args );
   }
 }
+
+if ( ! function_exists( 'explore_indonesia' ) ) {
+  function explore_indonesia( $args = [] ) {
+    load_component( 'explore-indonesia', $args );
+  }
+}

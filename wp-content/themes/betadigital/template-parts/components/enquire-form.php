@@ -16,8 +16,8 @@ $highlight = $highlight ?? 'Enquire Now';
   <div class="enquire-form__inner">
 
     <h2 class="enquire-form__title">
-      <span class="enquire-form__title--headline animate-text"><?php echo esc_html($headline); ?></span>
-      <span class="enquire-form__title--highlight animate-text"><?php echo esc_html($highlight); ?></span>
+      <span class="enquire-form__title--headline "><?php echo esc_html($headline); ?></span>
+      <span class="enquire-form__title--highlight "><?php echo esc_html($highlight); ?></span>
     </h2>
 
     <div class="enquire-form__form">

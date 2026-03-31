@@ -19,8 +19,6 @@ module.exports = {
       path.resolve(__dirname, "resources/scripts/frontend", "index.js"),
       path.resolve(__dirname, "resources/styles/frontend", "styles.scss"),
     ],
-    // Three.js + efeito de água isolado — carregado apenas na front-page
-    "water-effect": path.resolve(__dirname, "resources/scripts/frontend", "water-effect-entry.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -40,10 +38,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
+          loader: "babel-loader"
         },
       },
       // {

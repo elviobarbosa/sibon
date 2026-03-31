@@ -79,6 +79,7 @@
 
           &-line {
             color: white;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 
             strong {
               font-weight: 800;
@@ -234,56 +235,25 @@
     flex-shrink: 0;
   }
 
-  &__boat-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    object-fit: cover;
-    object-position: center center;
-    pointer-events: none;
-    transform-origin: center bottom;
-    animation: boat-rock 14s ease-in-out infinite;
-
-    @include bp.max-md {
-      display: none;
-    }
-  }
-
-  @keyframes boat-rock {
-    0%   { transform: rotate(-0.3deg) translateY(0px); }
-    50%  { transform: rotate(0.3deg) translateY(4px); }
-    100% { transform: rotate(-0.3deg) translateY(0px); }
-  }
-
-  #water-effect-container {
+  &__bg {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     z-index: 1;
 
-    canvas {
-      display: block;
+    &--desktop {
+      @include bp.max-md {
+        display: none;
+      }
     }
 
-    @include bp.max-md {
-      display: none;
-    }
-  }
-
-  &__mobile-bg {
-    display: none;
-
-    @include bp.max-md {
-      display: block;
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
+    &--mobile {
+      @include bp.min-md {
+        display: none;
+      }
     }
   }
 
