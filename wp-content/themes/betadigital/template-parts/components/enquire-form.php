@@ -11,6 +11,7 @@
 $cf7_title = $cf7_title ?? 'Enquire now';
 $headline  = $headline  ?? 'Book Your Adventure';
 $highlight = $highlight ?? 'Enquire Now';
+$barco     = $barco     ?? '';
 ?>
 <section class="enquire-form" id="enquire">
   <div class="enquire-form__inner">
@@ -22,6 +23,14 @@ $highlight = $highlight ?? 'Enquire Now';
 
     <div class="enquire-form__form">
       <?php echo do_shortcode('[contact-form-7 title="' . esc_attr($cf7_title) . '"]'); ?>
+      <?php if ( $barco ) : ?>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          var field = document.querySelector('.enquire-form input[name="barco"]');
+          if (field) field.value = '<?php echo esc_js($barco); ?>';
+        });
+      </script>
+      <?php endif; ?>
     </div>
 
   </div>

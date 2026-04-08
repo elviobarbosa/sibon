@@ -57,6 +57,7 @@ depoiments();
 enquire_form([
   'headline'  => 'Book Your Experience',
   'highlight' => 'Enquire Now',
+  'barco'     => 'sibon-baru',
 ]);
 faq();
 get_footer();
