@@ -77,7 +77,7 @@ foreach ($calendario as $_entry) {
     $_st = 'on-hold';
   } elseif ($_available <= 0 || $_booked >= $_available) {
     $_st = 'sold-out';
-  } elseif ($_available > 0 && ($_booked / $_available) > 0.5) {
+  } elseif ($_available > 0 && ($_available - $_booked) <= 5) {
     $_st = 'few-spots';
   } else {
     $_st = 'open';
@@ -145,9 +145,9 @@ foreach ($calendario as $_entry) {
         $status = 'closed';
       } elseif ($on_hold) {
         $status = 'on-hold';
-      } elseif ($available <= 0 || $booked >= $available) {
+      } elseif ($available <= 0 || $booked >= 12) {
         $status = 'sold-out';
-      } elseif ($available > 0 && ($booked / $available) > 0.5) {
+      } elseif ($available > 0 && ($available <= 5)) {
         $status = 'few-spots';
       } else {
         $status = 'open';
@@ -169,7 +169,7 @@ foreach ($calendario as $_entry) {
 
       <p class="schedule-booking__booked"><?php echo $booked; ?></p>
 
-      <p class="schedule-booking__available"><?php echo $remaining; ?></p>
+      <p class="schedule-booking__available"><?php echo $available; ?></p>
 
       <p class="schedule-booking__season">
         <?php echo esc_html($season_labels[$temporada] ?? ''); ?>

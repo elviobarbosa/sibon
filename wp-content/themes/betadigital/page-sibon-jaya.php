@@ -57,6 +57,7 @@ depoiments();
 enquire_form([
   'headline'  => 'Book Your Experience',
   'highlight' => 'Enquire Now',
+  'barco'     => 'sibon-jaya',
 ]);
 faq();
 get_footer();
