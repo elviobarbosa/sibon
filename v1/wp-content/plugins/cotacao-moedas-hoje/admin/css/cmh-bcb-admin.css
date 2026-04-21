@@ -1,0 +1,40 @@
+/**
+ * Cotação Moedas Hoje - Banco Central do Brasil 
+ *
+ */
+ @media all{
+    .chm-plugin-masterhead{background-color:#fff;text-align:center;box-shadow:0 1px 0 rgba(200,215,225,0.5),0 1px 2px #e9eff3;}
+    .chm-right{float:right;}
+    .chm-lower{margin:0 auto;text-align:left;max-width:45rem;padding:1.5rem;}
+    .btn-save {padding:.5rem;margin:0;}
+    .chm-box{box-sizing:border-box;background:white;border:1px solid rgba(200, 215, 225, 0.5);}
+    .chm-box h2,.chm-box h3, .chm-box .box-currencies,.chm-box .box-customizations{padding:1.5rem 1.5rem .5rem 1.5rem;margin:0;}
+    .chm-box p{padding:0 1.5rem 1.5rem 1.5rem;margin:0;}
+    .chm-box p:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+    .chm-box .chminner-right{padding-right:1.5rem;}
+    .chm-boxes .chm-box{margin-bottom:0;padding:0;margin-top:-1px;}
+    .chm-boxes .chm-box:last-child{margin-bottom:1.5rem;}
+    .chm-boxes .chm-box:first-child{margin-top:1.5rem;}
+    .chm-button,.chm-button:hover,.chm-button:visited{background:white;border-color:#c8d7e1;border-style:solid;border-width:1px 1px 2px;color:#2e4453;cursor:pointer;display:inline-block;margin:0;outline:0;overflow:hidden;font-size:14px;font-weight:500;text-overflow:ellipsis;text-decoration:none;vertical-align:top;box-sizing:border-box;font-size:14px;line-height:21px;border-radius:4px;padding:7px 14px 9px;-webkit-appearance:none;-moz-appearance:none;appearance:none;}
+    .chm-button:hover{border-color:#a8bece;}
+    .chm-button:active{border-width:2px 1px 1px;}
+    .chm-is-primary,.chm-is-primary:hover,.chm-is-primary:visited{background:#00aadc;border-color:#0087be;color:white;}
+    .chm-is-primary:hover,.chm-is-primary:focus{border-color:#005082;}
+    .chm-is-primary:hover{border-color:#005082;}
+    .chm-plugin-masterhead__inside-container{margin:0 auto;width:100%;max-width:45rem;text-align:left;}
+    .chm-plugin-masterhead__logo-container{padding:.125rem 0 0;}
+    .chm-plugin-masterhead__logo{width:215px;height:52px;}
+    .chm-plugin-masterhead__logo-container:after{content:".";display:block;height:0;clear:both;visibility:hidden;}  
+    .tooltip {position: relative;display: inline-block;}
+    .tooltip .tooltiptext {visibility: hidden;width: 140px;background-color: #555;color: #fff;text-align: center;border-radius: 6px;padding: 5px;position: absolute;z-index: 1;bottom: 150%;left: 50%;margin-left: -75px;opacity: 0;transition: opacity 0.3s;}
+    .tooltip .tooltiptext::after {content: "";position: absolute;top: 100%;left: 50%;margin-left: -5px;border-width: 5px;border-style: solid;border-color: #555 transparent transparent transparent;}
+    .tooltip:hover .tooltiptext {visibility: visible;opacity: 1;}
+    .copy-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;}
+    .copy-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+    .copy-button:disabled{cursor:not-allowed;opacity:0.3;}
+    :disabled *{pointer-events:none;}
+    .copy-button:hover{color:#000!important;background-color:#ccc!important;}
+}
+@media (max-width: 45rem){
+    .chm-plugin-masterhead{padding:0 1.25rem;}
+}

@@ -1,0 +1,50 @@
+/**
+ * Cotação Moedas Hoje - Banco Central do Brasil 
+ *
+ */
+ *{list-style:none;margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-touch-callout:none;}
+ 
+ @media (min-width:992px) and (max-width:1229px){
+    .hidden-md{display:none!important;}
+ }
+ @media (min-width:992px){
+    a:hover{color:#1da189;}
+ }
+ a{text-decoration:none;color:#666;}
+ .ticker-financial-market{z-index: 999999 !important; background:#f2f2f2;border-bottom:1px solid #999;overflow:auto;position:relative;overflow-y:hidden; height: 36px;}
+ .ticker-financial-market .ticker-slider{min-width: 1000px; height: 36px;}
+ .ticker-financial-market .ticker-slide>section{float:left;}
+ .ticker-financial-market .ticker-slide .info{float:left;margin:6px 0;padding:4px 10px;border-right:1px solid #ccc;}
+ .ticker-financial-market .ticker-slide .info a{display:table;}
+ .ticker-financial-market .ticker-slide .info a:hover .value{color:#1da189;}
+ .ticker-financial-market .ticker-slide .info .numbers,.ticker-financial-market .ticker-slide .info span{margin-left: 5px;float:left;font-weight:400;letter-spacing:.6px;}
+ .ticker-financial-market .ticker-slide .info .name{font-size:12px;line-height:16px;text-transform:uppercase;font-weight:700;margin-right:6px;color:#000;}
+ .ticker-financial-market .ticker-slide .info .data,.ticker-financial-market .ticker-slide .info .value{font-size:13px;line-height:16px;}
+ .ticker-financial-market .ticker-slide .info .data{color:#fff;background:#FFA500;padding:0 6px;border-radius:10px;}
+ .ticker-financial-market .ticker-slide .info .pos{background-color:#20c634;}
+ .ticker-financial-market .ticker-slide .info .pos:before{content:'+';}
+ .ticker-financial-market .ticker-slide .info .neg{background-color:#d5150b;}
+ .ticker-financial-market .ticker-slide .info .bra{color:#666;margin-left:5px;}
+ .ticker-financial-market .ticker-slide .info .bra:before{content:'R$ ';font-size:12px;}
+ .ticker-financial-market .ticker-slide section:last-child .info:last-child{border:none;}
+ .ticker-financial-market .ticker-slide .indicators .data{margin-right:5px;}
+
+.panel {background: linear-gradient(to left, rgb(22, 160, 133) 0%, rgb(46, 204, 113) 100%);}
+.panel-heading {color: rgba(255,255,255,0.9);}
+.panel .table {background-color: rgba(255,255,255,0.9);}
+table > tbody > tr > th {color: rgba(0,0,0,0.7);font-size: 1.2rem;}
+span.edited {border-bottom: 1px dotted;cursor: help;}
+span.meterEdit {padding: 3px;display: inline;}
+.meterReadings {text-align: right;}
+.meterEditable{border: 1px solid rgba(0,0,0,0.1);border-radius: 3px;}
+.saved {color: green;position: relative;right: -100px;font-size: 0.8em;opacity: 0;}
+@media (max-width:767px){
+   .ticker-financial-market{height:36px;}
+   .ticker-financial-market .ticker-slide{min-width:1400px;height:36px;}
+   .ticker-financial-market .ticker-slide>section{float:left;}
+}
+@media (min-width:768px) and (max-width:991px){
+   .ticker-financial-market{height:36px;}
+   .ticker-financial-market .ticker-slide{min-width:1400px;height:36px;}
+   .ticker-financial-market .ticker-slide>section{float:left;}
+}

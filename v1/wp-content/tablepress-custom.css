@@ -1,0 +1,69 @@
+.tablepress thead th,
+.tablepress tbody td {
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+}
+
+.tablepress .row-highlight-open .column-4 {
+	background-color: #008000;
+	color: #FFFFFF;
+}
+
+.tablepress .row-highlight-sold .column-4 {
+	background-color: #FF0000;
+	color: #FFFFFF;
+}
+
+.tablepress .row-highlight-canceled .column-4 {
+	background-color: #4d0000 !important;
+	color: #FFFFFF !important;
+}
+
+.tablepress .row-highlight-hold .column-4 {
+	background-color: #E26B0A;
+	color: #FFFFFF;
+}
+
+.tablepress .row-highlight-few .column-4 {
+	background-color: #D4AC0D;
+	color: #FFFFFF;
+}
+
+.tablepress .row-highlight-high .column-7 {
+	color: #FF0000;
+}
+
+.tablepress .row-highlight-low .column-7 {
+	color: #008000;
+}
+
+.tablepress .row-highlight-closed .column-4 {
+	background-color: #b20000;
+	color: #FFFFFF;
+}
+
+.tablepress thead th,
+.tablepress tfoot th {
+	background-color: #6EC1E4;
+	text-align: center;
+}
+
+.tablepress thead .dt-ordering-asc,
+.tablepress thead .dt-ordering-desc,
+.tablepress thead .dt-orderable-asc:hover,
+.tablepress thead .dt-orderable-desc:hover {
+	background-color: #132237;
+}
+
+.tablepress td {
+	text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+	.tablepress {
+		font-size: 8px !important;
+		padding: 10px !important;
+	}
+}
