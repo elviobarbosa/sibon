@@ -11,7 +11,10 @@ function wpdocs_theme_name_scripts() {
 
     wp_enqueue_script('js-site', get_stylesheet_directory_uri() . '/dist/scripts/frontend-bundle.js', array(), filemtime(get_stylesheet_directory() . '/dist/scripts/frontend-bundle.js'), true);
 
-    wp_localize_script('js-site', 'ajaxData', array( 'url' => admin_url('admin-ajax.php') ));
+    wp_localize_script('js-site', 'ajaxData', array(
+        'url'   => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('ajax_nonce')
+    ));
 }
 
 // Remove block-library CSS em páginas sem Gutenberg
