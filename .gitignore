@@ -17,6 +17,7 @@ wp-settings.php
 wp-signup.php
 wp-trackback.php
 xmlrpc.php
+v1/
 
 # Environment-specific configuration files
 wp-config.php
