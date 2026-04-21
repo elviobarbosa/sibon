@@ -89,10 +89,13 @@ foreach ($calendario as $_entry) {
     $_period_label = ($_dt_start && $_dt_end)
       ? $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d')
       : '';
+    $_period_value = ($_dt_start && $_dt_end)
+      ? $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d') . ', ' . $_dt_start->format('Y')
+      : '';
     if ($_period_label) {
       $_local_name = $local_labels[$_local] ?? ucfirst($_local);
       $dates_for_select[] = [
-        'value' => $_period_label,
+        'value' => $_period_value,
         'label' => $_period_label . ' · ' . $_local_name,
       ];
     }
@@ -102,7 +105,7 @@ foreach ($calendario as $_entry) {
 <section class="schedule-booking" id="schedule-booking"
   data-dates="<?php echo esc_attr(wp_json_encode($dates_for_select)); ?>">
   <h2 class="schedule-booking__title">
-    <span class="schedule-booking__title--headline "><?php echo $boat_posts[0]->post_title; ?></span>
+    <span class="schedule-booking__title--headline "><?php echo esc_html($boat_posts[0]->post_title); ?></span>
     <span class="schedule-booking__title--highlight ">Schedule & Bookings</span>
   </h2>
 
@@ -158,6 +161,9 @@ foreach ($calendario as $_entry) {
       $period_label = ($dt_start && $dt_end)
         ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d')
         : '';
+      $period_value = ($dt_start && $dt_end)
+        ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_start->format('Y')
+        : '';
       $remaining = max(0, $available - $booked);
     ?>
     <div class="schedule-booking__card schedule-booking__card--<?php echo $status; ?>">
@@ -181,7 +187,7 @@ foreach ($calendario as $_entry) {
 
       <?php if (in_array($status, ['few-spots', 'on-hold', 'open'])) : ?>
       <a href="<?php echo esc_url($enquire_url); ?>" class="schedule-booking__cta"
-        data-period="<?php echo esc_attr($period_label); ?>">
+        data-period="<?php echo esc_attr($period_value); ?>">
         ENQUIRE NOW
       </a>
       <?php endif; ?>
