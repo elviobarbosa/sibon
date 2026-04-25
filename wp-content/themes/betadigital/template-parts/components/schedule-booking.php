@@ -131,6 +131,21 @@ foreach ($calendario as $_entry) {
     <span></span>
   </div>
 
+  <?php if (count($years) > 1) : ?>
+  <div class="schedule-booking__year-tabs">
+    <?php foreach ($years as $index => $year) :
+      if ($index > 0) : ?>
+    <span class="schedule-booking__year-divider" aria-hidden="true"></span>
+    <?php endif; ?>
+    <button class="schedule-booking__year-tab <?php echo (string) $year === $active_year ? 'is-active' : ''; ?>"
+      data-year="<?php echo esc_attr($year); ?>"
+      aria-pressed="<?php echo $year === $active_year ? 'true' : 'false'; ?>">
+      <?php echo esc_html($year); ?>
+    </button>
+    <?php endforeach; ?>
+  </div>
+  <?php endif; ?>
+
   <?php foreach ($posts_by_year as $year => $entries) : ?>
   <div class="schedule-booking__grid" data-year="<?php echo esc_attr($year); ?>"
     <?php echo (string) $year !== $active_year ? 'hidden' : ''; ?>>
@@ -159,7 +174,7 @@ foreach ($calendario as $_entry) {
       $dt_start     = $start_raw ? DateTime::createFromFormat('Ymd', $start_raw) : null;
       $dt_end       = $end_raw   ? DateTime::createFromFormat('Ymd', $end_raw)   : null;
       $period_label = ($dt_start && $dt_end)
-        ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d')
+        ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_end->format('Y')
         : '';
       $period_value = ($dt_start && $dt_end)
         ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_start->format('Y')
@@ -196,21 +211,6 @@ foreach ($calendario as $_entry) {
 
   </div>
   <?php endforeach; ?>
-
-  <?php if (count($years) > 1) : ?>
-  <div class="schedule-booking__year-tabs">
-    <?php foreach ($years as $index => $year) :
-      if ($index > 0) : ?>
-    <span class="schedule-booking__year-divider" aria-hidden="true"></span>
-    <?php endif; ?>
-    <button class="schedule-booking__year-tab <?php echo (string) $year === $active_year ? 'is-active' : ''; ?>"
-      data-year="<?php echo esc_attr($year); ?>"
-      aria-pressed="<?php echo $year === $active_year ? 'true' : 'false'; ?>">
-      <?php echo esc_html($year); ?>
-    </button>
-    <?php endforeach; ?>
-  </div>
-  <?php endif; ?>
 
   <div class="schedule-booking__enquire-wrap">
     <div class="schedule-booking__divider" aria-hidden="true">
