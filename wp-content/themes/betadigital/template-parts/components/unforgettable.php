@@ -9,8 +9,8 @@
   <div class="unforgettable__container">
     <header class="unforgettable__header">
       <h2 class="unforgettable__title">
-        <span class="unforgettable__title-line unforgettable__title-line--headline animate-text">LET'S CREATE</span>
-        <span class="unforgettable__title-line unforgettable__title-line--highlight animate-text">Something
+        <span class="unforgettable__title-line unforgettable__title-line--headline ">LET'S CREATE</span>
+        <span class="unforgettable__title-line unforgettable__title-line--highlight ">Something
           unforgettable</span>
       </h2>
       <p class="unforgettable__description">
@@ -22,16 +22,17 @@
 
     <div class="unforgettable__gallery">
       <figure class="unforgettable__image unforgettable__image--1" data-parallax-speed="0.15">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-1.jpg'); ?>"
-          alt="Northern lights">
+        <img
+          src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/women-jump-ocean-sibon-baru.jpg'); ?>"
+          alt="Women jumping into the ocean" width="750" height="500" loading="lazy">
       </figure>
       <figure class="unforgettable__image unforgettable__image--2" data-parallax-speed="0.25">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-2.jpg'); ?>"
-          alt="Boat in crystal clear sea">
+          alt="Boat in crystal clear sea" width="400" height="500" loading="lazy">
       </figure>
       <figure class="unforgettable__image unforgettable__image--3" data-parallax-speed="0.35">
         <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/unforgettable-3.jpg'); ?>"
-          alt="Sunset on the boat">
+          alt="Sunset on the boat" width="400" height="500" loading="lazy">
       </figure>
     </div>
   </div>

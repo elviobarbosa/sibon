@@ -13,6 +13,8 @@ hero_sibon_baru([
   ],
 ]);
 random_images();
+video_depoiments(['barco' => 'sibon-baru']);
+schedule_booking(['barco' => 'sibon-baru']);
 features_charters([
   'headline'  => 'The beauty inside',
   'highlight' => 'Sibon Baru',
@@ -38,8 +40,8 @@ features_charters([
   ],
 ]);
 experience();
-photo_slide();
-schedule_booking(['barco' => 'sibon-baru']);
+photo_slide(['barco' => 'sibon-baru']);
+
 feature_slide();
 cta_boat([
   'eyebrow'   => 'SIBON',
@@ -55,6 +57,7 @@ depoiments();
 enquire_form([
   'headline'  => 'Book Your Experience',
   'highlight' => 'Enquire Now',
+  'barco'     => 'sibon-baru',
 ]);
 faq();
 get_footer();

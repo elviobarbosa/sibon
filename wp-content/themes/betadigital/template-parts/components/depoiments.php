@@ -33,7 +33,7 @@ $depoiments = new WP_Query([
   <div class="depoiments__content">
     <figure class="depoiments__bg">
       <img src="<?php echo esc_url(get_template_directory_uri() . '/dist/images/bmp/vista-aerea-mentawai.jpg'); ?>"
-        alt="Mentawai">
+        alt="Mentawai" loading="lazy" width="1200" height="600">
     </figure>
 
     <?php if ($depoiments->have_posts()) : ?>
@@ -42,9 +42,12 @@ $depoiments = new WP_Query([
       <div class="swiper depoiments__swiper" <?php echo $params; ?>>
         <div class="swiper-wrapper">
           <?php while ($depoiments->have_posts()) : $depoiments->the_post();
-            $role  = get_field('role');
-            $quote = get_field('quote');
-            $photo = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+            $role     = get_field('role');
+            $quote    = get_field('quote');
+            $photo    = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+            $name     = get_the_title();
+            $words    = preg_split('/\s+/', trim($name));
+            $initials = mb_strtoupper( mb_substr($words[0], 0, 1) . ( isset($words[1]) ? mb_substr($words[1], 0, 1) : '' ) );
           ?>
           <div class="swiper-slide depoiments__slide">
             <div class="depoiments__card">
@@ -52,8 +55,12 @@ $depoiments = new WP_Query([
               <div class="depoiments__card-header">
                 <?php if ($photo) : ?>
                 <figure class="depoiments__avatar">
-                  <img src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                  <img src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr($name); ?>" loading="lazy" width="80" height="80">
                 </figure>
+                <?php else : ?>
+                <div class="depoiments__avatar depoiments__avatar--initials" aria-hidden="true">
+                  <?php echo esc_html($initials); ?>
+                </div>
                 <?php endif; ?>
                 <div class="depoiments__card-info">
                   <strong class="depoiments__name"><?php the_title(); ?></strong>

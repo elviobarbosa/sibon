@@ -29,6 +29,12 @@ if ( ! function_exists( 'hero_parallax' ) ) {
   }
 }
 
+if ( ! function_exists( 'hero_spline' ) ) {
+  function hero_spline( $args = [] ) {
+    load_component( 'hero-spline', $args );
+  }
+}
+
 if ( ! function_exists( 'random_images' ) ) {
   function random_images( $args = [] ) {
     load_component( 'random-images', $args );
@@ -99,5 +105,17 @@ if ( ! function_exists( 'depoiments' ) ) {
 if ( ! function_exists( 'enquire_form' ) ) {
   function enquire_form( $args = [] ) {
     load_component( 'enquire-form', $args );
+  }
+}
+
+if ( ! function_exists( 'video_depoiments' ) ) {
+  function video_depoiments( $args = [] ) {
+    load_component( 'video-depoiments', $args );
+  }
+}
+
+if ( ! function_exists( 'explore_indonesia' ) ) {
+  function explore_indonesia( $args = [] ) {
+    load_component( 'explore-indonesia', $args );
   }
 }

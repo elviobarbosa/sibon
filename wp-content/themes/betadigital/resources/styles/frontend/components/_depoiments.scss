@@ -151,6 +151,19 @@
       object-fit: cover;
       display: block;
     }
+
+    &--initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--secondary-color, #4B9EFF), #1a5fb4);
+      color: #fff;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      font-family: var(--heading-font);
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
   }
 
   &__name {

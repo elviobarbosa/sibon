@@ -16,7 +16,7 @@ $boat_posts = get_posts([
   'name'           => $barco,
   'posts_per_page' => 1,
 ]);
-// var_dump($boat_posts);
+
 if (empty($boat_posts)) return;
 
 $boat_id   = $boat_posts[0]->ID;
@@ -27,12 +27,9 @@ if (empty($calendario)) return;
 
 $today = date('Ymd');
 
-// Ordena por periodo_inicio ASC
 usort($calendario, function ($a, $b) {
   return strcmp($a['periodo_inicio'], $b['periodo_inicio']);
 });
-
-// Agrupa por ano
 $posts_by_year = [];
 foreach ($calendario as $entry) {
   $year = $entry['periodo_inicio'] ? substr($entry['periodo_inicio'], 0, 4) : date('Y');
@@ -74,13 +71,13 @@ foreach ($calendario as $_entry) {
   $_available = (int)  ($_entry['available'] ?? 0);
   $_on_hold   = (bool) ($_entry['on_hold']   ?? false);
 
-  if ($_on_hold) {
-    $_st = 'on-hold';
-  } elseif ($_end_raw && $_end_raw < $today) {
+  if ($_end_raw && $_end_raw < $today) {
     $_st = 'closed';
+  } elseif ($_on_hold) {
+    $_st = 'on-hold';
   } elseif ($_available <= 0 || $_booked >= $_available) {
     $_st = 'sold-out';
-  } elseif ($_available > 0 && ($_booked / $_available) > 0.5) {
+  } elseif ($_available > 0 && ($_available - $_booked) <= 5) {
     $_st = 'few-spots';
   } else {
     $_st = 'open';
@@ -92,10 +89,13 @@ foreach ($calendario as $_entry) {
     $_period_label = ($_dt_start && $_dt_end)
       ? $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d')
       : '';
+    $_period_value = ($_dt_start && $_dt_end)
+      ? $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d') . ', ' . $_dt_start->format('Y')
+      : '';
     if ($_period_label) {
       $_local_name = $local_labels[$_local] ?? ucfirst($_local);
       $dates_for_select[] = [
-        'value' => $_period_label,
+        'value' => $_period_value,
         'label' => $_period_label . ' · ' . $_local_name,
       ];
     }
@@ -105,8 +105,8 @@ foreach ($calendario as $_entry) {
 <section class="schedule-booking" id="schedule-booking"
   data-dates="<?php echo esc_attr(wp_json_encode($dates_for_select)); ?>">
   <h2 class="schedule-booking__title">
-    <span class="schedule-booking__title--headline animate-text"><?php echo $boat_posts[0]->post_title; ?></span>
-    <span class="schedule-booking__title--highlight animate-text">Schedule & Bookings</span>
+    <span class="schedule-booking__title--headline "><?php echo esc_html($boat_posts[0]->post_title); ?></span>
+    <span class="schedule-booking__title--highlight ">Schedule & Bookings</span>
   </h2>
 
   <div class="schedule-booking__legend">
@@ -144,13 +144,13 @@ foreach ($calendario as $_entry) {
       $temporada = $entry['temporada']      ?? '';
       $on_hold   = (bool) ($entry['on_hold']   ?? false);
 
-      if ($on_hold) {
-        $status = 'on-hold';
-      } elseif ($end_raw && $end_raw < $today) {
+      if ($end_raw && $end_raw < $today) {
         $status = 'closed';
-      } elseif ($available <= 0 || $booked >= $available) {
+      } elseif ($on_hold) {
+        $status = 'on-hold';
+      } elseif ($available <= 0 || $booked >= 12) {
         $status = 'sold-out';
-      } elseif ($available > 0 && ($booked / $available) > 0.5) {
+      } elseif ($available > 0 && ($available <= 5)) {
         $status = 'few-spots';
       } else {
         $status = 'open';
@@ -160,6 +160,9 @@ foreach ($calendario as $_entry) {
       $dt_end       = $end_raw   ? DateTime::createFromFormat('Ymd', $end_raw)   : null;
       $period_label = ($dt_start && $dt_end)
         ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d')
+        : '';
+      $period_value = ($dt_start && $dt_end)
+        ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_start->format('Y')
         : '';
       $remaining = max(0, $available - $booked);
     ?>
@@ -172,7 +175,7 @@ foreach ($calendario as $_entry) {
 
       <p class="schedule-booking__booked"><?php echo $booked; ?></p>
 
-      <p class="schedule-booking__available"><?php echo $remaining; ?></p>
+      <p class="schedule-booking__available"><?php echo $available; ?></p>
 
       <p class="schedule-booking__season">
         <?php echo esc_html($season_labels[$temporada] ?? ''); ?>
@@ -184,7 +187,7 @@ foreach ($calendario as $_entry) {
 
       <?php if (in_array($status, ['few-spots', 'on-hold', 'open'])) : ?>
       <a href="<?php echo esc_url($enquire_url); ?>" class="schedule-booking__cta"
-        data-period="<?php echo esc_attr($period_label); ?>">
+        data-period="<?php echo esc_attr($period_value); ?>">
         ENQUIRE NOW
       </a>
       <?php endif; ?>

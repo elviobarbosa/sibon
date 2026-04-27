@@ -15,6 +15,8 @@ export default class Carrosel {
   initSwiper(sliders) {
     let i = 1;
     sliders.forEach((sliderEl) => {
+      if (sliderEl.hasAttribute('data-manual')) return;
+
       const swiperClass = `js-swiper-${i}`;
       const params = sliderEl.dataset.params
         ? JSON.parse(sliderEl.dataset.params)

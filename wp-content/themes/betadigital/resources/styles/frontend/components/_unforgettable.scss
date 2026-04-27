@@ -1,5 +1,6 @@
 @use "../mixins/breakpoints" as bp;
 @use "../placeholders/texts" as txt;
+
 .unforgettable {
   position: relative;
   padding: 6rem 2rem 8rem;
@@ -7,20 +8,30 @@
 
   &__container {
     position: relative;
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    gap: 80px;
     max-width: 90vw;
     margin: 0 auto;
+    align-items: center;
     z-index: 1;
+
+    @include bp.max-lg {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
   }
 
   &__header {
     position: relative;
-    text-align: center;
+    text-align: left;
     z-index: 10;
   }
 
   &__title {
-    margin-bottom: 1.5rem;
-    line-height: 1.3em;
+    margin-bottom: 40px;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
   }
 
   &__title-line {
@@ -28,147 +39,86 @@
 
     &--headline {
       @extend %headline;
-      font-size: clamp(2.5rem, 6vw, 5rem);
     }
 
     &--highlight {
       @extend %highlight;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      
+      font-style: italic;
     }
   }
 
   &__description {
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: var(--gray-500, #666);
-    text-align: center;
+    @extend %body_text;
+    line-height: 1.7;
+    text-align: left;
   }
 
   &__gallery {
-    position: relative;
-    height: 550px;
-    margin-top: -2rem;
+    display: grid;
+    grid-template-columns: 59fr 41fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+
+    @include bp.max-md {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
 
   &__image {
-    position: absolute;
+    position: relative;
     margin: 0;
     border-radius: 24px;
     overflow: hidden;
-    will-change: transform;
 
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    // Imagem 1 - esquerda, mais alta
-    &--1 {
-      width: 280px;
-      height: 380px;
+      position: absolute;
+      top: -10%;
       left: 0;
-      top: 30px;
-      z-index: 1;
+      width: 100%;
+      height: 120%; // 20% extra para espaço de parallax
+      object-fit: cover;
+      will-change: transform;
     }
 
-    // Imagem 2 - centro-direita, mais baixa
+    // Landscape superior — proporção real 16:9
+    &--1 {
+      grid-column: 1;
+      grid-row: 1;
+      aspect-ratio: 16 / 9;
+    }
+
+    // Landscape inferior — proporção real 16:9
     &--2 {
-      width: 320px;
-      height: 260px;
-      left: 75%;
-      transform: translateX(-50%);
-      bottom: 0;
-      z-index: 2;
+      grid-column: 1;
+      grid-row: 2;
+      aspect-ratio: 16 / 9;
     }
 
-    // Imagem 3 - direita, sobrepondo levemente a 2
+    // Portrait — coluna 2, centralizada verticalmente entre as duas linhas
     &--3 {
-      width: 300px;
-      height: 320px;
-      right: 0;
-      top: 80px;
-      z-index: 3;
-    }
-  }
-}
-
-// Animação de pulso suave para os glows
-@keyframes glowPulse {
-  0%, 100% {
-    transform: scale(1) translate(0, 0);
-    opacity: 0.5;
-  }
-  25% {
-    transform: scale(1.1) translate(10px, -10px);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.05) translate(-5px, 5px);
-    opacity: 0.6;
-  }
-  75% {
-    transform: scale(1.15) translate(5px, 10px);
-    opacity: 0.7;
-  }
-}
-
-// Responsivo
-@media (max-width: 1024px) {
-  .unforgettable {
-    &__gallery {
-      height: 450px;
+      grid-column: 2;
+      grid-row: 1 / 3;
+      aspect-ratio: 4 / 5;
+      align-self: center;
     }
 
-    &__image {
-      &--1 {
-        width: 220px;
-        height: 300px;
-      }
-
-      &--2 {
-        width: 260px;
-        height: 220px;
-      }
-
-      &--3 {
-        width: 240px;
-        height: 260px;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .unforgettable {
-    padding: 4rem 1rem 6rem;
-
-    &__gallery {
-      position: relative;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    &__image {
-      position: relative;
-      left: auto !important;
-      right: auto !important;
-      top: auto !important;
-      bottom: auto !important;
-      transform: none !important;
-      width: 100% !important;
-      height: 250px !important;
+    @include bp.max-md {
+      grid-column: 1 !important;
+      grid-row: auto !important;
+      height: 250px;
       border-radius: 12px;
+      align-self: auto;
 
-      &--2 {
+      &--1, &--2 { aspect-ratio: auto; }
+      &--3 { aspect-ratio: auto; }
+
+      img {
+        position: relative;
+        top: 0;
+        height: 100%;
         transform: none !important;
       }
     }
-
   }
 }

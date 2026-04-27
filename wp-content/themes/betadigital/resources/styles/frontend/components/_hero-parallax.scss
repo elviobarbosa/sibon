@@ -4,17 +4,6 @@
   width: 100%;
   overflow-x: hidden;
 
-  #birds-3d-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
   &__section {
     position: relative;
     width: 100%;
@@ -45,20 +34,67 @@
       display: block;
       transition: opacity 0.1s ease;
       background: #70c7f1;
-      height: auto;
+      height: 100vh;
       min-height: auto;
 
       .hero-parallax {
-        &__title {
+        &__hero-content {
           position: absolute;
-          text-align: center;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -110%);
+          z-index: 5;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 28px;
+
+          @include bp.max-md {
+            left: 50%;
+            bottom: 8%;
+            transform: translateX(-50%);
+            width: 85%;
+          }
+
+          @include bp.min-md {
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42vw;
+          }
+        }
+
+        &__title {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+          text-align: left;
+          width: 100%;
+          font-size: clamp(3rem, 8vw, 8rem);
+          line-height: 0.88;
           z-index: 1;
+
+          @include bp.max-md {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            text-align: center;
+          }
 
           &-line {
             color: white;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+
+            strong {
+              font-weight: 800;
+            }
+          }
+        }
+
+        &__boat-select {
+          position: relative;
+          left: auto;
+          bottom: auto;
+          transform: none;
+
+          @include bp.max-md {
+            align-self: center;
           }
         }
       }
@@ -81,6 +117,7 @@
     line-height: 0.8;
     margin: 0;
     letter-spacing: -0.02em;
+    width: 100%;
   }
 
   &__title-line {
@@ -94,6 +131,9 @@
       font-family: var(--body-font) !important;
       font-weight: 100;
       text-transform: uppercase;
+      strong {
+        font-weight: 600
+      }
     }
 
     &.animate-text {
@@ -116,68 +156,6 @@
     overflow: hidden;
   }
 
-  &__sky {
-    width: 100%;
-    height: 50vh;
-    position: relative;
-    z-index: 3;
-    pointer-events: none;
-    background: linear-gradient(to top, #70c7f1 0%, #fff 100%);
-
-
-  }
-
-  &__clouds {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  &__cloud {
-    position: absolute;
-    opacity: 0;
-
-    transition:
-      left 0.1s ease,
-      top 0.1s ease,
-      opacity 0.1s ease;
-
-    &--1 {
-      width: 300px;
-      height: 150px;
-      top: 110%;
-      left: -15%;
-    }
-
-    &--2 {
-      width: 250px;
-      height: 120px;
-      top: 110%;
-      left: 55%;
-    }
-
-    &--3 {
-      width: 350px;
-      height: 180px;
-      top: 110%;
-      left: 5%;
-    }
-
-    &--4 {
-      width: 280px;
-      height: 140px;
-      top: 110%;
-      left: 70%;
-    }
-
-    &--5 {
-      width: 320px;
-      height: 160px;
-      top: 110%;
-      left: -10%;
-    }
-  }
-
   &__boat-image {
     width: 100%;
     position: relative;
@@ -196,7 +174,6 @@
 
     @include bp.max-md {
       bottom: 5px;
-      width: 65%;
     }
 
     @include bp.min-md {
@@ -224,9 +201,9 @@
     transition: background 0.3s ease, border-color 0.3s ease;
 
     @include bp.max-md {
-      min-width: 0;
       width: 100%;
       font-size: 10px;
+      letter-spacing: 0.10em;
       padding: 10px 48px 10px 24px;
     }
 
@@ -258,33 +235,25 @@
     flex-shrink: 0;
   }
 
-  &__boat-overlay {
+  &__bg {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
-    height: auto;
-    z-index: 2;
-    pointer-events: none;
-    transform-origin: center bottom;
-    animation: boat-rock 14s ease-in-out infinite;
-  }
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
 
-  @keyframes boat-rock {
-    0%   { transform: rotate(-0.3deg) translateY(0px); }
-    50%  { transform: rotate(0.3deg) translateY(4px); }
-    100% { transform: rotate(-0.3deg) translateY(0px); }
-  }
+    &--desktop {
+      @include bp.max-md {
+        display: none;
+      }
+    }
 
-  #water-effect-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-    canvas {
-      display: block;
-      max-width: 100%;
-      height: auto;
+    &--mobile {
+      @include bp.min-md {
+        display: none;
+      }
     }
   }
 
@@ -353,25 +322,4 @@
       }
     }
   }
-
-  // @include bp.max-md {
-  //   &__explore-container {
-  //     grid-template-columns: 1fr;
-  //     gap: 40px;
-  //     padding: 0 20px;
-  //   }
-  // }
 }
-
-// .hero-parallax__section--boat
-//   .hero-parallax__boat-img[src*="sibon-baru-jaya-cover.jpg"]:not([src]) {
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     color: white;
-//     font-size: 2rem;
-//   }
-// }

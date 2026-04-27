@@ -1,12 +1,12 @@
-import $ from "jquery";
+import "swiper/css/bundle";
 import Menu from "./components/menu";
 import Hero from "./components/hero";
 import HeroParallax from "./components/hero-parallax";
 import Carrosel from "./components/carrosel";
 import FaqToggle from "./components/faq";
 import JumpNavMenu from "./components/jump-nav-menu";
-import TextAnimation from "./components/text-animation";
-import WaveLines from "./components/wave-lines";
+// import TextAnimation from "./components/text-animation";
+import WaveLines from "./components/wave-line2";
 import RandomImages from "./components/random-images";
 import Unforgettable from "./components/unforgettable";
 import FeatureSlide from "./components/feature-slide";
@@ -14,7 +14,9 @@ import HeroCharters from "./components/hero-charters";
 import PhotoSlide from "./components/photo-slide";
 import ScheduleBooking from "./components/schedule-booking";
 import Depoiments from "./components/depoiments";
+import VideoDepoiments from "./components/video-depoiments";
 import CtaBoatAnimation from "./components/cta-boat-animation";
+// import BoatTitlePositioner from "./components/boat-title-positioner";
 
 function hideLoader() {
   const loader = document.getElementById('page-loader');
@@ -36,7 +38,7 @@ function domReady(fn) {
     new Carrosel();
     new FaqToggle();
     new JumpNavMenu();
-    new TextAnimation();
+    // new TextAnimation();
     new RandomImages();
     new Unforgettable();
     new FeatureSlide();
@@ -44,7 +46,9 @@ function domReady(fn) {
     new PhotoSlide();
     new ScheduleBooking();
     new Depoiments();
+    new VideoDepoiments();
     new CtaBoatAnimation();
+    // new BoatTitlePositioner();
     hideLoader();
   } else {
     setTimeout(() => {
