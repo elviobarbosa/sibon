@@ -18,7 +18,7 @@ $sb-status-colors: (
 
   &__title {
     text-align: center;
-    line-height: 1.4em;
+    line-height: 1.6em;
 
     @include bp.max-md {
       line-height: 1;
@@ -71,7 +71,7 @@ $sb-status-colors: (
   // ─── Table Header ─────────────────────────────────
   &__table-header {
     display: grid;
-    grid-template-columns: repeat(6, 1fr) fn.px-rem(160px);
+    grid-template-columns: repeat(7, 1fr) fn.px-rem(160px);
     max-width: 90vw;
     margin: 0 auto;
     position: sticky;
@@ -117,7 +117,7 @@ $sb-status-colors: (
   // ─── Card ─────────────────────────────────────────
   &__card {
     display: grid;
-    grid-template-columns: repeat(6, 1fr) fn.px-rem(160px);
+    grid-template-columns: repeat(7, 1fr) fn.px-rem(160px);
     position: relative;
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
@@ -141,7 +141,7 @@ $sb-status-colors: (
     @include bp.max-md {
       display: grid;
       grid-template-columns: 1fr auto;
-      grid-template-rows: auto auto auto auto;
+      grid-template-rows: auto auto auto auto auto;
       gap: fn.px-rem(4px) fn.px-rem(12px);
       padding: fn.px-rem(18px) fn.px-rem(16px) fn.px-rem(16px);
       border-bottom: 1px solid #e5e5e5;
@@ -196,8 +196,25 @@ $sb-status-colors: (
     margin-bottom: fn.px-rem(2px);
   }
 
+  &__code {
+    font-size: fn.px-rem(16px);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    padding: fn.px-rem(10px) 0 fn.px-rem(10px);
+
+    @include bp.max-md {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      font-size: fn.px-rem(16px);
+      font-weight: 700;
+      color: #333;
+      padding: 0 0 fn.px-rem(4px) 0;
+    }
+  }
+
   &__period {
-    font-size: fn.px-rem(20px);
+    font-size: fn.px-rem(16px);
     font-weight: 500;
     line-height: 1.2;
     margin: 0;
@@ -205,7 +222,7 @@ $sb-status-colors: (
 
     @include bp.max-md {
       grid-column: 1;
-      grid-row: 1;
+      grid-row: 2;
       font-size: fn.px-rem(18px);
       font-weight: 600;
       padding: 0;
@@ -214,14 +231,14 @@ $sb-status-colors: (
   }
 
   &__local {
-    font-size: fn.px-rem(20px);
+    font-size: fn.px-rem(16px);
     font-weight: 500;
     margin: 0;
     padding: fn.px-rem(10px) 0 fn.px-rem(10px);
 
     @include bp.max-md {
       grid-column: 1;
-      grid-row: 2;
+      grid-row: 3;
       font-size: fn.px-rem(14px);
       font-weight: 400;
       color: #666;
@@ -230,21 +247,21 @@ $sb-status-colors: (
   }
 
   &__spots {
-    font-size: fn.px-rem(20px);
+    font-size: fn.px-rem(16px);
     font-weight: 500;
     margin: 0;
     padding: fn.px-rem(10px) 0 fn.px-rem(10px);
   }
 
   &__status {
-    font-size: fn.px-rem(20px);
+    font-size: fn.px-rem(16px);
     font-weight: 500;
     margin: 0;
     padding: fn.px-rem(10px) 0 fn.px-rem(10px);
 
     @include bp.max-md {
       grid-column: 2;
-      grid-row: 1;
+      grid-row: 2;
       padding: 0;
       font-size: fn.px-rem(14px);
       align-self: center;
@@ -256,7 +273,7 @@ $sb-status-colors: (
 
   &__booked,
   &__available {
-    font-size: fn.px-rem(20px);
+    font-size: fn.px-rem(16px);
     font-weight: 500;
     margin: 0;
     padding: fn.px-rem(10px) 0 fn.px-rem(10px);
@@ -265,7 +282,7 @@ $sb-status-colors: (
   &__booked {
     @include bp.max-md {
       grid-column: 1;
-      grid-row: 3;
+      grid-row: 4;
       font-size: fn.px-rem(13px);
       color: #666;
       font-weight: 400;
@@ -282,7 +299,7 @@ $sb-status-colors: (
   &__available {
     @include bp.max-md {
       grid-column: 2;
-      grid-row: 3;
+      grid-row: 4;
       font-size: fn.px-rem(13px);
       color: #666;
       font-weight: 400;
@@ -299,14 +316,14 @@ $sb-status-colors: (
   }
 
   &__season {
-    font-size: fn.px-rem(20px);
+    font-size: fn.px-rem(16px);
     letter-spacing: 0.06em;
     margin: 0;
     padding: fn.px-rem(10px) 0 fn.px-rem(10px);
 
     @include bp.max-md {
       grid-column: 2;
-      grid-row: 2;
+      grid-row: 3;
       font-size: fn.px-rem(11px);
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -340,7 +357,7 @@ $sb-status-colors: (
 
     @include bp.max-md {
       grid-column: 1 / -1;
-      grid-row: 4;
+      grid-row: 5;
       opacity: 1;
       pointer-events: auto;
       margin: fn.px-rem(12px) 0 0;
@@ -360,7 +377,7 @@ $sb-status-colors: (
   }
 
   &__year-tab {
-    @include fsz.fluid-size("font-size", 24px, 32px);
+    @include fsz.fluid-size("font-size", 20px, 28px);
     font-family: var(--body-font);
     font-weight: 400;
     color: #c0c0c0;

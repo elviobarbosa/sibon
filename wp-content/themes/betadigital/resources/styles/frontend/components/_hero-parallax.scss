@@ -68,7 +68,7 @@
           transform: none;
           text-align: left;
           width: 100%;
-          font-size: clamp(3rem, 8vw, 8rem);
+          font-size: clamp(3rem, 7vw, 7rem);
           line-height: 0.88;
           z-index: 1;
 
@@ -129,7 +129,8 @@
 
     &--headline {
       font-family: var(--body-font) !important;
-      font-weight: 100;
+      font-style: normal;
+      font-weight: 200;
       text-transform: uppercase;
       strong {
         font-weight: 600

@@ -11,17 +11,37 @@ $enquire_url = $enquire_url ?? '#enquire';
 
 if (empty($barco)) return;
 
-$boat_posts = get_posts([
+$boat_names = [
+  'sibon-jaya' => 'Sibon Jaya',
+  'sibon-baru' => 'Sibon Baru',
+];
+$boat_title = $boat_names[$barco] ?? ucfirst(str_replace('-', ' ', $barco));
+
+$year_posts = get_posts([
   'post_type'      => 'charter_schedule',
-  'name'           => $barco,
-  'posts_per_page' => 1,
+  'posts_per_page' => -1,
+  'post_status'    => 'publish',
+  'meta_query'     => [
+    [
+      'key'     => 'barco',
+      'value'   => $barco,
+      'compare' => '='
+    ]
+  ]
 ]);
 
-if (empty($boat_posts)) return;
+if (empty($year_posts)) return;
 
-$boat_id   = $boat_posts[0]->ID;
-$calendario = get_field('calendario', $boat_id);
+$calendario = [];
 
+foreach ($year_posts as $yp) {
+  $year_calendario = get_field('calendario', $yp->ID);
+  if (!empty($year_calendario) && is_array($year_calendario)) {
+    foreach ($year_calendario as $row) {
+      $calendario[] = $row;
+    }
+  }
+}
 
 if (empty($calendario)) return;
 
@@ -70,6 +90,7 @@ foreach ($calendario as $_entry) {
   $_booked    = (int)  ($_entry['booked']    ?? 0);
   $_available = (int)  ($_entry['available'] ?? 0);
   $_on_hold   = (bool) ($_entry['on_hold']   ?? false);
+  $_codigo    = $_entry['codigo']         ?? 'TRIP-';
 
   if ($_end_raw && $_end_raw < $today) {
     $_st = 'closed';
@@ -90,13 +111,13 @@ foreach ($calendario as $_entry) {
       ? $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d')
       : '';
     $_period_value = ($_dt_start && $_dt_end)
-      ? $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d') . ', ' . $_dt_start->format('Y')
-      : '';
+      ? $_codigo . ' | ' . $_dt_start->format('M d') . ' - ' . $_dt_end->format('M d') . ', ' . $_dt_start->format('Y')
+      : $_codigo;
     if ($_period_label) {
       $_local_name = $local_labels[$_local] ?? ucfirst($_local);
       $dates_for_select[] = [
         'value' => $_period_value,
-        'label' => $_period_label . ' · ' . $_local_name,
+        'label' => $_codigo . ' | ' . $_period_label . ' · ' . $_local_name,
       ];
     }
   }
@@ -105,7 +126,7 @@ foreach ($calendario as $_entry) {
 <section class="schedule-booking" id="schedule-booking"
   data-dates="<?php echo esc_attr(wp_json_encode($dates_for_select)); ?>">
   <h2 class="schedule-booking__title">
-    <span class="schedule-booking__title--headline "><?php echo esc_html($boat_posts[0]->post_title); ?></span>
+    <span class="schedule-booking__title--headline "><?php echo esc_html($boat_title); ?></span>
     <span class="schedule-booking__title--highlight ">Schedule & Bookings</span>
   </h2>
 
@@ -122,6 +143,7 @@ foreach ($calendario as $_entry) {
   </div>
 
   <div class="schedule-booking__table-header">
+    <span>Code</span>
     <span>Schedule</span>
     <span>Destination</span>
     <span>Status</span>
@@ -158,6 +180,7 @@ foreach ($calendario as $_entry) {
       $available = (int)  ($entry['available'] ?? 0);
       $temporada = $entry['temporada']      ?? '';
       $on_hold   = (bool) ($entry['on_hold']   ?? false);
+      $codigo    = $entry['codigo']         ?? 'TRIP-';
 
       if ($end_raw && $end_raw < $today) {
         $status = 'closed';
@@ -177,11 +200,13 @@ foreach ($calendario as $_entry) {
         ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_end->format('Y')
         : '';
       $period_value = ($dt_start && $dt_end)
-        ? $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_start->format('Y')
-        : '';
+        ? $codigo . ' | ' . $dt_start->format('M d') . ' - ' . $dt_end->format('M d') . ', ' . $dt_start->format('Y')
+        : $codigo;
       $remaining = max(0, $available - $booked);
     ?>
     <div class="schedule-booking__card schedule-booking__card--<?php echo $status; ?>">
+      <p class="schedule-booking__code"><?php echo esc_html($codigo); ?></p>
+
       <p class="schedule-booking__period"><?php echo esc_html($period_label); ?></p>
 
       <p class="schedule-booking__local"><?php echo esc_html($local_labels[$local] ?? ucfirst($local)); ?></p>
