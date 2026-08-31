@@ -3,33 +3,88 @@
   "title": "Charter Schedule",
   "fields": [
     {
+      "key": "field_barco_select",
+      "label": "Barco",
+      "name": "barco",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "15",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "sibon-jaya": "Sibon Jaya",
+        "sibon-baru": "Sibon Baru"
+      },
+      "default_value": [],
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
       "key": "field_67b0f0801a2b4",
-      "label": "Calendário",
+      "label": "Calend\u00e1rio",
       "name": "calendario",
       "aria-label": "",
       "type": "repeater",
       "instructions": "",
       "required": 0,
       "conditional_logic": 0,
-      "wrapper": {"width": "", "class": "", "id": ""},
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
       "layout": "table",
       "pagination": 0,
       "min": 0,
       "max": 0,
       "collapsed": "",
-      "button_label": "Adicionar período",
+      "button_label": "Adicionar per\u00edodo",
       "rows_per_page": 20,
       "sub_fields": [
         {
+          "key": "field_67b0f080codigo",
+          "label": "Código",
+          "name": "codigo",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "10",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "TRIP-",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_67b0f0801a2b4"
+        },
+        {
           "key": "field_67b0f0801a2b5",
-          "label": "Início do Período",
+          "label": "In\u00edcio do Per\u00edodo",
           "name": "periodo_inicio",
           "aria-label": "",
           "type": "date_picker",
           "instructions": "",
           "required": 1,
           "conditional_logic": 0,
-          "wrapper": {"width": "15", "class": "", "id": ""},
+          "wrapper": {
+            "width": "15",
+            "class": "",
+            "id": ""
+          },
           "display_format": "d/m/Y",
           "return_format": "Ymd",
           "first_day": 0,
@@ -37,14 +92,18 @@
         },
         {
           "key": "field_67b0f0801a2b6",
-          "label": "Fim do Período",
+          "label": "Fim do Per\u00edodo",
           "name": "periodo_fim",
           "aria-label": "",
           "type": "date_picker",
           "instructions": "",
           "required": 1,
           "conditional_logic": 0,
-          "wrapper": {"width": "15", "class": "", "id": ""},
+          "wrapper": {
+            "width": "15",
+            "class": "",
+            "id": ""
+          },
           "display_format": "d/m/Y",
           "return_format": "Ymd",
           "first_day": 0,
@@ -59,7 +118,11 @@
           "instructions": "",
           "required": 1,
           "conditional_logic": 0,
-          "wrapper": {"width": "15", "class": "", "id": ""},
+          "wrapper": {
+            "width": "15",
+            "class": "",
+            "id": ""
+          },
           "choices": {
             "mentawai": "Mentawai",
             "telos": "Telos",
@@ -84,7 +147,11 @@
           "instructions": "",
           "required": 1,
           "conditional_logic": 0,
-          "wrapper": {"width": "10", "class": "", "id": ""},
+          "wrapper": {
+            "width": "10",
+            "class": "",
+            "id": ""
+          },
           "default_value": 0,
           "min": 0,
           "max": "",
@@ -103,7 +170,11 @@
           "instructions": "",
           "required": 1,
           "conditional_logic": 0,
-          "wrapper": {"width": "10", "class": "", "id": ""},
+          "wrapper": {
+            "width": "10",
+            "class": "",
+            "id": ""
+          },
           "default_value": 12,
           "min": 0,
           "max": "",
@@ -122,7 +193,11 @@
           "instructions": "",
           "required": 1,
           "conditional_logic": 0,
-          "wrapper": {"width": "15", "class": "", "id": ""},
+          "wrapper": {
+            "width": "15",
+            "class": "",
+            "id": ""
+          },
           "choices": {
             "low_season": "Low Season",
             "high_season": "High Season"
@@ -145,12 +220,16 @@
           "instructions": "",
           "required": 0,
           "conditional_logic": 0,
-          "wrapper": {"width": "10", "class": "", "id": ""},
+          "wrapper": {
+            "width": "10",
+            "class": "",
+            "id": ""
+          },
           "message": "",
           "default_value": 0,
           "ui": 1,
           "ui_on_text": "Sim",
-          "ui_off_text": "Não",
+          "ui_off_text": "N\u00e3o",
           "parent_repeater": "field_67b0f0801a2b4"
         }
       ]
@@ -174,5 +253,5 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1740055000
+  "modified": 1783775209
 }

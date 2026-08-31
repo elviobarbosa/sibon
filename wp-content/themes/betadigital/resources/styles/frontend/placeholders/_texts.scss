@@ -10,7 +10,7 @@
   //   line-height: 1.4rem;
   //  
   // }
-   @include flz.fluid-size("font-size", 16px, 18px);
+   @include flz.fluid-size("font-size", 14px, 16px);
 
   strong {
     font-weight: 600;
@@ -28,15 +28,16 @@
 }
 
 %headline {
-  font-size: clamp(32px, 2rem + 3vw, 100px);
+  font-size: clamp(32px, 2rem + 2vw, 80px);
   color: var(--secondary-color);
   font-family: var(--body-font) !important;
-  font-weight: 100;
+  font-style: normal;
+  font-weight: 200;
   text-transform: uppercase;
 }
 
 %highlight {
-  font-size: clamp(40px, 2rem + 4vw, 150px);
+  font-size: clamp(40px, 2rem + 3vw, 120px);
   color: var(--secondary-color);
 }
 
